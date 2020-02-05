@@ -12,15 +12,14 @@ import java.util.Date;
  * @author Mvrivera
  */
 public class Usuario {
-    private String tipo,usuario,contra,nombre,pais,correo,ubicacion;
-    private Date fecha;
+    private String tipo,usuario,contra,nombre,pais,correo,ubicacion,fecha;
     
     
 
     public Usuario() {
     }
 
-    public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, Date fecha) {
+    public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         this.tipo = tipo;
         this.usuario = usuario;
         this.contra = contra;
@@ -87,11 +86,11 @@ public class Usuario {
         this.ubicacion = ubicacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
