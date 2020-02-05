@@ -10,5 +10,9 @@ package proyectoprogra.pkg2;
  * @author Mvrivera
  */
 public class Administrador extends Usuario {
+
+    public Administrador() {
+        super();
+    }
     
 }

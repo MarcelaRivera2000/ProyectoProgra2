@@ -16,6 +16,7 @@ public class Subastador extends Membrecias{
     private String publicidad;
 
     public Subastador() {
+        super();
     }
 
     public Subastador(String publicidad) {

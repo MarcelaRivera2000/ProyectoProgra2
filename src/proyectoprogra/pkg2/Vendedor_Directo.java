@@ -17,6 +17,7 @@ public class Vendedor_Directo  extends Membrecias {
     private int negociaciones;
 
     public Vendedor_Directo() {
+        super();
     }
 
     public ArrayList<Autos> getAutos() {
