@@ -20,6 +20,7 @@ public class Usuario {
     }
 
     public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
+        
         this.tipo = tipo;
         this.usuario = usuario;
         this.contra = contra;

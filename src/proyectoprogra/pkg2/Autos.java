@@ -10,20 +10,19 @@ package proyectoprogra.pkg2;
  * @author Mvrivera
  */
 public class Autos {
-    private String marca,color,tipo_combustible,tipo;
-    private double kilometraje;
-    private int serie;
+    private String marca,modelo,cilindraje,tipo,transmision;
+    private int año;
 
     public Autos() {
     }
 
-    public Autos(String marca, String color, String tipo_combustible, double kilometraje, int serie,String tipo) {
+    public Autos(String marca, String modelo, String cilindraje, String tipo, String transmision, int año) {
         this.marca = marca;
-        this.color = color;
-        this.tipo_combustible = tipo_combustible;
-        this.kilometraje = kilometraje;
-        this.serie = serie;
-        this.tipo=tipo;
+        this.modelo = modelo;
+        this.cilindraje = cilindraje;
+        this.tipo = tipo;
+        this.transmision = transmision;
+        this.año = año;
     }
 
     public String getMarca() {
@@ -34,36 +33,20 @@ public class Autos {
         this.marca = marca;
     }
 
-    public String getColor() {
-        return color;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public String getTipo_combustible() {
-        return tipo_combustible;
+    public String getCilindraje() {
+        return cilindraje;
     }
 
-    public void setTipo_combustible(String tipo_combustible) {
-        this.tipo_combustible = tipo_combustible;
-    }
-
-    public double getKilometraje() {
-        return kilometraje;
-    }
-
-    public void setKilometraje(double kilometraje) {
-        this.kilometraje = kilometraje;
-    }
-
-    public int getSerie() {
-        return serie;
-    }
-
-    public void setSerie(int serie) {
-        this.serie = serie;
+    public void setCilindraje(String cilindraje) {
+        this.cilindraje = cilindraje;
     }
 
     public String getTipo() {
@@ -74,11 +57,27 @@ public class Autos {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
-        return "Autos{" + "marca=" + marca + ", color=" + color + ", tipo_combustible=" + tipo_combustible + ", tipo=" + tipo + ", kilometraje=" + kilometraje + ", serie=" + serie + '}';
+    public String getTransmision() {
+        return transmision;
     }
 
+    public void setTransmision(String transmision) {
+        this.transmision = transmision;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    @Override
+    public String toString() {
+        return "Autos{" + "marca=" + marca + ", modelo=" + modelo + ", cilindraje=" + cilindraje + ", tipo=" + tipo + ", transmision=" + transmision + ", a\u00f1o=" + año + '}';
+    }
+    
 
     
     
