@@ -34,16 +34,20 @@ public class Login extends javax.swing.JFrame {
         fe_R = new datechooser.beans.DateChooserCombo();
         tipo_usuario = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        Login = new javax.swing.JFrame();
-        contra_L1 = new javax.swing.JPasswordField();
-        usuario_L1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
         Pagina_principal = new javax.swing.JFrame();
         jButton7 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jT_Publi = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        NAME = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
         Restablecer = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -64,6 +68,30 @@ public class Login extends javax.swing.JFrame {
         T_Perfil = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        VendedorDirecto = new javax.swing.JFrame();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        Subastador = new javax.swing.JFrame();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        Publicidad = new javax.swing.JFrame();
+        Ti_Publicidad = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        Des_Publicidad = new javax.swing.JTextArea();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -181,82 +209,55 @@ public class Login extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        Login.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel11.setText("USUARIO: ");
-
-        jLabel12.setText("CONTRASEÑA: ");
-
-        jButton4.setText("Ingresar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Registrar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel14.setText("Restablecer Contraseña/Usuario");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login.getContentPane());
-        Login.getContentPane().setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(usuario_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contra_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton5))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel14)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(usuario_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
-                .addComponent(contra_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addContainerGap())
-        );
-
         jButton7.setText("Perfil");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
+            }
+        });
+
+        jT_Publi.setColumns(20);
+        jT_Publi.setRows(5);
+        jScrollPane1.setViewportView(jT_Publi);
+
+        jLabel11.setText("**********************Publicidad*************************");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable2);
+
+        jLabel12.setText("Membrecias");
+
+        jLabel14.setText("Carros");
+
+        jLabel25.setText("NOMBRE EMPRESA SEPA PUTAS CUAL ES XD");
+
+        jButton13.setText("prueba");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
             }
         });
 
@@ -265,16 +266,58 @@ public class Login extends javax.swing.JFrame {
         Pagina_principalLayout.setHorizontalGroup(
             Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pagina_principalLayout.createSequentialGroup()
-                .addContainerGap(741, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(64, 64, 64))
+                .addGap(36, 36, 36)
+                .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pagina_principalLayout.createSequentialGroup()
+                        .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel25)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
+                    .addGroup(Pagina_principalLayout.createSequentialGroup()
+                        .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton13)
+                        .addGap(165, 165, 165)))
+                .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addGroup(Pagina_principalLayout.createSequentialGroup()
+                        .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)))
+                .addGap(16, 16, 16))
         );
         Pagina_principalLayout.setVerticalGroup(
             Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pagina_principalLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jButton7)
-                .addContainerGap(752, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jLabel25)
+                    .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pagina_principalLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Pagina_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Pagina_principalLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Pagina_principalLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jButton13)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18))
         );
 
         jButton6.setText("Restablecer");
@@ -404,6 +447,209 @@ public class Login extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable3);
+
+        jButton4.setText("Volver");
+
+        jButton8.setText("Agregar Publicidad");
+
+        jLabel26.setText("Vendedor directo");
+
+        jButton9.setText("Negociaciones");
+
+        jLabel27.setText("Carros");
+
+        javax.swing.GroupLayout VendedorDirectoLayout = new javax.swing.GroupLayout(VendedorDirecto.getContentPane());
+        VendedorDirecto.getContentPane().setLayout(VendedorDirectoLayout);
+        VendedorDirectoLayout.setHorizontalGroup(
+            VendedorDirectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(VendedorDirectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(VendedorDirectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(27, 27, 27))))
+            .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(jLabel27)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        VendedorDirectoLayout.setVerticalGroup(
+            VendedorDirectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel26)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(VendedorDirectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(VendedorDirectoLayout.createSequentialGroup()
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable4);
+
+        jLabel28.setText("subastador");
+
+        jLabel29.setText("Carros");
+
+        jButton5.setText("Subastar");
+
+        jButton10.setText("Agregar publicidad");
+
+        javax.swing.GroupLayout SubastadorLayout = new javax.swing.GroupLayout(Subastador.getContentPane());
+        Subastador.getContentPane().setLayout(SubastadorLayout);
+        SubastadorLayout.setHorizontalGroup(
+            SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubastadorLayout.createSequentialGroup()
+                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SubastadorLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel28))
+                    .addGroup(SubastadorLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel29)
+                            .addGroup(SubastadorLayout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))))))
+                .addContainerGap())
+        );
+        SubastadorLayout.setVerticalGroup(
+            SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubastadorLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(SubastadorLayout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton10)))
+                .addGap(40, 40, 40))
+        );
+
+        Ti_Publicidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ti_PublicidadActionPerformed(evt);
+            }
+        });
+
+        Des_Publicidad.setColumns(20);
+        Des_Publicidad.setRows(5);
+        jScrollPane6.setViewportView(Des_Publicidad);
+
+        jLabel30.setText("Titulo");
+
+        jLabel31.setText("Descripcion ");
+
+        jButton11.setText("Volver");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setText("Agregar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("Publicidad");
+
+        javax.swing.GroupLayout PublicidadLayout = new javax.swing.GroupLayout(Publicidad.getContentPane());
+        Publicidad.getContentPane().setLayout(PublicidadLayout);
+        PublicidadLayout.setHorizontalGroup(
+            PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PublicidadLayout.createSequentialGroup()
+                .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PublicidadLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel30)
+                            .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(PublicidadLayout.createSequentialGroup()
+                                    .addComponent(jButton11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton12))
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                                .addComponent(Ti_Publicidad, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(PublicidadLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel32)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        PublicidadLayout.setVerticalGroup(
+            PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PublicidadLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Ti_Publicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel31)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PublicidadLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton11)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton12)
+                        .addGap(28, 28, 28))))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("USUARIO: ");
@@ -490,6 +736,7 @@ public class Login extends javax.swing.JFrame {
         for (int i = 0; i < usuarios.size(); i++) {
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 System.out.println("bienvenido");
+                NAME.setText(usuarios.get(posi).getNombre());
                 this.Pagina_principal.pack();
                 this.Pagina_principal.setLocationRelativeTo(this);
                 this.setVisible(false);
@@ -548,43 +795,12 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tipo_usuarioActionPerformed
     int posi = 0;
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        usuario = usuario_L1.getText();
-        contra = contra_L1.getText();
-        for (int i = 0; i < usuarios.size(); i++) {
-            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
-                System.out.println("bienvenido");
-                posi = i;
-                this.Pagina_principal.pack();
-                this.Pagina_principal.setLocationRelativeTo(this);
-                this.setVisible(false);
-                this.Pagina_principal.setVisible(true);
-
-            }
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.Registro.pack();
-        this.Registro.setLocationRelativeTo(this);
-        this.setVisible(false);
-        this.Registro.setVisible(true);
-        tipo_usuario.removeAllItems();
-        tipo_usuario.addItem("  --------------------  ");
-        tipo_usuario.addItem("Cliente");
-        tipo_usuario.addItem("Ofertador");
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         this.Restablecer.pack();
         this.Restablecer.setLocationRelativeTo(this);
         this.setVisible(false);
         this.Restablecer.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
@@ -622,6 +838,41 @@ public class Login extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jLabel24MouseClicked
+public ArrayList<String> publicidad=new ArrayList();
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+       String ti=Ti_Publicidad.getText();
+       String de=Des_Publicidad.getText();
+       String names=usuarios.get(posi).getNombre();
+       String tem="\n**************************************\n"+"USUARIO: "+names+"\nTITULO: "+ti+"\nDESCRIPCION: "+de+"\n**************************************\n";
+       publicidad.add(tem);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void Ti_PublicidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ti_PublicidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ti_PublicidadActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        for (String i : publicidad) {
+            jT_Publi.setText(i);
+        }
+        this.Pagina_principal.pack();
+        this.Pagina_principal.setLocationRelativeTo(this);
+        this.Publicidad.setVisible(false);
+        this.Pagina_principal.setVisible(true);
+        Ti_Publicidad.setText("");
+         Des_Publicidad.setText("");
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+       this.Publicidad.pack();
+        this.Publicidad.setLocationRelativeTo(this);
+        this.Pagina_principal.setVisible(false);
+        this.Publicidad.setVisible(true);
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -658,27 +909,37 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Co_Perfil;
     private javax.swing.JLabel Cu_Perfil;
-    private javax.swing.JFrame Login;
+    private javax.swing.JTextArea Des_Publicidad;
+    private javax.swing.JLabel NAME;
     private javax.swing.JLabel N_Perfil;
     private javax.swing.JLabel P_Perfil;
     private javax.swing.JFrame Pagina_principal;
     private javax.swing.JFrame Perfil_U;
+    private javax.swing.JFrame Publicidad;
     private javax.swing.JFrame Registro;
     private javax.swing.JFrame Restablecer;
+    private javax.swing.JFrame Subastador;
     private javax.swing.JLabel T_Perfil;
+    private javax.swing.JTextField Ti_Publicidad;
     private javax.swing.JLabel U_Perfil;
+    private javax.swing.JFrame VendedorDirecto;
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
-    private javax.swing.JPasswordField contra_L1;
     private javax.swing.JTextField cor_R;
     private datechooser.beans.DateChooserCombo fe_R;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -696,19 +957,37 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea jT_Publi;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField ni_R;
     private javax.swing.JTextField no_R;
     private javax.swing.JTextField pa_R;
     private javax.swing.JComboBox<String> tipo_usuario;
     private javax.swing.JTextField usuario_L;
-    private javax.swing.JTextField usuario_L1;
     // End of variables declaration//GEN-END:variables
 }
