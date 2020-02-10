@@ -41,7 +41,7 @@ public class Login extends javax.swing.JFrame {
         jT_Publi = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jT_membrecias = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jT_C_ofertador = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
@@ -259,7 +259,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel11.setText("**********************Publicidad*************************");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jT_membrecias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -282,7 +282,7 @@ public class Login extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jT_membrecias);
 
         jT_C_ofertador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1047,38 +1047,49 @@ public class Login extends javax.swing.JFrame {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
-        usuarios.add(new Ofertadores("ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        ((Ofertadores) usuarios.get(1)).getAutos().add(new Autos("M", "m", "V8", "SUV", "4x4", 2014));
-        ((Ofertadores) usuarios.get(1)).getAutos().add(new Autos("N", "n", "V4", "Sedan", "4x2", 2004));
-        ((Ofertadores) usuarios.get(1)).getAutos().add(new Autos("F", "f", "V8", "Pick-Up", "4x4", 2014));
+       // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
+        usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("M", "m", "V8", "SUV", "4x4", 2014));
+        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("N", "n", "V4", "Sedan", "4x2", 2004));
+        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("F", "f", "V8", "Pick-Up", "4x4", 2014));
+        
         usuario = usuario_L.getText();
         contra = contra_L.getText();
         for (int i = 0; i < usuarios.size(); i++) {
-
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;
                 System.out.println("bienvenido");
-                NAME.setText(usuarios.get(posi).getNombre());
+                if ((usuarios.get(i).getTipo()).equals("Ofertador")){
+                    NAME.setText(usuarios.get(posi).getNombre());
                 llenarTabla();
                 this.P_Pri_O.pack();
                 this.P_Pri_O.setLocationRelativeTo(this);
                 this.setVisible(false);
                 this.P_Pri_O.setVisible(true);
+                }else{
+                   
+                    
+                }
+                
                 break;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void llenarTabla() {
-
         DefaultTableModel m = (DefaultTableModel) jT_C_ofertador.getModel();
-
+         DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
+         
+         for (Membrecias i : ((Ofertadores) usuarios.get(posi)).getMembrecias()) {
+            Object[] membrecia ={i.getTipo(),i.getDescripcion()};
+            k.addRow(membrecia);
+        }
         for (Autos i : ((Ofertadores) usuarios.get(posi)).getAutos()) {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
         }
         jT_C_ofertador.setModel(m);
+        jT_membrecias.setModel(k);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1103,16 +1114,16 @@ public class Login extends javax.swing.JFrame {
                     p++;
                 }
             }
-            if (p > 0) {
-                JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya esta ocupado");
-            } else {
+            if (p == 0) {
                 if (tipo.equals("Ofertador")) {
                     this.Membrecias_Ofertadores.pack();
                     this.Membrecias_Ofertadores.setLocationRelativeTo(this);
                     this.Registro.setVisible(false);
                     this.Membrecias_Ofertadores.setVisible(true);
-
                 }
+               
+            } else {
+                 JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya esta ocupado");
 
             }
 
@@ -1207,23 +1218,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
+          usuarios.add(new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), pa_R.getText(), cor_R.getText(), " ", Cu_Perfil.getText()));
         if (jCheckBox_Carwash.isSelected()) {
             System.out.println("yey");
             cont++;
-            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Carwash"));
-
+           ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Carwash", "Calendario con las citas y facturación correspondiente"));
+            
         }
         if (jCheckBox_Directo.isSelected()) {
             cont++;
-
+             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa"));
         }
         if (jCheckBox_Rentador.isSelected()) {
             cont++;
+             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
 
         }
         if (jCheckBox_Subastador.isSelected()) {
             cont++;
-
+             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Subastador", "Sube sus vehículos a vender y su publicidad"));
         }
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Porfavor seleccione alguna membrecia");
@@ -1378,7 +1391,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador;
     private javax.swing.JTable jT_C_ofertador1;
     private javax.swing.JTextArea jT_Publi;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jT_membrecias;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;

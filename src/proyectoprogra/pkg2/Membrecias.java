@@ -10,14 +10,17 @@ package proyectoprogra.pkg2;
  * @author Mvrivera
  */
 public class Membrecias {
-    private String tipo;
+    private String tipo,descripcion;
 
     public Membrecias() {
     }
 
-    public Membrecias(String tipo) {
+    public Membrecias(String tipo, String descripcion) {
         this.tipo = tipo;
+        this.descripcion = descripcion;
     }
+
+   
 
     public String getTipo() {
         return tipo;
@@ -27,10 +30,21 @@ public class Membrecias {
         this.tipo = tipo;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+
     @Override
     public String toString() {
-        return "Membrecias{" + "tipo=" + tipo + '}';
+        return "Membrecias{" + "tipo=" + tipo + ", descripcion=" + descripcion + '}';
     }
+
+
     
     
     
