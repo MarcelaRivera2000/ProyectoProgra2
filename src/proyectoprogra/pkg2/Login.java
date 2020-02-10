@@ -49,6 +49,7 @@ public class Login extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         NAME = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         Restablecer = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -69,6 +70,7 @@ public class Login extends javax.swing.JFrame {
         T_Perfil = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
         VendedorDirecto = new javax.swing.JFrame();
         jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -129,6 +131,25 @@ public class Login extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        Agregar_Carro_OF = new javax.swing.JFrame();
+        Ag_Tranmision = new javax.swing.JTextField();
+        Ag_tipo = new javax.swing.JTextField();
+        Ag_ano = new javax.swing.JTextField();
+        Ag_Cilindraje = new javax.swing.JTextField();
+        Ag_modelo = new javax.swing.JTextField();
+        Ag_marca = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jT_C_ofertador2 = new javax.swing.JTable();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -315,10 +336,17 @@ public class Login extends javax.swing.JFrame {
 
         jLabel25.setText("NOMBRE EMPRESA SEPA PUTAS CUAL ES XD");
 
-        jButton13.setText("prueba");
+        jButton13.setText("Agregar publicidad");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton18.setText("Agregar Carro");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
             }
         });
 
@@ -334,23 +362,21 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel12)
                             .addComponent(jLabel25)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 21, Short.MAX_VALUE))
+                        .addGap(0, 39, Short.MAX_VALUE))
                     .addGroup(P_Pri_OLayout.createSequentialGroup()
                         .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_Pri_OLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13)))
-                .addGap(18, 18, 18)
+                            .addComponent(jLabel14)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(P_Pri_OLayout.createSequentialGroup()
                         .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
+                        .addComponent(jButton7))
+                    .addComponent(jButton13))
                 .addGap(16, 16, 16))
         );
         P_Pri_OLayout.setVerticalGroup(
@@ -365,19 +391,20 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Pri_OLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_Pri_OLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton13)))
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18)
+                    .addComponent(jButton13))
+                .addGap(44, 44, 44))
         );
 
         jButton6.setText("Restablecer");
@@ -445,6 +472,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton17.setText("Volver");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Perfil_ULayout = new javax.swing.GroupLayout(Perfil_U.getContentPane());
         Perfil_U.getContentPane().setLayout(Perfil_ULayout);
         Perfil_ULayout.setHorizontalGroup(
@@ -468,10 +502,13 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(Cu_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Co_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(T_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24)
                             .addComponent(jLabel23)
-                            .addComponent(jLabel21))))
-                .addContainerGap(119, Short.MAX_VALUE))
+                            .addComponent(jLabel21)
+                            .addGroup(Perfil_ULayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                                .addComponent(jButton17)))))
+                .addGap(15, 15, 15))
         );
         Perfil_ULayout.setVerticalGroup(
             Perfil_ULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,9 +539,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(T_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jLabel24)
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(Perfil_ULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jButton17))
+                .addGap(18, 18, 18))
         );
 
         jButton4.setText("Volver");
@@ -967,6 +1006,157 @@ public class Login extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
+        jLabel47.setText("Marca:");
+
+        jLabel48.setText("Modelo");
+
+        jLabel49.setText("Año: ");
+
+        jLabel50.setText("Transmision:");
+
+        jLabel51.setText("Tipo:");
+
+        jLabel52.setText("Cilindraje:");
+
+        jT_C_ofertador2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmicion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jT_C_ofertador2);
+
+        jButton19.setText("Agregar");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.setText("Eliminar");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
+        jButton21.setText("Modificar");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
+        jButton22.setText("Volver");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Agregar_Carro_OFLayout = new javax.swing.GroupLayout(Agregar_Carro_OF.getContentPane());
+        Agregar_Carro_OF.getContentPane().setLayout(Agregar_Carro_OFLayout);
+        Agregar_Carro_OFLayout.setHorizontalGroup(
+            Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                        .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel52)
+                                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel50)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jButton22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Ag_Cilindraje, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ag_Tranmision, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ag_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ag_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ag_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ag_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton19))
+                .addGap(18, 18, 18)
+                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                        .addComponent(jButton21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton20))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        Agregar_Carro_OFLayout.setVerticalGroup(
+            Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_Carro_OFLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                        .addComponent(Ag_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(Ag_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Ag_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(Ag_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(Ag_Tranmision, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Ag_Cilindraje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                        .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_Carro_OFLayout.createSequentialGroup()
+                                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                                        .addComponent(jLabel47)
+                                        .addGap(64, 64, 64))
+                                    .addComponent(jLabel48))
+                                .addGap(38, 38, 38)
+                                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_Carro_OFLayout.createSequentialGroup()
+                                        .addComponent(jLabel49)
+                                        .addGap(66, 66, 66))
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(72, 72, 72))
+                            .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel52)))
+                .addGap(26, 26, 26)
+                .addComponent(jButton19)
+                .addGap(290, 290, 290)
+                .addComponent(jButton22)
+                .addGap(14, 14, 14))
+            .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20)
+                    .addComponent(jButton21))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("USUARIO: ");
@@ -1042,54 +1232,65 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     String usuario;
+    String tipo;
     String contra;
     ArrayList<Usuario> usuarios = new ArrayList();
 
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
+        // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("M", "m", "V8", "SUV", "4x4", 2014));
-        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("N", "n", "V4", "Sedan", "4x2", 2004));
-        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos("F", "f", "V8", "Pick-Up", "4x4", 2014));
-        
+
         usuario = usuario_L.getText();
         contra = contra_L.getText();
         for (int i = 0; i < usuarios.size(); i++) {
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;
                 System.out.println("bienvenido");
-                if ((usuarios.get(i).getTipo()).equals("Ofertador")){
+                if ((usuarios.get(i).getTipo()).equals("Ofertador")) {
                     NAME.setText(usuarios.get(posi).getNombre());
-                llenarTabla();
-                this.P_Pri_O.pack();
-                this.P_Pri_O.setLocationRelativeTo(this);
-                this.setVisible(false);
-                this.P_Pri_O.setVisible(true);
-                }else{
-                   
-                    
+                    llenarTabla();
+                    this.P_Pri_O.pack();
+                    this.P_Pri_O.setLocationRelativeTo(this);
+                    this.setVisible(false);
+                    this.P_Pri_O.setVisible(true);
+                } else {
+
                 }
-                
+
                 break;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void llenarTabla() {
+
         DefaultTableModel m = (DefaultTableModel) jT_C_ofertador.getModel();
-         DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
-         
-         for (Membrecias i : ((Ofertadores) usuarios.get(posi)).getMembrecias()) {
-            Object[] membrecia ={i.getTipo(),i.getDescripcion()};
+        DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
+
+        for (int i = m.getRowCount() - 1; i >= 0 ; i--) {
+            m.removeRow(i);
+        }
+        
+        for (int i = k.getRowCount() - 1; i >= 0 ; i--) {
+            k.removeRow(i);
+        }
+        
+        //Tabla membrecias
+        for (Membrecias i : ((Ofertadores) usuarios.get(posi)).getMembrecias()) {
+            Object[] membrecia = {i.getTipo(), i.getDescripcion()};
             k.addRow(membrecia);
         }
+        //Tabla autos
         for (Autos i : ((Ofertadores) usuarios.get(posi)).getAutos()) {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
+
         }
+       
+        
         jT_C_ofertador.setModel(m);
         jT_membrecias.setModel(k);
+        jT_C_ofertador2.setModel(m);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1102,7 +1303,7 @@ public class Login extends javax.swing.JFrame {
         tipo_usuario.addItem("Cliente");
         tipo_usuario.addItem("Ofertador");
     }//GEN-LAST:event_jButton2ActionPerformed
-    String tipo;
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tipo = (String) tipo_usuario.getSelectedItem();
         if (tipo.equals("  --------------------  ") || ni_R.getText().equals("") || co_R.getText().equals("") || no_R.getText().equals("") || pa_R.getText().equals("") || fe_R.getText().equals("") || cor_R.getText().equals("")) {
@@ -1121,9 +1322,9 @@ public class Login extends javax.swing.JFrame {
                     this.Registro.setVisible(false);
                     this.Membrecias_Ofertadores.setVisible(true);
                 }
-               
+
             } else {
-                 JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya esta ocupado");
+                JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya esta ocupado");
 
             }
 
@@ -1218,25 +1419,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
-          usuarios.add(new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), pa_R.getText(), cor_R.getText(), " ", Cu_Perfil.getText()));
+        usuarios.add(new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), pa_R.getText(), cor_R.getText(), " ", Cu_Perfil.getText()));
         if (jCheckBox_Carwash.isSelected()) {
             System.out.println("yey");
             cont++;
-           ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Carwash", "Calendario con las citas y facturación correspondiente"));
-            
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Carwash", "Calendario con las citas y facturación correspondiente"));
+
         }
         if (jCheckBox_Directo.isSelected()) {
             cont++;
-             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa"));
         }
         if (jCheckBox_Rentador.isSelected()) {
             cont++;
-             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
 
         }
         if (jCheckBox_Subastador.isSelected()) {
             cont++;
-             ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Subastador", "Sube sus vehículos a vender y su publicidad"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Subastador", "Sube sus vehículos a vender y su publicidad"));
         }
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Porfavor seleccione alguna membrecia");
@@ -1251,12 +1452,81 @@ public class Login extends javax.swing.JFrame {
             fe_R.setText("");
 
             this.setLocationRelativeTo(this);
-            this.Registro.setVisible(false);
+            this.Membrecias_Ofertadores.setVisible(false);
             this.setVisible(true);
         }
 
     }//GEN-LAST:event_jButton16ActionPerformed
 
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        this.P_Pri_O.pack();
+        this.P_Pri_O.setLocationRelativeTo(this);
+        this.Perfil_U.setVisible(false);
+        this.P_Pri_O.setVisible(true);
+    }//GEN-LAST:event_jButton17ActionPerformed
+ 
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+         marca = Ag_marca.getText();
+         modelo = Ag_modelo.getText();
+         Cilindraje = Ag_Cilindraje.getText();
+         tipo = Ag_tipo.getText();
+         trans = Ag_Tranmision.getText();
+         ano = Integer.parseInt(Ag_ano.getText());
+        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
+        
+        
+        llenarTabla();
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
+
+        System.out.println("gg");
+
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        llenarTabla();
+        this.Agregar_Carro_OF.pack();
+        this.Agregar_Carro_OF.setLocationRelativeTo(this);
+        this.P_Pri_O.setVisible(false);
+        this.Agregar_Carro_OF.setVisible(true);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        this.Agregar_Carro_OF.pack();
+        this.P_Pri_O.setLocationRelativeTo(this);
+        this.Agregar_Carro_OF.setVisible(false);
+        this.P_Pri_O.setVisible(true);
+    }//GEN-LAST:event_jButton22ActionPerformed
+String marca, modelo, Cilindraje, tipoo ,trans ;
+        int ano ;
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+          int o = jT_C_ofertador2.getSelectedRow();
+          DefaultTableModel tm = (DefaultTableModel)jT_C_ofertador2.getModel();
+          if(o >= 0){
+              //tm.
+              ((Ofertadores) usuarios.get(posi)).getAutos().set(o,new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
+              
+          }
+     
+          
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+     int filaEliminar = jT_C_ofertador2.getSelectedRow();
+          DefaultTableModel tm = (DefaultTableModel)jT_C_ofertador2.getModel();
+          if(filaEliminar >= 0){
+              tm.removeRow(filaEliminar);
+              ((Ofertadores) usuarios.get(posi)).getAutos().remove(filaEliminar);
+          }
+     
+        
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1290,6 +1560,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Ag_Cilindraje;
+    private javax.swing.JTextField Ag_Tranmision;
+    private javax.swing.JTextField Ag_ano;
+    private javax.swing.JTextField Ag_marca;
+    private javax.swing.JTextField Ag_modelo;
+    private javax.swing.JTextField Ag_tipo;
+    private javax.swing.JFrame Agregar_Carro_OF;
     private javax.swing.JFrame Busqueda;
     private javax.swing.JFrame Cliente;
     private javax.swing.JLabel Co_Perfil;
@@ -1321,7 +1598,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1374,7 +1657,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1383,6 +1672,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -1390,6 +1680,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jT_C_ofertador;
     private javax.swing.JTable jT_C_ofertador1;
+    private javax.swing.JTable jT_C_ofertador2;
     private javax.swing.JTextArea jT_Publi;
     private javax.swing.JTable jT_membrecias;
     private javax.swing.JTable jTable4;
