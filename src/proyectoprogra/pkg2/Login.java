@@ -7,11 +7,15 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+
+
 public class Login extends javax.swing.JFrame {
 
+    Ficheros_Binarios f=new Ficheros_Binarios();
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+         f.leer();
     }
 
     @SuppressWarnings("unchecked")
@@ -1239,7 +1243,8 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-
+         f.escribir();
+       
         usuario = usuario_L.getText();
         contra = contra_L.getText();
         for (int i = 0; i < usuarios.size(); i++) {

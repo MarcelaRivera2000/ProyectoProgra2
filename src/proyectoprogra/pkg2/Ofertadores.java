@@ -1,9 +1,10 @@
 
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ofertadores extends Usuario {
+public class Ofertadores extends Usuario implements Serializable{
 
     private ArrayList<Membrecias> membrecias=new ArrayList();
     private ArrayList<Autos> autos=new ArrayList();
