@@ -107,6 +107,11 @@ public class Login extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         jLabel33 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jT_C_ofertador3 = new javax.swing.JTable();
+        jButton23 = new javax.swing.JButton();
+        jLabel53 = new javax.swing.JLabel();
+        jButton24 = new javax.swing.JButton();
         Cliente = new javax.swing.JFrame();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
@@ -722,18 +727,57 @@ public class Login extends javax.swing.JFrame {
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Usuario", "Titulo", "Descripcion"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(jTable5);
 
         jLabel33.setText("Publicidad disponible");
+
+        jT_C_ofertador3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmicion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(jT_C_ofertador3);
+
+        jButton23.setText("Agregar carro");
+
+        jLabel53.setText("Carros disponibles");
+
+        jButton24.setText("Eliminar publicidad");
 
         javax.swing.GroupLayout PublicidadLayout = new javax.swing.GroupLayout(Publicidad.getContentPane());
         Publicidad.getContentPane().setLayout(PublicidadLayout);
@@ -746,30 +790,53 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel33)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PublicidadLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Ti_Publicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PublicidadLayout.createSequentialGroup()
+                                .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PublicidadLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton23))
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
+                                .addGap(31, 31, 31))
+                            .addGroup(PublicidadLayout.createSequentialGroup()
+                                .addComponent(jLabel53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(PublicidadLayout.createSequentialGroup()
+                                .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PublicidadLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton24))
+                                    .addComponent(jScrollPane7))
+                                .addGap(28, 28, 28)))
+                        .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createSequentialGroup()
                                 .addComponent(jButton11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Ti_Publicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel31)
                                 .addComponent(jLabel30)
-                                .addComponent(jLabel32)))
-                        .addGap(67, 67, 67))))
+                                .addComponent(jLabel32))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))))
         );
         PublicidadLayout.setVerticalGroup(
             PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PublicidadLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PublicidadLayout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton24)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel53)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PublicidadLayout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addGap(46, 46, 46)
                         .addComponent(jLabel30)
@@ -777,13 +844,15 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(Ti_Publicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addGroup(PublicidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton12)
-                            .addComponent(jButton11))
-                        .addGap(36, 36, 36))))
+                            .addComponent(jButton11))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton23)
+                .addGap(11, 11, 11))
         );
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
@@ -1285,6 +1354,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void llenarTabla() {
+         
         DefaultTableModel m = (DefaultTableModel) jT_C_ofertador.getModel();
         DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
         for (int i = m.getRowCount() - 1; i >= 0; i--) {
@@ -1303,9 +1373,11 @@ public class Login extends javax.swing.JFrame {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
         }
+        
         jT_C_ofertador.setModel(m);
         jT_membrecias.setModel(k);
         jT_C_ofertador2.setModel(m);
+        jT_C_ofertador3.setModel(m);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1374,7 +1446,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        Object[] tipop = {"Nombre", "Nickname", "Pais", "Cumpleaños", "Correo", "Ubicacion"};
+        Object[] tipop = {" ------------------------------------------------- ","Nombre", "Nickname", "Pais", "Cumpleaños", "Correo", "Ubicacion","Contraseña"};
         Object kk = null;
         String aux = "";
         try {
@@ -1422,14 +1494,21 @@ public class Login extends javax.swing.JFrame {
                 usuarios.get(posi).setCorreo(aux);
                 Co_Perfil.setText(aux);
                 break;
-           
+            case "Contraseña":
+                 try {
+                    aux = JOptionPane.showInputDialog("Contraseña:");
+                } catch (Exception e) {
+                    
+                }
+                usuarios.get(posi).setContra(aux);
+                
+                break;
             case "Ubicacion":
                 System.out.println("estamos viendo que pedo");
                 break;
-            default:
-                break;
+           
         }
-
+JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
 
     }//GEN-LAST:event_jLabel24MouseClicked
     public ArrayList<String> publicidad = new ArrayList();
@@ -1557,8 +1636,13 @@ public class Login extends javax.swing.JFrame {
         int o = jT_C_ofertador2.getSelectedRow();
         DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
         if (o >= 0) {
-            Object[] Modi = {"Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
-            Object opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
+            Object[] Modi = {" ------------------------------------------------- ","Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
+             Object opcion=null ;
+            try{
+                  opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
+            }catch(Exception e){
+                
+            }
             String op = (String) opcion;
             if (op.equals("Marca")) {
                 marca = JOptionPane.showInputDialog("Nombre de la nueva marca: ");
@@ -1689,6 +1773,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1748,12 +1834,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1765,6 +1853,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador;
     private javax.swing.JTable jT_C_ofertador1;
     private javax.swing.JTable jT_C_ofertador2;
+    private javax.swing.JTable jT_C_ofertador3;
     private javax.swing.JTextArea jT_Publi;
     private javax.swing.JTable jT_membrecias;
     private javax.swing.JTable jTable4;
