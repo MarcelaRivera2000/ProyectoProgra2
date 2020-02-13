@@ -47,6 +47,8 @@ public class Ficheros_Binarios {
            
         }
     }
+    
+    
     public void leer(){
           File file;
           FileInputStream fileInputStream;

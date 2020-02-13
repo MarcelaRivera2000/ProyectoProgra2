@@ -7,15 +7,20 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-
 public class Login extends javax.swing.JFrame {
 
-    Ficheros_Binarios f=new Ficheros_Binarios();
+    Ficheros_Binarios f = new Ficheros_Binarios();
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-         f.leer();
+
+        tipo_usuarioR.removeAllItems();
+        tipo_usuarioR.addItem("  --------------------  ");
+        tipo_usuarioR.addItem("Administrador");
+        tipo_usuarioR.addItem("Ofertador");
+        tipo_usuarioR.addItem("Cliente");
+
     }
 
     @SuppressWarnings("unchecked")
@@ -161,6 +166,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        tipo_usuarioR = new javax.swing.JComboBox<>();
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Nombre: ");
@@ -1189,6 +1195,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        tipo_usuarioR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1196,41 +1204,43 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contra_L, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel13)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(usuario_L)
+                            .addComponent(jLabel1)
+                            .addComponent(contra_L)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tipo_usuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contra_L, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipo_usuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(contra_L, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
-                .addGap(28, 28, 28))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -1239,16 +1249,18 @@ public class Login extends javax.swing.JFrame {
     String tipo;
     String contra;
     ArrayList<Usuario> usuarios = new ArrayList();
+    String marca, modelo, Cilindraje, tipoo, trans;
+    int ano;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-         f.escribir();
-       
+        f.escribir();
+        tipo = (String) tipo_usuarioR.getSelectedItem();
         usuario = usuario_L.getText();
         contra = contra_L.getText();
         for (int i = 0; i < usuarios.size(); i++) {
-            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
+            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra) && (usuarios.get(i).getTipo().equals(tipo))) {
                 posi = i;
                 System.out.println("bienvenido");
                 if ((usuarios.get(i).getTipo()).equals("Ofertador")) {
@@ -1263,23 +1275,24 @@ public class Login extends javax.swing.JFrame {
                 }
 
                 break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario/Contraseña Incorrecta");
+                usuario_L.setText("");
+                contra_L.setText("");
+
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void llenarTabla() {
-
         DefaultTableModel m = (DefaultTableModel) jT_C_ofertador.getModel();
         DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
-
-        for (int i = m.getRowCount() - 1; i >= 0 ; i--) {
+        for (int i = m.getRowCount() - 1; i >= 0; i--) {
             m.removeRow(i);
         }
-        
-        for (int i = k.getRowCount() - 1; i >= 0 ; i--) {
+        for (int i = k.getRowCount() - 1; i >= 0; i--) {
             k.removeRow(i);
         }
-        
         //Tabla membrecias
         for (Membrecias i : ((Ofertadores) usuarios.get(posi)).getMembrecias()) {
             Object[] membrecia = {i.getTipo(), i.getDescripcion()};
@@ -1289,10 +1302,7 @@ public class Login extends javax.swing.JFrame {
         for (Autos i : ((Ofertadores) usuarios.get(posi)).getAutos()) {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
-
         }
-       
-        
         jT_C_ofertador.setModel(m);
         jT_membrecias.setModel(k);
         jT_C_ofertador2.setModel(m);
@@ -1364,22 +1374,60 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        int o = Integer.parseInt(JOptionPane.showInputDialog("1.Editar nombre\n2.Editar nickname\n3.Editar Pais\n4.Editar Cumpleaños\n5.Editar Correo\n6.Editar Ubicacion "));
-        switch (o) {
-            case 1:
-                JOptionPane.showInputDialog("Ingrese ");
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
+        Object[] tipop = {"Nombre", "Nickname", "Pais", "Cumpleaños", "Correo", "Ubicacion"};
+        Object kk = null;
+        String aux = "";
+        try {
+            kk = JOptionPane.showInputDialog(null, "Selecciona el de dato que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, tipop, tipop[0]);
+        } catch (Exception e) {
+        }
+        String kkk = (String) kk;
+        
+        switch (kkk) {
+            case "Nombre":
+                try {
+                    aux = JOptionPane.showInputDialog("Nombre:");
+                } catch (Exception e) {
 
+                }   usuarios.get(posi).setNombre(aux);
+                N_Perfil.setText(aux);
+                break;
+            case "Nickname":
+                try {
+                    aux = JOptionPane.showInputDialog("Usuario:");
+                } catch (Exception e) {
+                    
+                }
+                usuarios.get(posi).setUsuario(aux);
+                U_Perfil.setText(aux);
+                break;
+            case "Pais":
+                try {
+                    aux = JOptionPane.showInputDialog("Pais:");
+                } catch (Exception e) {
+                    
+                }
+                usuarios.get(posi).setPais(aux);
+                P_Perfil.setText(aux);
+                break;
+            case "Cumpleaños":
+                System.out.println("Un estamos viendo que pedo");
+                break;
+            case "Correo":
+                 try {
+                    aux = JOptionPane.showInputDialog("Correo:");
+                } catch (Exception e) {
+                    
+                }
+                usuarios.get(posi).setCorreo(aux);
+                Co_Perfil.setText(aux);
+                break;
+           
+            case "Ubicacion":
+                System.out.println("estamos viendo que pedo");
+                break;
+            default:
+                break;
         }
 
 
@@ -1428,21 +1476,20 @@ public class Login extends javax.swing.JFrame {
         if (jCheckBox_Carwash.isSelected()) {
             System.out.println("yey");
             cont++;
-            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Carwash", "Calendario con las citas y facturación correspondiente"));
-
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
         }
         if (jCheckBox_Directo.isSelected()) {
             cont++;
-            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add((new Vendedor_Directo(" ", 0, "Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
         }
         if (jCheckBox_Rentador.isSelected()) {
             cont++;
-            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add((new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas")));
 
         }
         if (jCheckBox_Subastador.isSelected()) {
             cont++;
-            ((Ofertadores) usuarios.get(posi)).getMembrecias().add(new Membrecias("Subastador", "Sube sus vehículos a vender y su publicidad"));
+            ((Ofertadores) usuarios.get(posi)).getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
         }
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Porfavor seleccione alguna membrecia");
@@ -1469,17 +1516,16 @@ public class Login extends javax.swing.JFrame {
         this.Perfil_U.setVisible(false);
         this.P_Pri_O.setVisible(true);
     }//GEN-LAST:event_jButton17ActionPerformed
- 
+
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-         marca = Ag_marca.getText();
-         modelo = Ag_modelo.getText();
-         Cilindraje = Ag_Cilindraje.getText();
-         tipo = Ag_tipo.getText();
-         trans = Ag_Tranmision.getText();
-         ano = Integer.parseInt(Ag_ano.getText());
+        marca = Ag_marca.getText();
+        modelo = Ag_modelo.getText();
+        Cilindraje = Ag_Cilindraje.getText();
+        tipo = Ag_tipo.getText();
+        trans = Ag_Tranmision.getText();
+        ano = Integer.parseInt(Ag_ano.getText());
         ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
-        
-        
+
         llenarTabla();
         Ag_Cilindraje.setText("");
         Ag_Tranmision.setText("");
@@ -1506,32 +1552,65 @@ public class Login extends javax.swing.JFrame {
         this.Agregar_Carro_OF.setVisible(false);
         this.P_Pri_O.setVisible(true);
     }//GEN-LAST:event_jButton22ActionPerformed
-String marca, modelo, Cilindraje, tipoo ,trans ;
-        int ano ;
+
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-          int o = jT_C_ofertador2.getSelectedRow();
-          DefaultTableModel tm = (DefaultTableModel)jT_C_ofertador2.getModel();
-          if(o >= 0){
-              //tm.
-              ((Ofertadores) usuarios.get(posi)).getAutos().set(o,new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
-              
-          }
-     
-          
+        int o = jT_C_ofertador2.getSelectedRow();
+        DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
+        if (o >= 0) {
+            Object[] Modi = {"Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
+            Object opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
+            String op = (String) opcion;
+            if (op.equals("Marca")) {
+                marca = JOptionPane.showInputDialog("Nombre de la nueva marca: ");
+                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setMarca(marca);
+
+            } else if (op.equals("Modelo")) {
+                modelo = JOptionPane.showInputDialog("Nombre de el nuevo modelo: ");
+                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setModelo(modelo);
+            } else if (op.equals("Año")) {
+                ano = Integer.parseInt(JOptionPane.showInputDialog("Nombre de la nueva marca: "));
+                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setAño(ano);
+            } else if (op.equals("Tipo")) {
+                int cont2 = 0;
+                for (Membrecias membrecias : (((Ofertadores) usuarios.get(posi)).getMembrecias())) {
+                    System.out.println("entraaaa");
+                    if (membrecias instanceof Renta) {
+                        cont2++;
+                        System.out.println("entra");
+                    }
+                }
+
+                if (cont2 > 0) {
+                    Object[] tipop = {"Busito", "Uber", "Mudanza", "Carro"};
+                    Object kk = JOptionPane.showInputDialog(null, "Selecciona el tipo de carro al que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, tipop, tipop[0]);
+                    String kkk = (String) kk;
+                    System.out.println("kk");
+                    ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setTipo(kkk);
+                    llenarTabla();
+                }
+
+            } else if (op.equals("Transmision")) {
+
+            } else if (op.equals("Cilindraje")) {
+
+            }
+            llenarTabla();
+        }
+
+
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-     int filaEliminar = jT_C_ofertador2.getSelectedRow();
-          DefaultTableModel tm = (DefaultTableModel)jT_C_ofertador2.getModel();
-          if(filaEliminar >= 0){
-              tm.removeRow(filaEliminar);
-              ((Ofertadores) usuarios.get(posi)).getAutos().remove(filaEliminar);
-          }
-     
-        
+        int filaEliminar = jT_C_ofertador2.getSelectedRow();
+        DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
+        if (filaEliminar >= 0) {
+            tm.removeRow(filaEliminar);
+            ((Ofertadores) usuarios.get(posi)).getAutos().remove(filaEliminar);
+        }
+
+
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1703,6 +1782,7 @@ String marca, modelo, Cilindraje, tipoo ,trans ;
     private javax.swing.JTextField no_R;
     private javax.swing.JTextField pa_R;
     private javax.swing.JComboBox<String> tipo_usuario;
+    private javax.swing.JComboBox<String> tipo_usuarioR;
     private javax.swing.JTextField usuario_L;
     // End of variables declaration//GEN-END:variables
 }

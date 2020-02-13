@@ -20,6 +20,13 @@ public class Vendedor_Directo  extends Membrecias {
         super();
     }
 
+    public Vendedor_Directo(String publicidad, int negociaciones, String tipo, String descripcion) {
+        super(tipo, descripcion);
+        this.publicidad = publicidad;
+        this.negociaciones = negociaciones;
+    }
+    
+
     public ArrayList<Autos> getAutos() {
         return autos;
     }

@@ -13,13 +13,18 @@ import java.util.ArrayList;
  */
 public class Subastador extends Membrecias{
     private ArrayList<Autos> autos=new ArrayList();
-    private String publicidad;
+    private ArrayList<String> publicidad=new ArrayList();
 
     public Subastador() {
-        super();
+       
     }
 
-    public Subastador(String publicidad) {
+    public Subastador(String tipo, String descripcion) {
+        super(tipo, descripcion);
+    }
+    
+    
+    public Subastador(ArrayList publicidad) {
         this.publicidad = publicidad;
     }
 
@@ -31,11 +36,11 @@ public class Subastador extends Membrecias{
         this.autos = autos;
     }
 
-    public String getPublicidad() {
+    public ArrayList getPublicidad() {
         return publicidad;
     }
 
-    public void setPublicidad(String publicidad) {
+    public void setPublicidad(ArrayList publicidad) {
         this.publicidad = publicidad;
     }
 

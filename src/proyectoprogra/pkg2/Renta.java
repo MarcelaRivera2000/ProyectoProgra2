@@ -20,6 +20,11 @@ public class Renta extends Membrecias {
     public Renta() {
     }
 
+    public Renta(String tipo, String descripcion) {
+        super(tipo, descripcion);
+    }
+    
+
     public ArrayList<Autos> getAutos() {
         return autos;
     }
