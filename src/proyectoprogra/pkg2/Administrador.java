@@ -12,7 +12,13 @@ package proyectoprogra.pkg2;
 public class Administrador extends Usuario {
 
     public Administrador() {
-        super();
+        
     }
+
+    public Administrador(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
+        super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
+    }
+    
+    
     
 }

@@ -1,28 +1,31 @@
 package proyectoprogra.pkg2;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Login extends javax.swing.JFrame {
 
-
     public Login() {
-       
-                
-        
+        Ficheros_Binarios f = new Ficheros_Binarios();
+
+        try {
+            f.escribir(usuarios);
+        } catch (IOException ex) {
+        }
         initComponents();
-        
         this.setLocationRelativeTo(null);
-         //Ficheros_Binarios f=new Ficheros_Binarios(usuarios);_
         tipo_usuarioR.addItem("  --------------------  ");
         tipo_usuarioR.addItem("Administrador");
         tipo_usuarioR.addItem("Ofertador");
         tipo_usuarioR.addItem("Cliente");
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -46,7 +49,7 @@ public class Login extends javax.swing.JFrame {
         fe_R = new datechooser.beans.DateChooserCombo();
         tipo_usuario = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        P_Pri_O = new javax.swing.JFrame();
+        P_Pri_Ofertador = new javax.swing.JFrame();
         jButton7 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jT_membrecias = new javax.swing.JTable();
@@ -60,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         jT_Empresas = new javax.swing.JTable();
-        jButton25 = new javax.swing.JButton();
         Restablecer = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -166,29 +168,29 @@ public class Login extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
-        Agregar_Empresa = new javax.swing.JFrame();
-        nombre_empresa = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mision_empresa = new javax.swing.JTextArea();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        vision_empresa = new javax.swing.JTextArea();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        Objetivos_empresa = new javax.swing.JTextArea();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        politivas_empresa = new javax.swing.JTextArea();
-        correo_empresa = new javax.swing.JTextField();
-        direccion_empresa = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        tipo_empresa = new javax.swing.JComboBox<>();
+        Agregar_Admins = new javax.swing.JFrame();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jT_Empresas1 = new javax.swing.JTable();
+        UsuariosAdmin_jt = new javax.swing.JTable();
         jButton26 = new javax.swing.JButton();
+        admin_nombre = new javax.swing.JTextField();
+        admin_usuario = new javax.swing.JTextField();
+        admin_pais = new javax.swing.JTextField();
+        admin_cumple = new datechooser.beans.DateChooserCombo();
+        admin_correo = new javax.swing.JTextField();
+        admin_contra = new javax.swing.JPasswordField();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        P_Pri_Administrador = new javax.swing.JFrame();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
+        jLabel60 = new javax.swing.JLabel();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -415,22 +417,15 @@ public class Login extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(jT_Empresas);
 
-        jButton25.setText("Agregar empresa");
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout P_Pri_OLayout = new javax.swing.GroupLayout(P_Pri_O.getContentPane());
-        P_Pri_O.getContentPane().setLayout(P_Pri_OLayout);
-        P_Pri_OLayout.setHorizontalGroup(
-            P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Pri_OLayout.createSequentialGroup()
+        javax.swing.GroupLayout P_Pri_OfertadorLayout = new javax.swing.GroupLayout(P_Pri_Ofertador.getContentPane());
+        P_Pri_Ofertador.getContentPane().setLayout(P_Pri_OfertadorLayout);
+        P_Pri_OfertadorLayout.setHorizontalGroup(
+            P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Pri_OfertadorLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
-                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Pri_OfertadorLayout.createSequentialGroup()
+                        .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel25))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -438,43 +433,40 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7)
                         .addGap(16, 16, 16))
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
-                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(P_Pri_OfertadorLayout.createSequentialGroup()
+                        .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2))
                             .addComponent(jLabel14)
                             .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton25)
+                        .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton13))
                         .addGap(101, 101, 101))))
         );
-        P_Pri_OLayout.setVerticalGroup(
-            P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Pri_OLayout.createSequentialGroup()
+        P_Pri_OfertadorLayout.setVerticalGroup(
+            P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Pri_OfertadorLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jLabel25)
                     .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                .addGroup(P_Pri_OfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Pri_OfertadorLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                    .addGroup(P_Pri_OfertadorLayout.createSequentialGroup()
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton25)
-                        .addGap(18, 18, 18)
+                        .addGap(76, 76, 76)
                         .addComponent(jButton13)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton18)
@@ -1295,48 +1287,16 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        mision_empresa.setColumns(20);
-        mision_empresa.setRows(5);
-        jScrollPane1.setViewportView(mision_empresa);
-
-        vision_empresa.setColumns(20);
-        vision_empresa.setRows(5);
-        jScrollPane13.setViewportView(vision_empresa);
-
-        Objetivos_empresa.setColumns(20);
-        Objetivos_empresa.setRows(5);
-        jScrollPane14.setViewportView(Objetivos_empresa);
-
-        politivas_empresa.setColumns(20);
-        politivas_empresa.setRows(5);
-        jScrollPane15.setViewportView(politivas_empresa);
-
-        jLabel11.setText("Nombre:");
-
-        jLabel54.setText("Correo:");
-
-        jLabel55.setText("Direccion: ");
-
-        jLabel56.setText("Mision:");
-
-        jLabel57.setText("Vision:");
-
-        jLabel58.setText("Objetivos:");
-
-        jLabel59.setText("Politicas:");
-
-        tipo_empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jT_Empresas1.setModel(new javax.swing.table.DefaultTableModel(
+        UsuariosAdmin_jt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Logo", "Nombre", "Tipo", "Direccion"
+                "Nombre", "Usuario", "Cumpleaños", "Correo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -1350,7 +1310,7 @@ public class Login extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane16.setViewportView(jT_Empresas1);
+        jScrollPane16.setViewportView(UsuariosAdmin_jt);
 
         jButton26.setText("Agregar");
         jButton26.addActionListener(new java.awt.event.ActionListener() {
@@ -1359,75 +1319,140 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout Agregar_EmpresaLayout = new javax.swing.GroupLayout(Agregar_Empresa.getContentPane());
-        Agregar_Empresa.getContentPane().setLayout(Agregar_EmpresaLayout);
-        Agregar_EmpresaLayout.setHorizontalGroup(
-            Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
+        admin_cumple.setCalendarPreferredSize(new java.awt.Dimension(510, 360));
+        admin_cumple.setLocale(new java.util.Locale("es", "ES", ""));
+
+        jLabel63.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel63.setText("Nombre: ");
+
+        jLabel64.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel64.setText("Nickname: ");
+
+        jLabel65.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel65.setText("Contraseña:");
+
+        jLabel66.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel66.setText("Pais o region:");
+
+        jLabel67.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel67.setText("Cumpleaños:");
+
+        jLabel68.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel68.setText("Correo:");
+
+        jLabel61.setText("USUARIOS ADMINISTRATIVOS");
+
+        javax.swing.GroupLayout Agregar_AdminsLayout = new javax.swing.GroupLayout(Agregar_Admins.getContentPane());
+        Agregar_Admins.getContentPane().setLayout(Agregar_AdminsLayout);
+        Agregar_AdminsLayout.setHorizontalGroup(
+            Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Agregar_AdminsLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel54)
-                    .addComponent(jLabel59)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel58)
-                    .addComponent(jLabel57)
-                    .addComponent(jLabel56)
-                    .addComponent(jLabel55)
-                    .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
-                        .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton26)
-                            .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane15)
-                                .addComponent(jScrollPane14)
-                                .addComponent(jScrollPane1)
-                                .addComponent(jScrollPane13)
-                                .addComponent(direccion_empresa)
-                                .addComponent(correo_empresa)
-                                .addComponent(nombre_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tipo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Agregar_AdminsLayout.createSequentialGroup()
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel63)
+                            .addComponent(jLabel65)
+                            .addComponent(jLabel66)
+                            .addComponent(jLabel67)
+                            .addComponent(jLabel68))
+                        .addGap(54, 54, 54)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(admin_usuario)
+                            .addComponent(admin_nombre)
+                            .addComponent(admin_contra)
+                            .addComponent(admin_pais)
+                            .addComponent(admin_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(admin_cumple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel61)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_AdminsLayout.createSequentialGroup()
+                        .addComponent(jButton26)
+                        .addGap(12, 12, 12)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
-        Agregar_EmpresaLayout.setVerticalGroup(
-            Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
-                        .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel54)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(correo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel55)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(direccion_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+        Agregar_AdminsLayout.setVerticalGroup(
+            Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Agregar_AdminsLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Agregar_AdminsLayout.createSequentialGroup()
+                        .addComponent(jLabel61)
+                        .addGap(33, 33, 33)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(admin_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel63))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel56)
-                        .addGap(5, 5, 5)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(admin_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel64))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel57)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel58)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel59)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(admin_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel65))
+                        .addGap(29, 29, 29)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(admin_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel66))
+                        .addGap(33, 33, 33)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel67)
+                            .addComponent(admin_cumple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane16))
-                .addGap(33, 33, 33)
-                .addComponent(jButton26)
-                .addGap(0, 15, Short.MAX_VALUE))
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel68)
+                            .addComponent(admin_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton26))
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
+
+        jButton27.setText("Agregar Nuevo Admin");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
+        jButton28.setText("Subasta");
+
+        jButton29.setText("Administrar perfil de la empresa");
+
+        jButton30.setText("Reporteria");
+
+        jLabel60.setText("Tabla de usuarios,opciones de modificar cualquier cosa de los usuarios");
+
+        javax.swing.GroupLayout P_Pri_AdministradorLayout = new javax.swing.GroupLayout(P_Pri_Administrador.getContentPane());
+        P_Pri_Administrador.getContentPane().setLayout(P_Pri_AdministradorLayout);
+        P_Pri_AdministradorLayout.setHorizontalGroup(
+            P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel60)
+                    .addComponent(jButton28)
+                    .addComponent(jButton27)
+                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton30))
+                .addContainerGap(694, Short.MAX_VALUE))
+        );
+        P_Pri_AdministradorLayout.setVerticalGroup(
+            P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jButton27)
+                .addGap(18, 18, 18)
+                .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton28)
+                .addGap(18, 18, 18)
+                .addComponent(jButton30)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel60)
+                .addContainerGap(576, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1514,33 +1539,42 @@ public class Login extends javax.swing.JFrame {
     int ano;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      //usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
+        //usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        usuarios.add(new Ofertadores("Ofertador", "juana", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        usuarios.add(new Ofertadores("Administrador", "marce", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
         tipo = (String) tipo_usuarioR.getSelectedItem();
         usuario = usuario_L.getText();
         contra = contra_L.getText();
+        int contbb = 0;
         for (int i = 0; i < usuarios.size(); i++) {
-            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra) && (usuarios.get(i).getTipo().equals(tipo))) {
+            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)
+                    && (usuarios.get(i).getTipo().equals(tipo))) {
                 posi = i;
+                contbb++;
                 System.out.println("bienvenido");
                 if ((usuarios.get(i).getTipo()).equals("Ofertador")) {
                     NAME.setText(usuarios.get(posi).getNombre());
                     llenarTabla();
                     System.out.println("aqui: ");
-                    this.P_Pri_O.pack();
-                    this.P_Pri_O.setLocationRelativeTo(this);
+                    this.P_Pri_Ofertador.pack();
+                    this.P_Pri_Ofertador.setLocationRelativeTo(this);
                     this.setVisible(false);
-                    this.P_Pri_O.setVisible(true);
-                } else {
+                    this.P_Pri_Ofertador.setVisible(true);
+                } else if ((usuarios.get(i).getTipo()).equals("Administrador")) {
+                    this.P_Pri_Administrador.pack();
+                    this.P_Pri_Administrador.setLocationRelativeTo(this);
+                    this.setVisible(false);
+                    this.P_Pri_Administrador.setVisible(true);
 
                 }
                 break;
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario/Contraseña Incorrecta");
-                usuario_L.setText("");
-                contra_L.setText("");
-
             }
+        }
+        if (contbb == 0) {
+            JOptionPane.showMessageDialog(null, "Usuario/Contraseña Incorrecta");
+            usuario_L.setText("");
+            contra_L.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1625,7 +1659,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.Perfil_U.pack();
         this.Perfil_U.setLocationRelativeTo(this);
-        this.P_Pri_O.setVisible(false);
+        this.P_Pri_Ofertador.setVisible(false);
         this.Perfil_U.setVisible(true);
         N_Perfil.setText(usuarios.get(posi).getNombre());
         U_Perfil.setText(usuarios.get(posi).getUsuario());
@@ -1720,10 +1754,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
 
-        this.P_Pri_O.pack();
-        this.P_Pri_O.setLocationRelativeTo(this);
+        this.P_Pri_Ofertador.pack();
+        this.P_Pri_Ofertador.setLocationRelativeTo(this);
         this.Publicidad.setVisible(false);
-        this.P_Pri_O.setVisible(true);
+        this.P_Pri_Ofertador.setVisible(true);
         Ti_Publicidad.setText("");
         Des_Publicidad.setText("");
 
@@ -1734,7 +1768,7 @@ public class Login extends javax.swing.JFrame {
 
         this.Publicidad.pack();
         this.Publicidad.setLocationRelativeTo(this);
-        this.P_Pri_O.setVisible(false);
+        this.P_Pri_Ofertador.setVisible(false);
         this.Publicidad.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -1784,10 +1818,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        this.P_Pri_O.pack();
-        this.P_Pri_O.setLocationRelativeTo(this);
+        this.P_Pri_Ofertador.pack();
+        this.P_Pri_Ofertador.setLocationRelativeTo(this);
         this.Perfil_U.setVisible(false);
-        this.P_Pri_O.setVisible(true);
+        this.P_Pri_Ofertador.setVisible(true);
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -1815,15 +1849,15 @@ public class Login extends javax.swing.JFrame {
         llenarTabla();
         this.Agregar_Carro_OF.pack();
         this.Agregar_Carro_OF.setLocationRelativeTo(this);
-        this.P_Pri_O.setVisible(false);
+        this.P_Pri_Ofertador.setVisible(false);
         this.Agregar_Carro_OF.setVisible(true);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         this.Agregar_Carro_OF.pack();
-        this.P_Pri_O.setLocationRelativeTo(this);
+        this.P_Pri_Ofertador.setLocationRelativeTo(this);
         this.Agregar_Carro_OF.setVisible(false);
-        this.P_Pri_O.setVisible(true);
+        this.P_Pri_Ofertador.setVisible(true);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -1889,45 +1923,38 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        this.Agregar_Empresa.pack();
-        this.Agregar_Empresa.setLocationRelativeTo(this);
-        this.P_Pri_O.setVisible(false);
-        this.Agregar_Empresa.setVisible(true);
-        tipo_empresa.removeAllItems();
-        tipo_empresa.addItem("  --------------------  ");
-        tipo_empresa.addItem("Carwash");
-        tipo_empresa.addItem("Vendedor Directo");
-        tipo_empresa.addItem("Rentadora");
-        tipo_empresa.addItem("Subasta");
-
-
-    }//GEN-LAST:event_jButton25ActionPerformed
-
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-
-        String tipoo = (String) tipo_empresa.getSelectedItem();
-        ((Ofertadores) usuarios.get(posi)).getEmpresa().add(new Empresas(nombre_empresa.getText(), tipoo, mision_empresa.getText(),
-                vision_empresa.getText(), Objetivos_empresa.getText(), politivas_empresa.getText(), " ", correo_empresa.getText(), direccion_empresa.getText()));
-        DefaultTableModel empresas1 = (DefaultTableModel) jT_Empresas.getModel();
-        for (int i = empresas1.getRowCount() - 1; i >= 0; i--) {
-            empresas1.removeRow(i);
+        //String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha
+        usuarios.add(new Administrador("Administrador", admin_usuario.getText(), admin_contra.getText(), admin_nombre.getText(),
+                admin_pais.getText(), admin_correo.getText(), " ", admin_cumple.getText()));
+        DefaultTableModel admins = (DefaultTableModel) UsuariosAdmin_jt.getModel();
+        for (int i = admins.getRowCount() - 1; i >= 0; i--) {
+            admins.removeRow(i);
 
         }
-        for (Empresas i : ((Ofertadores) usuarios.get(posi)).getEmpresa()) {
-            Object[] auto = {null, i.getNombre(), i.getTipo(), i.getDirreccion()};
-            empresas1.addRow(auto);
+        for (Usuario i : usuarios) {
+            if (i instanceof Administrador) {
+                Object[] o = {i.getNombre(), i.getUsuario(), i.getFecha(), i.getCorreo()};
+                admins.addRow(o);
+            }
+
         }
-        jT_Empresas.setModel(empresas1);
-        jT_Empresas1.setModel(empresas1);
-        nombre_empresa.setText("");
-        mision_empresa.setText("");
-        vision_empresa.setText("");
-        Objetivos_empresa.setText("");
-        politivas_empresa.setText("");
-        correo_empresa.setText("");
-        direccion_empresa.setText("");
+        UsuariosAdmin_jt.setModel(admins);
+        admin_nombre.setText("");
+        admin_usuario.setText("");
+        admin_contra.setText("");
+        admin_correo.setText("");
+        admin_cumple.setText("");
+        admin_pais.setText("");
     }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        this.Agregar_Admins.pack();
+        this.Agregar_Admins.setLocationRelativeTo(this);
+        this.P_Pri_Ofertador.setVisible(false);
+        this.Agregar_Admins.setVisible(true);
+
+    }//GEN-LAST:event_jButton27ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1968,8 +1995,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField Ag_marca;
     private javax.swing.JTextField Ag_modelo;
     private javax.swing.JTextField Ag_tipo;
+    private javax.swing.JFrame Agregar_Admins;
     private javax.swing.JFrame Agregar_Carro_OF;
-    private javax.swing.JFrame Agregar_Empresa;
     private javax.swing.JFrame Busqueda;
     private javax.swing.JFrame Cliente;
     private javax.swing.JLabel Co_Perfil;
@@ -1978,9 +2005,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JFrame Membrecias_Ofertadores;
     private javax.swing.JLabel NAME;
     private javax.swing.JLabel N_Perfil;
-    private javax.swing.JTextArea Objetivos_empresa;
     private javax.swing.JLabel P_Perfil;
-    private javax.swing.JFrame P_Pri_O;
+    private javax.swing.JFrame P_Pri_Administrador;
+    private javax.swing.JFrame P_Pri_Ofertador;
     private javax.swing.JFrame Perfil_U;
     private javax.swing.JFrame Publicidad;
     private javax.swing.JFrame Registro;
@@ -1989,12 +2016,17 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel T_Perfil;
     private javax.swing.JTextField Ti_Publicidad;
     private javax.swing.JLabel U_Perfil;
+    private javax.swing.JTable UsuariosAdmin_jt;
     private javax.swing.JFrame VendedorDirecto;
+    private javax.swing.JPasswordField admin_contra;
+    private javax.swing.JTextField admin_correo;
+    private datechooser.beans.DateChooserCombo admin_cumple;
+    private javax.swing.JTextField admin_nombre;
+    private javax.swing.JTextField admin_pais;
+    private javax.swing.JTextField admin_usuario;
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
     private javax.swing.JTextField cor_R;
-    private javax.swing.JTextField correo_empresa;
-    private javax.swing.JTextField direccion_empresa;
     private datechooser.beans.DateChooserCombo fe_R;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -2013,9 +2045,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2028,7 +2063,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_Subastador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -2075,23 +2109,21 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2106,7 +2138,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador2;
     private javax.swing.JTable jT_C_ofertador3;
     private javax.swing.JTable jT_Empresas;
-    private javax.swing.JTable jT_Empresas1;
     private javax.swing.JTable jT_Publicidad;
     private javax.swing.JTable jT_membrecias;
     private javax.swing.JTable jTable4;
@@ -2119,16 +2150,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextArea mision_empresa;
     private javax.swing.JTextField ni_R;
     private javax.swing.JTextField no_R;
-    private javax.swing.JTextField nombre_empresa;
     private javax.swing.JTextField pa_R;
-    private javax.swing.JTextArea politivas_empresa;
-    private javax.swing.JComboBox<String> tipo_empresa;
     private javax.swing.JComboBox<String> tipo_usuario;
     private javax.swing.JComboBox<String> tipo_usuarioR;
     private javax.swing.JTextField usuario_L;
-    private javax.swing.JTextArea vision_empresa;
     // End of variables declaration//GEN-END:variables
 }
