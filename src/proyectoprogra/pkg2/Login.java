@@ -9,18 +9,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class Login extends javax.swing.JFrame {
 
-    Ficheros_Binarios f = new Ficheros_Binarios();
 
     public Login() {
+       
+                
+        
         initComponents();
+        
         this.setLocationRelativeTo(null);
-
-        tipo_usuarioR.removeAllItems();
+         //Ficheros_Binarios f=new Ficheros_Binarios(usuarios);_
         tipo_usuarioR.addItem("  --------------------  ");
         tipo_usuarioR.addItem("Administrador");
         tipo_usuarioR.addItem("Ofertador");
         tipo_usuarioR.addItem("Cliente");
-
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -46,9 +48,6 @@ public class Login extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         P_Pri_O = new javax.swing.JFrame();
         jButton7 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jT_Publi = new javax.swing.JTextArea();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jT_membrecias = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -59,6 +58,9 @@ public class Login extends javax.swing.JFrame {
         NAME = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jT_Empresas = new javax.swing.JTable();
+        jButton25 = new javax.swing.JButton();
         Restablecer = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -105,7 +107,7 @@ public class Login extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        jT_Publicidad = new javax.swing.JTable();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         jT_C_ofertador3 = new javax.swing.JTable();
@@ -164,6 +166,29 @@ public class Login extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
+        Agregar_Empresa = new javax.swing.JFrame();
+        nombre_empresa = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mision_empresa = new javax.swing.JTextArea();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        vision_empresa = new javax.swing.JTextArea();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        Objetivos_empresa = new javax.swing.JTextArea();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        politivas_empresa = new javax.swing.JTextArea();
+        correo_empresa = new javax.swing.JTextField();
+        direccion_empresa = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        tipo_empresa = new javax.swing.JComboBox<>();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jT_Empresas1 = new javax.swing.JTable();
+        jButton26 = new javax.swing.JButton();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -289,12 +314,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jT_Publi.setColumns(20);
-        jT_Publi.setRows(5);
-        jScrollPane1.setViewportView(jT_Publi);
-
-        jLabel11.setText("**********************Publicidad*************************");
-
         jT_membrecias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -344,6 +363,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jT_C_ofertador);
+        if (jT_C_ofertador.getColumnModel().getColumnCount() > 0) {
+            jT_C_ofertador.getColumnModel().getColumn(3).setHeaderValue("Cilindraje");
+            jT_C_ofertador.getColumnModel().getColumn(4).setHeaderValue("Tipo");
+            jT_C_ofertador.getColumnModel().getColumn(5).setResizable(false);
+            jT_C_ofertador.getColumnModel().getColumn(5).setHeaderValue("Transmicion");
+        }
 
         jLabel12.setText("Membrecias");
 
@@ -365,6 +390,38 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jT_Empresas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Logo", "Nombre", "Tipo", "Direccion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane12.setViewportView(jT_Empresas);
+
+        jButton25.setText("Agregar empresa");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout P_Pri_OLayout = new javax.swing.GroupLayout(P_Pri_O.getContentPane());
         P_Pri_O.getContentPane().setLayout(P_Pri_OLayout);
         P_Pri_OLayout.setHorizontalGroup(
@@ -375,24 +432,25 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(P_Pri_OLayout.createSequentialGroup()
                         .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel25)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 39, Short.MAX_VALUE))
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
-                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton18))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                            .addComponent(jLabel25))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7))
-                    .addComponent(jButton13))
-                .addGap(16, 16, 16))
+                        .addComponent(jButton7)
+                        .addGap(16, 16, 16))
+                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2))
+                            .addComponent(jLabel14)
+                            .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton25)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13))
+                        .addGap(101, 101, 101))))
         );
         P_Pri_OLayout.setVerticalGroup(
             P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,23 +461,24 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Pri_OLayout.createSequentialGroup()
+                    .addGroup(P_Pri_OLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_Pri_OLayout.createSequentialGroup()
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton25)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton13)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(P_Pri_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton18)
-                    .addComponent(jButton13))
-                .addGap(44, 44, 44))
+                .addComponent(jButton18)
+                .addGap(32, 32, 32))
         );
 
         jButton6.setText("Restablecer");
@@ -725,7 +784,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel32.setText("Publicidad");
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        jT_Publicidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -744,7 +803,7 @@ public class Login extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(jTable5);
+        jScrollPane7.setViewportView(jT_Publicidad);
 
         jLabel33.setText("Publicidad disponible");
 
@@ -1236,6 +1295,141 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        mision_empresa.setColumns(20);
+        mision_empresa.setRows(5);
+        jScrollPane1.setViewportView(mision_empresa);
+
+        vision_empresa.setColumns(20);
+        vision_empresa.setRows(5);
+        jScrollPane13.setViewportView(vision_empresa);
+
+        Objetivos_empresa.setColumns(20);
+        Objetivos_empresa.setRows(5);
+        jScrollPane14.setViewportView(Objetivos_empresa);
+
+        politivas_empresa.setColumns(20);
+        politivas_empresa.setRows(5);
+        jScrollPane15.setViewportView(politivas_empresa);
+
+        jLabel11.setText("Nombre:");
+
+        jLabel54.setText("Correo:");
+
+        jLabel55.setText("Direccion: ");
+
+        jLabel56.setText("Mision:");
+
+        jLabel57.setText("Vision:");
+
+        jLabel58.setText("Objetivos:");
+
+        jLabel59.setText("Politicas:");
+
+        tipo_empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jT_Empresas1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Logo", "Nombre", "Tipo", "Direccion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane16.setViewportView(jT_Empresas1);
+
+        jButton26.setText("Agregar");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Agregar_EmpresaLayout = new javax.swing.GroupLayout(Agregar_Empresa.getContentPane());
+        Agregar_Empresa.getContentPane().setLayout(Agregar_EmpresaLayout);
+        Agregar_EmpresaLayout.setHorizontalGroup(
+            Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel54)
+                    .addComponent(jLabel59)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel58)
+                    .addComponent(jLabel57)
+                    .addComponent(jLabel56)
+                    .addComponent(jLabel55)
+                    .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
+                        .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton26)
+                            .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane15)
+                                .addComponent(jScrollPane14)
+                                .addComponent(jScrollPane1)
+                                .addComponent(jScrollPane13)
+                                .addComponent(direccion_empresa)
+                                .addComponent(correo_empresa)
+                                .addComponent(nombre_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tipo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Agregar_EmpresaLayout.setVerticalGroup(
+            Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Agregar_EmpresaLayout.createSequentialGroup()
+                        .addGroup(Agregar_EmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombre_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(correo_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(direccion_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel56)
+                        .addGap(5, 5, 5)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel57)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel59)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane16))
+                .addGap(33, 33, 33)
+                .addComponent(jButton26)
+                .addGap(0, 15, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("USUARIO: ");
@@ -1263,8 +1457,6 @@ public class Login extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
-
-        tipo_usuarioR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1322,9 +1514,8 @@ public class Login extends javax.swing.JFrame {
     int ano;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
+      //usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        f.escribir();
         tipo = (String) tipo_usuarioR.getSelectedItem();
         usuario = usuario_L.getText();
         contra = contra_L.getText();
@@ -1335,6 +1526,7 @@ public class Login extends javax.swing.JFrame {
                 if ((usuarios.get(i).getTipo()).equals("Ofertador")) {
                     NAME.setText(usuarios.get(posi).getNombre());
                     llenarTabla();
+                    System.out.println("aqui: ");
                     this.P_Pri_O.pack();
                     this.P_Pri_O.setLocationRelativeTo(this);
                     this.setVisible(false);
@@ -1342,7 +1534,6 @@ public class Login extends javax.swing.JFrame {
                 } else {
 
                 }
-
                 break;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario/Contraseña Incorrecta");
@@ -1353,10 +1544,12 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    int n_empresa;
+
     public void llenarTabla() {
-         
         DefaultTableModel m = (DefaultTableModel) jT_C_ofertador.getModel();
         DefaultTableModel k = (DefaultTableModel) jT_membrecias.getModel();
+
         for (int i = m.getRowCount() - 1; i >= 0; i--) {
             m.removeRow(i);
         }
@@ -1373,11 +1566,12 @@ public class Login extends javax.swing.JFrame {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
         }
-        
+
         jT_C_ofertador.setModel(m);
-        jT_membrecias.setModel(k);
         jT_C_ofertador2.setModel(m);
         jT_C_ofertador3.setModel(m);
+        jT_membrecias.setModel(k);
+
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1412,17 +1606,15 @@ public class Login extends javax.swing.JFrame {
 
             } else {
                 JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya esta ocupado");
-
             }
-
         }
-
-
     }//GEN-LAST:event_jButton3ActionPerformed
     private void tipo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_usuarioActionPerformed
 
     }//GEN-LAST:event_tipo_usuarioActionPerformed
+
     int posi = 0;
+
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         this.Restablecer.pack();
         this.Restablecer.setLocationRelativeTo(this);
@@ -1431,7 +1623,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
         this.Perfil_U.pack();
         this.Perfil_U.setLocationRelativeTo(this);
         this.P_Pri_O.setVisible(false);
@@ -1446,7 +1637,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        Object[] tipop = {" ------------------------------------------------- ","Nombre", "Nickname", "Pais", "Cumpleaños", "Correo", "Ubicacion","Contraseña"};
+        Object[] tipop = {" ------------------------------------------------- ", "Nombre", "Nickname", "Pais", "Cumpleaños", "Correo", "Ubicacion", "Contraseña"};
         Object kk = null;
         String aux = "";
         try {
@@ -1454,21 +1645,22 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         String kkk = (String) kk;
-        
+
         switch (kkk) {
             case "Nombre":
                 try {
                     aux = JOptionPane.showInputDialog("Nombre:");
                 } catch (Exception e) {
 
-                }   usuarios.get(posi).setNombre(aux);
+                }
+                usuarios.get(posi).setNombre(aux);
                 N_Perfil.setText(aux);
                 break;
             case "Nickname":
                 try {
                     aux = JOptionPane.showInputDialog("Usuario:");
                 } catch (Exception e) {
-                    
+
                 }
                 usuarios.get(posi).setUsuario(aux);
                 U_Perfil.setText(aux);
@@ -1477,7 +1669,7 @@ public class Login extends javax.swing.JFrame {
                 try {
                     aux = JOptionPane.showInputDialog("Pais:");
                 } catch (Exception e) {
-                    
+
                 }
                 usuarios.get(posi).setPais(aux);
                 P_Perfil.setText(aux);
@@ -1486,32 +1678,34 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("Un estamos viendo que pedo");
                 break;
             case "Correo":
-                 try {
+                try {
                     aux = JOptionPane.showInputDialog("Correo:");
                 } catch (Exception e) {
-                    
+
                 }
                 usuarios.get(posi).setCorreo(aux);
                 Co_Perfil.setText(aux);
                 break;
             case "Contraseña":
-                 try {
+                try {
                     aux = JOptionPane.showInputDialog("Contraseña:");
                 } catch (Exception e) {
-                    
+
                 }
                 usuarios.get(posi).setContra(aux);
-                
+
                 break;
             case "Ubicacion":
                 System.out.println("estamos viendo que pedo");
                 break;
-           
+
         }
-JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
+        JOptionPane.showMessageDialog(null, "SU DATO SE A ACTUALIZADO CORRECTAMENTE");
 
     }//GEN-LAST:event_jLabel24MouseClicked
+
     public ArrayList<String> publicidad = new ArrayList();
+
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         String ti = Ti_Publicidad.getText();
         String de = Des_Publicidad.getText();
@@ -1525,9 +1719,7 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     }//GEN-LAST:event_Ti_PublicidadActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        for (String i : publicidad) {
-            jT_Publi.setText(i);
-        }
+
         this.P_Pri_O.pack();
         this.P_Pri_O.setLocationRelativeTo(this);
         this.Publicidad.setVisible(false);
@@ -1539,6 +1731,7 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
         this.Publicidad.pack();
         this.Publicidad.setLocationRelativeTo(this);
         this.P_Pri_O.setVisible(false);
@@ -1547,6 +1740,7 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1636,12 +1830,12 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
         int o = jT_C_ofertador2.getSelectedRow();
         DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
         if (o >= 0) {
-            Object[] Modi = {" ------------------------------------------------- ","Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
-             Object opcion=null ;
-            try{
-                  opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
-            }catch(Exception e){
-                
+            Object[] Modi = {" ------------------------------------------------- ", "Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
+            Object opcion = null;
+            try {
+                opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
+            } catch (Exception e) {
+
             }
             String op = (String) opcion;
             if (op.equals("Marca")) {
@@ -1695,6 +1889,46 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
 
     }//GEN-LAST:event_jButton20ActionPerformed
 
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        this.Agregar_Empresa.pack();
+        this.Agregar_Empresa.setLocationRelativeTo(this);
+        this.P_Pri_O.setVisible(false);
+        this.Agregar_Empresa.setVisible(true);
+        tipo_empresa.removeAllItems();
+        tipo_empresa.addItem("  --------------------  ");
+        tipo_empresa.addItem("Carwash");
+        tipo_empresa.addItem("Vendedor Directo");
+        tipo_empresa.addItem("Rentadora");
+        tipo_empresa.addItem("Subasta");
+
+
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+
+        String tipoo = (String) tipo_empresa.getSelectedItem();
+        ((Ofertadores) usuarios.get(posi)).getEmpresa().add(new Empresas(nombre_empresa.getText(), tipoo, mision_empresa.getText(),
+                vision_empresa.getText(), Objetivos_empresa.getText(), politivas_empresa.getText(), " ", correo_empresa.getText(), direccion_empresa.getText()));
+        DefaultTableModel empresas1 = (DefaultTableModel) jT_Empresas.getModel();
+        for (int i = empresas1.getRowCount() - 1; i >= 0; i--) {
+            empresas1.removeRow(i);
+
+        }
+        for (Empresas i : ((Ofertadores) usuarios.get(posi)).getEmpresa()) {
+            Object[] auto = {null, i.getNombre(), i.getTipo(), i.getDirreccion()};
+            empresas1.addRow(auto);
+        }
+        jT_Empresas.setModel(empresas1);
+        jT_Empresas1.setModel(empresas1);
+        nombre_empresa.setText("");
+        mision_empresa.setText("");
+        vision_empresa.setText("");
+        Objetivos_empresa.setText("");
+        politivas_empresa.setText("");
+        correo_empresa.setText("");
+        direccion_empresa.setText("");
+    }//GEN-LAST:event_jButton26ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1735,6 +1969,7 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JTextField Ag_modelo;
     private javax.swing.JTextField Ag_tipo;
     private javax.swing.JFrame Agregar_Carro_OF;
+    private javax.swing.JFrame Agregar_Empresa;
     private javax.swing.JFrame Busqueda;
     private javax.swing.JFrame Cliente;
     private javax.swing.JLabel Co_Perfil;
@@ -1743,6 +1978,7 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JFrame Membrecias_Ofertadores;
     private javax.swing.JLabel NAME;
     private javax.swing.JLabel N_Perfil;
+    private javax.swing.JTextArea Objetivos_empresa;
     private javax.swing.JLabel P_Perfil;
     private javax.swing.JFrame P_Pri_O;
     private javax.swing.JFrame Perfil_U;
@@ -1757,6 +1993,8 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
     private javax.swing.JTextField cor_R;
+    private javax.swing.JTextField correo_empresa;
+    private javax.swing.JTextField direccion_empresa;
     private datechooser.beans.DateChooserCombo fe_R;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1775,6 +2013,8 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1835,6 +2075,12 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1842,6 +2088,11 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1854,10 +2105,11 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JTable jT_C_ofertador1;
     private javax.swing.JTable jT_C_ofertador2;
     private javax.swing.JTable jT_C_ofertador3;
-    private javax.swing.JTextArea jT_Publi;
+    private javax.swing.JTable jT_Empresas;
+    private javax.swing.JTable jT_Empresas1;
+    private javax.swing.JTable jT_Publicidad;
     private javax.swing.JTable jT_membrecias;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTextField jTextField1;
@@ -1867,11 +2119,16 @@ JOptionPane.showMessageDialog(null,"SU DATO SE A ACTUALIZADO CORRECTAMENTE");
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextArea mision_empresa;
     private javax.swing.JTextField ni_R;
     private javax.swing.JTextField no_R;
+    private javax.swing.JTextField nombre_empresa;
     private javax.swing.JTextField pa_R;
+    private javax.swing.JTextArea politivas_empresa;
+    private javax.swing.JComboBox<String> tipo_empresa;
     private javax.swing.JComboBox<String> tipo_usuario;
     private javax.swing.JComboBox<String> tipo_usuarioR;
     private javax.swing.JTextField usuario_L;
+    private javax.swing.JTextArea vision_empresa;
     // End of variables declaration//GEN-END:variables
 }

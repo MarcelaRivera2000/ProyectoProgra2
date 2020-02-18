@@ -14,6 +14,7 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.function.ObjDoubleConsumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,28 +25,42 @@ import java.util.logging.Logger;
  */
 public class Ficheros_Binarios {
 
-    public Ficheros_Binarios() {
+    public Ficheros_Binarios(ArrayList<Usuario> us) {
+        this.us=us;
     }
     
-    public void escribir(){
-        File file;
-        FileOutputStream fileOutputStream;
-        ObjectOutputStream objectOutputStream;
-        
-        file=new File("FicherosBinarios.bin");
-        try {
-            fileOutputStream=new FileOutputStream(file);
-            try {
-                objectOutputStream=new ObjectOutputStream(fileOutputStream);
-                Usuario f=new Usuario();
-                
-                objectOutputStream.writeObject(f);
-            } catch (IOException ex) {
-              
+    private ArrayList<Usuario> us=new ArrayList();
+
+    public ArrayList<Usuario> getUs() {
+        return us;
+    }
+
+    public void setUs(ArrayList<Usuario> us) {
+        this.us = us;
+    }
+
+    public void escribir() throws IOException{
+        FileOutputStream fw=null;
+        ObjectOutputStream bw=null;
+        try{
+            fw=new FileOutputStream("./Ficheros_Binarios.bin");
+            bw =new ObjectOutputStream(fw);
+            
+            for (Usuario i : us ) {
+                if (i instanceof Ofertadores){
+                    bw.writeObject(i);
+                }
             }
-        } catch (FileNotFoundException ex) {
-           
+            bw.flush();
+            
+        }catch(Exception e){
+            
+        }finally{
+            bw.close();
+            fw.close();
         }
+        
+        
     }
     
     
@@ -53,17 +68,13 @@ public class Ficheros_Binarios {
           File file;
           FileInputStream fileInputStream;
           ObjectInputStream objectInputStream;
-          
-          
-          
+
           file=new File("FicherosBinarios.bin");
         try {
             fileInputStream =new FileInputStream(file);
             objectInputStream=new ObjectInputStream(fileInputStream);
             Object data=objectInputStream.readObject();
             Ofertadores ofe=(Ofertadores)data;
-           
-            
             
         } catch (FileNotFoundException ex) {
         
