@@ -1,6 +1,7 @@
 package proyectoprogra.pkg2;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,21 +12,36 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Login extends javax.swing.JFrame {
-
+    String usuario;
+    String tipo;
+    String contra;
+    ArrayList<Usuario> usuarios = new ArrayList();
+    String marca, modelo, Cilindraje, tipoo, trans;
+    int ano;
+    
     public Login() {
-        Ficheros_Binarios f = new Ficheros_Binarios();
-
-        try {
-            f.escribir(usuarios);
-        } catch (IOException ex) {
-        }
         initComponents();
         this.setLocationRelativeTo(null);
-        tipo_usuarioR.addItem("  --------------------  ");
-        tipo_usuarioR.addItem("Administrador");
-        tipo_usuarioR.addItem("Ofertador");
-        tipo_usuarioR.addItem("Cliente");
-
+        
+       /* usuarios.add(new Cliente("", "Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", ":v", "14/01/20"));
+        usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        usuarios.add(new Ofertadores("Ofertador", "juana", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        usuarios.add(new Ofertadores("Administrador", "marce", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
+        usuarios.add(new Cliente("Cliente", "cliente", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));*/
+        Archivos_Texto f=new Archivos_Texto("Clientes.txt",usuarios);
+       ArrayList<Usuario> usuarioss=new ArrayList();
+        try {
+          // f.Escribir();
+        usuarioss = f.Leer();
+        for (Usuario i : usuarioss) {
+             System.out.println("SE SUPONE QUE HAY ALGO AQUI: "+ (Cliente)i);
+        }
+       
+        } catch (Exception ex) {
+        
+        }
+      
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -35,7 +51,6 @@ public class Login extends javax.swing.JFrame {
         Registro = new javax.swing.JFrame();
         no_R = new javax.swing.JTextField();
         ni_R = new javax.swing.JTextField();
-        pa_R = new javax.swing.JTextField();
         cor_R = new javax.swing.JTextField();
         co_R = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -49,6 +64,7 @@ public class Login extends javax.swing.JFrame {
         fe_R = new datechooser.beans.DateChooserCombo();
         tipo_usuario = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        pa_R = new javax.swing.JComboBox<>();
         P_Pri_Ofertador = new javax.swing.JFrame();
         jButton7 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -174,7 +190,6 @@ public class Login extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         admin_nombre = new javax.swing.JTextField();
         admin_usuario = new javax.swing.JTextField();
-        admin_pais = new javax.swing.JTextField();
         admin_cumple = new datechooser.beans.DateChooserCombo();
         admin_correo = new javax.swing.JTextField();
         admin_contra = new javax.swing.JPasswordField();
@@ -185,6 +200,9 @@ public class Login extends javax.swing.JFrame {
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
+        jButton25 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
+        admin_paiss = new javax.swing.JComboBox<>();
         P_Pri_Administrador = new javax.swing.JFrame();
         jButton27 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
@@ -198,7 +216,6 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        tipo_usuarioR = new javax.swing.JComboBox<>();
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Nombre: ");
@@ -232,7 +249,7 @@ public class Login extends javax.swing.JFrame {
         fe_R.setFormat(2);
         fe_R.setLocale(new java.util.Locale("es", "ES", ""));
 
-        tipo_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipo_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  --------------------  ", "Cliente", "Ofertador" }));
         tipo_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipo_usuarioActionPerformed(evt);
@@ -241,6 +258,13 @@ public class Login extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("Tipo de usuario:");
+
+        pa_R.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  --------------------  ", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+        pa_R.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pa_RActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro.getContentPane());
         Registro.getContentPane().setLayout(RegistroLayout);
@@ -265,10 +289,10 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(ni_R)
                             .addComponent(no_R)
                             .addComponent(co_R, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(pa_R)
                             .addComponent(cor_R)
+                            .addComponent(tipo_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fe_R, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipo_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pa_R, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(33, 33, 33))
         );
         RegistroLayout.setVerticalGroup(
@@ -286,11 +310,14 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(co_R, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(29, 29, 29)
-                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pa_R, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(33, 33, 33)
+                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistroLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel6))
+                    .addGroup(RegistroLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(pa_R, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(fe_R, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1342,42 +1369,53 @@ public class Login extends javax.swing.JFrame {
 
         jLabel61.setText("USUARIOS ADMINISTRATIVOS");
 
+        jButton25.setText("Eliminar");
+
+        jButton31.setText("Modificar");
+
+        admin_paiss.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  --------------------  ", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+
         javax.swing.GroupLayout Agregar_AdminsLayout = new javax.swing.GroupLayout(Agregar_Admins.getContentPane());
         Agregar_Admins.getContentPane().setLayout(Agregar_AdminsLayout);
         Agregar_AdminsLayout.setHorizontalGroup(
             Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Agregar_AdminsLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Agregar_AdminsLayout.createSequentialGroup()
+                        .addComponent(jButton25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton31))
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Agregar_AdminsLayout.createSequentialGroup()
-                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel64)
-                            .addComponent(jLabel63)
-                            .addComponent(jLabel65)
-                            .addComponent(jLabel66)
-                            .addComponent(jLabel67)
-                            .addComponent(jLabel68))
-                        .addGap(54, 54, 54)
-                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(admin_usuario)
-                            .addComponent(admin_nombre)
-                            .addComponent(admin_contra)
-                            .addComponent(admin_pais)
-                            .addComponent(admin_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(admin_cumple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel61)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Agregar_AdminsLayout.createSequentialGroup()
+                    .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton26)
-                        .addGap(12, 12, 12)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGroup(Agregar_AdminsLayout.createSequentialGroup()
+                            .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel64)
+                                .addComponent(jLabel63)
+                                .addComponent(jLabel65)
+                                .addComponent(jLabel66)
+                                .addComponent(jLabel67)
+                                .addComponent(jLabel68))
+                            .addGap(54, 54, 54)
+                            .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(admin_usuario)
+                                .addComponent(admin_nombre)
+                                .addComponent(admin_contra)
+                                .addComponent(admin_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(admin_cumple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(admin_paiss, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         Agregar_AdminsLayout.setVerticalGroup(
             Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Agregar_AdminsLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Agregar_AdminsLayout.createSequentialGroup()
                         .addComponent(jLabel61)
                         .addGap(33, 33, 33)
@@ -1392,11 +1430,11 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(admin_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel65))
-                        .addGap(29, 29, 29)
-                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(admin_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel66))
-                        .addGap(33, 33, 33)
+                        .addGap(36, 36, 36)
+                        .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel66)
+                            .addComponent(admin_paiss, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
                         .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel67)
                             .addComponent(admin_cumple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1404,10 +1442,13 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel68)
                             .addComponent(admin_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton26))
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 25, Short.MAX_VALUE))
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton26)))
+                .addGap(18, 18, 18)
+                .addGroup(Agregar_AdminsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton25)
+                    .addComponent(jButton31))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         jButton27.setText("Agregar Nuevo Admin");
@@ -1442,9 +1483,7 @@ public class Login extends javax.swing.JFrame {
         P_Pri_AdministradorLayout.setVerticalGroup(
             P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jButton27)
-                .addGap(18, 18, 18)
+                .addGap(72, 72, 72)
                 .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton28)
@@ -1452,7 +1491,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jButton30)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel60)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton27)
+                .addContainerGap(526, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1499,13 +1540,11 @@ public class Login extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(usuario_L)
                             .addComponent(jLabel1)
-                            .addComponent(contra_L)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tipo_usuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usuario_L, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                            .addComponent(contra_L))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1515,9 +1554,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipo_usuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1531,29 +1568,21 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    String usuario;
-    String tipo;
-    String contra;
-    ArrayList<Usuario> usuarios = new ArrayList();
-    String marca, modelo, Cilindraje, tipoo, trans;
-    int ano;
-
+   
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //usuarios.add(new Usuario("cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", "sepa putas", "14/01/20"));
-        usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        usuarios.add(new Ofertadores("Ofertador", "juana", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        usuarios.add(new Ofertadores("Administrador", "marce", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        tipo = (String) tipo_usuarioR.getSelectedItem();
+      
         usuario = usuario_L.getText();
-        contra = contra_L.getText();
+        contra = contra_L.getText();    
+        for (Usuario i : usuarios) {
+            System.out.println(i.getNombre());
+        }
         int contbb = 0;
         for (int i = 0; i < usuarios.size(); i++) {
-            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)
-                    && (usuarios.get(i).getTipo().equals(tipo))) {
+            if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;
                 contbb++;
                 System.out.println("bienvenido");
-                if ((usuarios.get(i).getTipo()).equals("Ofertador")) {
+                if (usuarios.get(i) instanceof Ofertadores) {
                     NAME.setText(usuarios.get(posi).getNombre());
                     llenarTabla();
                     System.out.println("aqui: ");
@@ -1561,11 +1590,17 @@ public class Login extends javax.swing.JFrame {
                     this.P_Pri_Ofertador.setLocationRelativeTo(this);
                     this.setVisible(false);
                     this.P_Pri_Ofertador.setVisible(true);
-                } else if ((usuarios.get(i).getTipo()).equals("Administrador")) {
+                } else if (usuarios.get(i) instanceof Administrador) {
                     this.P_Pri_Administrador.pack();
                     this.P_Pri_Administrador.setLocationRelativeTo(this);
                     this.setVisible(false);
                     this.P_Pri_Administrador.setVisible(true);
+
+                } else if (usuarios.get(i) instanceof Cliente) {
+                  
+                    
+                    
+                    
 
                 }
                 break;
@@ -1613,15 +1648,12 @@ public class Login extends javax.swing.JFrame {
         this.Registro.setLocationRelativeTo(this);
         this.setVisible(false);
         this.Registro.setVisible(true);
-        tipo_usuario.removeAllItems();
-        tipo_usuario.addItem("  --------------------  ");
-        tipo_usuario.addItem("Cliente");
-        tipo_usuario.addItem("Ofertador");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tipo = (String) tipo_usuario.getSelectedItem();
-        if (tipo.equals("  --------------------  ") || ni_R.getText().equals("") || co_R.getText().equals("") || no_R.getText().equals("") || pa_R.getText().equals("") || fe_R.getText().equals("") || cor_R.getText().equals("")) {
+        if (tipo.equals("  --------------------  ") || ni_R.getText().equals("") || co_R.getText().equals("") || no_R.getText().equals("") || pa_R.getSelectedItem().equals("  --------------------  ") || fe_R.getText().equals("") || cor_R.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos de informacion pedidos");
         } else {
             int p = 0;
@@ -1715,7 +1747,6 @@ public class Login extends javax.swing.JFrame {
                 try {
                     aux = JOptionPane.showInputDialog("Correo:");
                 } catch (Exception e) {
-
                 }
                 usuarios.get(posi).setCorreo(aux);
                 Co_Perfil.setText(aux);
@@ -1724,7 +1755,6 @@ public class Login extends javax.swing.JFrame {
                 try {
                     aux = JOptionPane.showInputDialog("Contraseña:");
                 } catch (Exception e) {
-
                 }
                 usuarios.get(posi).setContra(aux);
 
@@ -1750,22 +1780,19 @@ public class Login extends javax.swing.JFrame {
 
     private void Ti_PublicidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ti_PublicidadActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_Ti_PublicidadActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-
         this.P_Pri_Ofertador.pack();
         this.P_Pri_Ofertador.setLocationRelativeTo(this);
         this.Publicidad.setVisible(false);
         this.P_Pri_Ofertador.setVisible(true);
         Ti_Publicidad.setText("");
         Des_Publicidad.setText("");
-
-
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-
         this.Publicidad.pack();
         this.Publicidad.setLocationRelativeTo(this);
         this.P_Pri_Ofertador.setVisible(false);
@@ -1773,13 +1800,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
-        usuarios.add(new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), pa_R.getText(), cor_R.getText(), " ", Cu_Perfil.getText()));
+        usuarios.add(new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText()));
         if (jCheckBox_Carwash.isSelected()) {
             System.out.println("yey");
             cont++;
@@ -1801,12 +1827,12 @@ public class Login extends javax.swing.JFrame {
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Porfavor seleccione alguna membrecia");
         } else {
-            usuarios.add(new Usuario(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), pa_R.getText(), cor_R.getText(), "ubicacion", fe_R.getText()));
-            System.out.println(tipo + " " + ni_R.getText() + " " + co_R.getText() + " " + no_R.getText() + " " + pa_R.getText() + " " + cor_R.getText() + "ubicacion" + fe_R.getText());
+            usuarios.add(new Usuario(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), "ubicacion", fe_R.getText()));
+            System.out.println(tipo + " " + ni_R.getText() + " " + co_R.getText() + " " + no_R.getText() + " " + (String) pa_R.getSelectedItem() + " " + cor_R.getText() + "ubicacion" + fe_R.getText());
             ni_R.setText("");
             co_R.setText("");
             no_R.setText("");
-            pa_R.setText("");
+
             cor_R.setText("");
             fe_R.setText("");
 
@@ -1924,9 +1950,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        //String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha
         usuarios.add(new Administrador("Administrador", admin_usuario.getText(), admin_contra.getText(), admin_nombre.getText(),
-                admin_pais.getText(), admin_correo.getText(), " ", admin_cumple.getText()));
+                (String) admin_paiss.getSelectedItem(), admin_correo.getText(), " ", admin_cumple.getText()));
         DefaultTableModel admins = (DefaultTableModel) UsuariosAdmin_jt.getModel();
         for (int i = admins.getRowCount() - 1; i >= 0; i--) {
             admins.removeRow(i);
@@ -1945,7 +1970,6 @@ public class Login extends javax.swing.JFrame {
         admin_contra.setText("");
         admin_correo.setText("");
         admin_cumple.setText("");
-        admin_pais.setText("");
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -1955,6 +1979,10 @@ public class Login extends javax.swing.JFrame {
         this.Agregar_Admins.setVisible(true);
 
     }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void pa_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pa_RActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pa_RActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2022,7 +2050,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField admin_correo;
     private datechooser.beans.DateChooserCombo admin_cumple;
     private javax.swing.JTextField admin_nombre;
-    private javax.swing.JTextField admin_pais;
+    private javax.swing.JComboBox<String> admin_paiss;
     private javax.swing.JTextField admin_usuario;
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
@@ -2045,12 +2073,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2152,9 +2182,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField ni_R;
     private javax.swing.JTextField no_R;
-    private javax.swing.JTextField pa_R;
+    private javax.swing.JComboBox<String> pa_R;
     private javax.swing.JComboBox<String> tipo_usuario;
-    private javax.swing.JComboBox<String> tipo_usuarioR;
     private javax.swing.JTextField usuario_L;
     // End of variables declaration//GEN-END:variables
 }

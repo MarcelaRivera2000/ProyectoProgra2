@@ -14,8 +14,8 @@ public class Cliente extends Usuario {
     public Cliente() {
     }
 
-    public Cliente(String membrecia, String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
-        super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
+    public Cliente( String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
+       super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
         this.membrecia = membrecia;
     }
 
