@@ -1,41 +1,33 @@
 package proyectoprogra.pkg2;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Login extends javax.swing.JFrame {
+
     String usuario;
     String tipo;
     String contra;
     ArrayList<Usuario> usuarios = new ArrayList();
     String marca, modelo, Cilindraje, tipoo, trans;
     int ano;
-    
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-       /*usuarios.add(new Cliente( "Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", ":v", "14/01/20"));
-        usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        usuarios.add(new Ofertadores("Ofertador", "juana", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        usuarios.add(new Ofertadores("Administrador", "marce", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
-        usuarios.add(new Cliente("Cliente", "cliente", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));*/
-        Archivos_Texto f=new Archivos_Texto("Clientes.txt",usuarios);
+        usuarios.add(new Cliente("Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera@gmail.com", "Ubicacion", "14/01/2020"));
+        usuarios.add(new Ofertadores("Ofertador", "juan", "123", "Juan Miguel Gonzales", "San Salvador", "jMiguel@gmail.com", "Ubicacion", "23/5/2020"));
+        usuarios.add(new Administrador("Administrador", "pedro", "123", "Pedro Rojas Valerin", "Guatemala", "Pdro@gmail.com", "Ubicacion", "12/6/2020"));
+        Archivos_Texto f = new Archivos_Texto("Clientes.txt", usuarios);
+        Ficheros_Binarios b = new Ficheros_Binarios("./Ficheros_Binarios.bin", usuarios);
         try {
-         //f.Escribir();
-        usuarios = f.Leer();
+            //f.Escribir();
+            // b.escribirArchivo();
+            b.cargarArcihivo();
+            // usuarios = f.Leer();
         } catch (Exception ex) {
         }
-      
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -199,10 +191,17 @@ public class Login extends javax.swing.JFrame {
         admin_paiss = new javax.swing.JComboBox<>();
         P_Pri_Administrador = new javax.swing.JFrame();
         jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
         jLabel60 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -240,7 +239,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         fe_R.setCalendarPreferredSize(new java.awt.Dimension(510, 360));
-        fe_R.setFormat(2);
         fe_R.setLocale(new java.util.Locale("es", "ES", ""));
 
         tipo_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  --------------------  ", "Cliente", "Ofertador" }));
@@ -1452,42 +1450,74 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton28.setText("Subasta");
-
         jButton29.setText("Administrar perfil de la empresa");
 
-        jButton30.setText("Reporteria");
-
         jLabel60.setText("Tabla de usuarios,opciones de modificar cualquier cosa de los usuarios");
+
+        jMenu1.setText("Perfil");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Administrar usuarios");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+
+        jMenuItem1.setText("Crear Administrador");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Modificar Cliente");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Modificar Ofertador");
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Perfil de la empresa");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Subasta");
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Reporteria");
+        jMenuBar1.add(jMenu5);
+
+        P_Pri_Administrador.setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout P_Pri_AdministradorLayout = new javax.swing.GroupLayout(P_Pri_Administrador.getContentPane());
         P_Pri_Administrador.getContentPane().setLayout(P_Pri_AdministradorLayout);
         P_Pri_AdministradorLayout.setHorizontalGroup(
             P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel60)
-                    .addComponent(jButton28)
                     .addComponent(jButton27)
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton30))
-                .addContainerGap(694, Short.MAX_VALUE))
+                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(700, Short.MAX_VALUE))
         );
         P_Pri_AdministradorLayout.setVerticalGroup(
             P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(20, 20, 20)
                 .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton28)
-                .addGap(18, 18, 18)
-                .addComponent(jButton30)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel60)
                 .addGap(18, 18, 18)
                 .addComponent(jButton27)
-                .addContainerGap(526, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel60)
+                .addContainerGap(655, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1562,15 +1592,15 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  usuario = usuario_L.getText();
-        contra = contra_L.getText();    
-        int contbb = 0;
+        usuario = usuario_L.getText();
+        contra = contra_L.getText();
+        int cont = 0;
         for (int i = 0; i < usuarios.size(); i++) {
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;
-                contbb++;
+                cont++;
                 if (usuarios.get(i) instanceof Ofertadores) {
                     NAME.setText(usuarios.get(posi).getNombre());
                     llenarTabla();
@@ -1583,18 +1613,13 @@ public class Login extends javax.swing.JFrame {
                     this.P_Pri_Administrador.setLocationRelativeTo(this);
                     this.setVisible(false);
                     this.P_Pri_Administrador.setVisible(true);
-
                 } else if (usuarios.get(i) instanceof Cliente) {
-                  
                     System.out.println("kpedo bro");
-                    
-                    
-
                 }
                 break;
             }
         }
-        if (contbb == 0) {
+        if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Usuario/Contraseña Incorrecta");
             usuario_L.setText("");
             contra_L.setText("");
@@ -1832,10 +1857,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        this.P_Pri_Ofertador.pack();
-        this.P_Pri_Ofertador.setLocationRelativeTo(this);
-        this.Perfil_U.setVisible(false);
-        this.P_Pri_Ofertador.setVisible(true);
+        if (usuarios.get(posi) instanceof Ofertadores) {
+            this.P_Pri_Ofertador.pack();
+            this.P_Pri_Ofertador.setLocationRelativeTo(this);
+            this.Perfil_U.setVisible(false);
+            this.P_Pri_Ofertador.setVisible(true);
+        }
+        if (usuarios.get(posi) instanceof Administrador) {
+            this.P_Pri_Administrador.pack();
+            this.P_Pri_Administrador.setLocationRelativeTo(this);
+            this.Perfil_U.setVisible(false);
+            this.P_Pri_Administrador.setVisible(true);
+        }
+
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -1965,12 +1999,35 @@ public class Login extends javax.swing.JFrame {
         this.Agregar_Admins.setLocationRelativeTo(this);
         this.P_Pri_Ofertador.setVisible(false);
         this.Agregar_Admins.setVisible(true);
-
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void pa_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pa_RActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pa_RActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+         this.Perfil_U.pack();
+        this.Perfil_U.setLocationRelativeTo(this);
+        this.P_Pri_Administrador.setVisible(false);
+        this.Perfil_U.setVisible(true);
+        N_Perfil.setText(usuarios.get(posi).getNombre());
+        U_Perfil.setText(usuarios.get(posi).getUsuario());
+        P_Perfil.setText(usuarios.get(posi).getPais());
+        Co_Perfil.setText(usuarios.get(posi).getCorreo());
+        Cu_Perfil.setText(usuarios.get(posi).getFecha());
+        T_Perfil.setText(usuarios.get(posi).getTipo());
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem1MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2064,10 +2121,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2139,6 +2194,15 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;

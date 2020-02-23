@@ -5,6 +5,7 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,50 +22,61 @@ import java.util.logging.Logger;
 
 public class Ficheros_Binarios {
 
+    private ArrayList<Usuario> ofertadores;
+    private File archivo = null;
+
     public Ficheros_Binarios() {
     }
 
-    public void escribir(ArrayList<Usuario> us) throws IOException {
+    public Ficheros_Binarios(String archivoo, ArrayList<Usuario> ofertadores) {
+        this.archivo= new File(archivoo);
+        this.ofertadores = ofertadores;
+    }
+
+    public void cargarArcihivo() {
+        try {
+            ofertadores = new ArrayList();
+            Usuario temp;
+            if (archivo.exists()) {
+                FileInputStream entrada = new FileInputStream(archivo);
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
+                try {
+                    while ( (temp = (Usuario) objeto.readObject()) != null ) {
+                        ofertadores.add(temp);
+                    }
+                } catch (EOFException e) {
+                }
+                objeto.close();
+                entrada.close();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void escribirArchivo() {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
-            fw = new FileOutputStream("./Ficheros_Binarios.bin");
+            fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-
-            for (Usuario i : us) {
-                if (i instanceof Ofertadores) {
-                    bw.writeObject(i);
+            for (Usuario t : ofertadores) {
+                if (t instanceof Ofertadores){
+                bw.writeObject(t);      
                 }
+              
             }
             bw.flush();
-
         } catch (Exception e) {
-
+            
         } finally {
-            bw.close();
-            fw.close();
-        }
-
-    }
-
-    public void leer() {
-        File file;
-        FileInputStream fileInputStream;
-        ObjectInputStream objectInputStream;
-
-        file = new File("FicherosBinarios.bin");
-        try {
-            fileInputStream = new FileInputStream(file);
-            objectInputStream = new ObjectInputStream(fileInputStream);
-            Object data = objectInputStream.readObject();
-            Ofertadores ofe = (Ofertadores) data;
-
-        } catch (FileNotFoundException ex) {
-
-        } catch (IOException ex) {
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ficheros_Binarios.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+                
+            }
         }
     }
+
 }

@@ -44,7 +44,7 @@ public class Ofertadores extends Usuario implements Serializable{
 
     @Override
     public String toString() {
-        return "Ofertadores{" + "membrecias=" + membrecias + ", autos=" + autos + ", empresa=" + empresa + '}';
+        return "Ofertadores{"+super.toString() + "membrecias=" + membrecias + ", autos=" + autos + ", empresa=" + empresa + '}';
     }
 
  
