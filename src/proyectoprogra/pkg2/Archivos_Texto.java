@@ -52,16 +52,8 @@ public class Archivos_Texto {
             sc.useDelimiter(";");
             while (sc.hasNext()) {
                 String p = sc.next();
-                Scanner sc2 = new Scanner(p);
-                sc2.useDelimiter("");
                 String [] tokens =p.split(",");
-                for (String i : tokens) {
-                    System.out.println(i);
-                }
                 lista.add(new Cliente(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7]));
-                for (Usuario u : lista) {
-                    System.out.println(u);
-                }
             }
         }
        

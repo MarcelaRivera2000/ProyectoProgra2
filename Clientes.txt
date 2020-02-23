@@ -1,1 +1,1 @@
-Cliente,cliente,123,juan miguel,fsdf,sdf,ubicacion,34/56/7;
+Cliente,marce,123,Marcela Eunice Rivera Varela,Honduras,mvrivera,ubicacion,14/01/20;Cliente,cliente,123,juan miguel,fsdf,sdf,ubicacion,34/56/7;

@@ -29,7 +29,7 @@ public class Cliente extends Usuario {
 
     @Override
     public String toString() {
-        return "Cliente{" + "membrecia=" + membrecia + '}';
+        return "Cliente{" +super.toString()+ "membrecia=" + membrecia + '}';
     }
 
     

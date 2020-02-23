@@ -23,22 +23,16 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-       /* usuarios.add(new Cliente("", "Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", ":v", "14/01/20"));
+       /*usuarios.add(new Cliente( "Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera", ":v", "14/01/20"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
         usuarios.add(new Ofertadores("Ofertador", "juana", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
         usuarios.add(new Ofertadores("Administrador", "marce", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));
         usuarios.add(new Cliente("Cliente", "cliente", "123", "juan miguel", "fsdf", "sdf", "fsd", "34/56/7"));*/
         Archivos_Texto f=new Archivos_Texto("Clientes.txt",usuarios);
-       ArrayList<Usuario> usuarioss=new ArrayList();
         try {
-          // f.Escribir();
-        usuarioss = f.Leer();
-        for (Usuario i : usuarioss) {
-             System.out.println("SE SUPONE QUE HAY ALGO AQUI: "+ (Cliente)i);
-        }
-       
+         //f.Escribir();
+        usuarios = f.Leer();
         } catch (Exception ex) {
-        
         }
       
         
@@ -1570,22 +1564,16 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-        usuario = usuario_L.getText();
+  usuario = usuario_L.getText();
         contra = contra_L.getText();    
-        for (Usuario i : usuarios) {
-            System.out.println(i.getNombre());
-        }
         int contbb = 0;
         for (int i = 0; i < usuarios.size(); i++) {
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;
                 contbb++;
-                System.out.println("bienvenido");
                 if (usuarios.get(i) instanceof Ofertadores) {
                     NAME.setText(usuarios.get(posi).getNombre());
                     llenarTabla();
-                    System.out.println("aqui: ");
                     this.P_Pri_Ofertador.pack();
                     this.P_Pri_Ofertador.setLocationRelativeTo(this);
                     this.setVisible(false);
@@ -1598,7 +1586,7 @@ public class Login extends javax.swing.JFrame {
 
                 } else if (usuarios.get(i) instanceof Cliente) {
                   
-                    
+                    System.out.println("kpedo bro");
                     
                     
 
