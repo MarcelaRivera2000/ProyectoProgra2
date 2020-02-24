@@ -16,17 +16,20 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        usuarios.add(new Cliente("Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera@gmail.com", "Ubicacion", "14/01/2020"));
+        /*usuarios.add(new Cliente("Cliente", "marce", "123", "Marcela Eunice Rivera Varela", "Honduras", "mvrivera@gmail.com", "Ubicacion", "14/01/2020"));
         usuarios.add(new Ofertadores("Ofertador", "juan", "123", "Juan Miguel Gonzales", "San Salvador", "jMiguel@gmail.com", "Ubicacion", "23/5/2020"));
-        usuarios.add(new Administrador("Administrador", "pedro", "123", "Pedro Rojas Valerin", "Guatemala", "Pdro@gmail.com", "Ubicacion", "12/6/2020"));
+        usuarios.add(new Administrador("Administrador", "pedro", "123", "Pedro Rojas Valerin", "Guatemala", "Pdro@gmail.com", "Ubicacion", "12/6/2020"));*/
         Archivos_Texto f = new Archivos_Texto("Clientes.txt", usuarios);
-        Ficheros_Binarios b = new Ficheros_Binarios("./Ficheros_Binarios.bin", usuarios);
+        Ficheros_Binarios b = new Ficheros_Binarios("./FicherosBinarios.bin", usuarios);
         try {
-            //f.Escribir();
-            // b.escribirArchivo();
-            b.cargarArcihivo();
+              //f.Escribir();
+             // b.escribirArchivo();
             // usuarios = f.Leer();
+           // b.escribir();
+           b.leer();
+
         } catch (Exception ex) {
+            
         }
     }
 
@@ -1597,6 +1600,7 @@ public class Login extends javax.swing.JFrame {
         usuario = usuario_L.getText();
         contra = contra_L.getText();
         int cont = 0;
+
         for (int i = 0; i < usuarios.size(); i++) {
             if ((usuarios.get(i).getUsuario()).equals(usuario) && (usuarios.get(i).getContra()).equals(contra)) {
                 posi = i;

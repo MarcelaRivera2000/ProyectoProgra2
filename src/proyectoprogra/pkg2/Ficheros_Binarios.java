@@ -29,54 +29,49 @@ public class Ficheros_Binarios {
     }
 
     public Ficheros_Binarios(String archivoo, ArrayList<Usuario> ofertadores) {
-        this.archivo= new File(archivoo);
+        this.archivo = new File(archivoo);
         this.ofertadores = ofertadores;
     }
 
-    public void cargarArcihivo() {
+    public void escribir() {
+        FileOutputStream fileOutputStream;
+        ObjectOutputStream objectOutputStream;
+        File file;
+        file = new File("FicherosBinarios.bin");
+
+        try {
+            fileOutputStream = new FileOutputStream(file);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            for (Usuario i : ofertadores) {
+                if (i instanceof Ofertadores) {
+                    objectOutputStream.writeObject(i);
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+
+    }
+
+    public void leer() {
         try {
             ofertadores = new ArrayList();
-            Usuario temp;
+            Ofertadores temporal;
             if (archivo.exists()) {
                 FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ( (temp = (Usuario) objeto.readObject()) != null ) {
-                        ofertadores.add(temp);
+                    while ((temporal = (Ofertadores) objeto.readObject()) != null) {
+                        ofertadores.add(temporal);
+                        System.out.println(temporal);
                     }
-                } catch (EOFException e) {
+                } catch (Exception e) {
                 }
                 objeto.close();
                 entrada.close();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    public void escribirArchivo() {
-        FileOutputStream fw = null;
-        ObjectOutputStream bw = null;
-        try {
-            fw = new FileOutputStream(archivo);
-            bw = new ObjectOutputStream(fw);
-            for (Usuario t : ofertadores) {
-                if (t instanceof Ofertadores){
-                bw.writeObject(t);      
-                }
-              
-            }
-            bw.flush();
         } catch (Exception e) {
-            
-        } finally {
-            try {
-                bw.close();
-                fw.close();
-            } catch (Exception ex) {
-                
-            }
         }
     }
-
 }
