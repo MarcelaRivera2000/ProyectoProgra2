@@ -12,6 +12,8 @@ package proyectoprogra.pkg2;
 public class Membrecias {
     private String tipo,descripcion;
 
+        private static final long SerialVersionUID = 999L;
+
     public Membrecias() {
     }
 

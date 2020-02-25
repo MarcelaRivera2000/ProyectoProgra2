@@ -10,6 +10,8 @@ public class Ofertadores extends Usuario implements Serializable{
     private ArrayList<Autos> autos=new ArrayList();
     private ArrayList<Empresas> empresa=new ArrayList();
 
+    private static final long SerialVersionUID = 777L;
+    
     public Ofertadores() {
     }
 

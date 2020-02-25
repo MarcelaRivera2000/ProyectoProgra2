@@ -17,6 +17,8 @@ public class Empresas {
     private String nombre,mision,vision,tipo,objetivos,politicas,ubicacion,correo,dirreccion;
     private  Image imagenInterna;
 
+        private static final long SerialVersionUID = 333L;
+
     public Empresas(String nombre, String tipo,String mision, String vision, String objetivos, String politicas, String ubicacion, String correo, String dirreccion) {
         this.nombre = nombre;
         this.mision = mision;

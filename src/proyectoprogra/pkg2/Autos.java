@@ -13,6 +13,8 @@ public class Autos {
     private String marca,modelo,cilindraje,tipo,transmision;
     private int año;
 
+        private static final long SerialVersionUID = 666L;
+
     public Autos() {
     }
 

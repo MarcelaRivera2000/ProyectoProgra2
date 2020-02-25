@@ -22,56 +22,80 @@ import java.util.logging.Logger;
 
 public class Ficheros_Binarios {
 
-    private ArrayList<Usuario> ofertadores;
+    private ArrayList<Ofertadores> listaOfertadores = new ArrayList();
     private File archivo = null;
 
-    public Ficheros_Binarios() {
+    public Ficheros_Binarios(String path) {
+        archivo = new File(path);
     }
 
-    public Ficheros_Binarios(String archivoo, ArrayList<Usuario> ofertadores) {
-        this.archivo = new File(archivoo);
-        this.ofertadores = ofertadores;
+    public ArrayList<Ofertadores> getListaPersonas() {
+        return listaOfertadores;
     }
 
-    public void escribir() {
-        FileOutputStream fileOutputStream;
-        ObjectOutputStream objectOutputStream;
-        File file;
-        file = new File("FicherosBinarios.bin");
+    public void setListaPersonas(ArrayList<Ofertadores> listaAlumnos) {
+        this.listaOfertadores = listaAlumnos;
+    }
 
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
+
+    public void setAlumno(Ofertadores a) {
+        listaOfertadores.add(a);
+    }
+
+    public void cargarArchivo() {
         try {
-            fileOutputStream = new FileOutputStream(file);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            for (Usuario i : ofertadores) {
-                if (i instanceof Ofertadores) {
-                    objectOutputStream.writeObject(i);
-                }
-            }
-
-        } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
-        }
-
-    }
-
-    public void leer() {
-        try {
-            ofertadores = new ArrayList();
-            Ofertadores temporal;
+            listaOfertadores = new ArrayList();
+            Ofertadores temp;
             if (archivo.exists()) {
-                FileInputStream entrada = new FileInputStream(archivo);
-                ObjectInputStream objeto = new ObjectInputStream(entrada);
+                FileInputStream entrada
+                        = new FileInputStream(archivo);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
                 try {
-                    while ((temporal = (Ofertadores) objeto.readObject()) != null) {
-                        ofertadores.add(temporal);
-                        System.out.println(temporal);
+                    while ((temp = (Ofertadores) objeto.readObject()) != null) {
+                        listaOfertadores.add(temp);
+                        System.out.println(temp);
+                        for (Ofertadores i : listaOfertadores) {
+                            System.out.println(i);
+                        }
                     }
-                } catch (Exception e) {
+                } catch (EOFException e) {
                 }
                 objeto.close();
                 entrada.close();
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+       
+    }
+
+    public void escribirArchivo() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(archivo);
+            bw = new ObjectOutputStream(fw);
+            for (Ofertadores t : listaOfertadores) {
+                System.out.println("1. "+t);
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+            }
         }
     }
+
 }
