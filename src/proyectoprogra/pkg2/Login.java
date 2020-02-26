@@ -33,20 +33,14 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-
         b.cargarArchivo();
         for (Ofertadores i : b.getListaPersonas()) {
             usuarios.add((Ofertadores)i);
         }
        f.Leer();
-        
-        
-
-       
-        for (Usuario p : usuarios) {
-            System.out.println("HOLA "+p);
+        for (Usuario p : f.getLista()) {
+             usuarios.add((Cliente)p);
         }
-        
     }
 
     public void llenarTabla() {
@@ -1959,7 +1953,6 @@ public class Login extends javax.swing.JFrame {
             b.cargarArchivo();
             b.setAlumno(p);
             b.escribirArchivo();
-
             ni_R.setText("");
             co_R.setText("");
             no_R.setText("");
@@ -1981,7 +1974,6 @@ public class Login extends javax.swing.JFrame {
         trans = Ag_Tranmision.getText();
         ano = Integer.parseInt(Ag_ano.getText());
         ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
-
         llenarTabla();
         Ag_Cilindraje.setText("");
         Ag_Tranmision.setText("");
@@ -1989,9 +1981,6 @@ public class Login extends javax.swing.JFrame {
         Ag_marca.setText("");
         Ag_modelo.setText("");
         Ag_tipo.setText("");
-
-        System.out.println("gg");
-
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed

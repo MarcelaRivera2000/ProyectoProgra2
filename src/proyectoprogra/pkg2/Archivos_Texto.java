@@ -50,7 +50,7 @@ public class Archivos_Texto {
         BufferedWriter bw = new BufferedWriter(fw);
         for (Usuario p : lista) {
             if (p instanceof Cliente) {
-                String prueba = p.getTipo() + "," + p.getUsuario() + "," + p.getContra() + "," + p.getNombre() + "," + p.getPais() + "," + p.getCorreo() + "," + p.getUbicacion() + "," + p.getFecha() + ";\n";
+                String prueba = p.getTipo() + "," + p.getUsuario() + "," + p.getContra() + "," + p.getNombre() + "," + p.getPais() + "," + p.getCorreo() + "," + "hola" + "," + p.getFecha() + ";\n";
                 bw.append(prueba);
             }
         }
@@ -69,19 +69,15 @@ public class Archivos_Texto {
             }
             sc.useDelimiter(";");
             while (sc.hasNext()) {
+                System.out.println(sc.hasNext());
                 String p = sc.next();
-                String [] tokens =p.split(",");                
-                llenar(tokens);
+                String [] tokens =p.split(",");
+                if (tokens.length >=8) {
+                    Cliente u = new Cliente(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7]);
+                    lista.add(u);
+                }
             }
         }
-    }
-    public void llenar( String [] tokens ){
-        for (String token : tokens) {
-            System.out.println(token);
-        }
-        Cliente o = new Cliente(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7]);
-                System.out.println(o);
-
     }
 
     

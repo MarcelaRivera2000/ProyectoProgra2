@@ -1,1 +1,1 @@
-Cliente,7,7,6,Albania,7, ,25/02/20;
+Cliente,c,1,carlos,Andorra,1,hola,26/02/20;
