@@ -25,6 +25,9 @@ public class Ficheros_Binarios {
     private ArrayList<Ofertadores> listaOfertadores = new ArrayList();
     private File archivo = null;
 
+    public Ficheros_Binarios() {
+    }
+    
     public Ficheros_Binarios(String path) {
         archivo = new File(path);
     }
@@ -61,10 +64,8 @@ public class Ficheros_Binarios {
                 try {
                     while ((temp = (Ofertadores) objeto.readObject()) != null) {
                         listaOfertadores.add(temp);
-                        System.out.println(temp);
-                        for (Ofertadores i : listaOfertadores) {
-                            System.out.println(i);
-                        }
+                       
+                       
                     }
                 } catch (EOFException e) {
                 }
@@ -98,4 +99,19 @@ public class Ficheros_Binarios {
         }
     }
 
+    public boolean acceso(String usuario,String contra){
+        int cont=0;
+        for (Ofertadores i : listaOfertadores) {
+            System.out.println(i.getUsuario()+" "+i.getContra());
+            if (usuario.equals(i.getUsuario())&&contra.equals(i.getContra())){
+                cont++;
+                break;
+            }
+        }
+    if(cont>0){
+        return true;
+    }else{
+        return false;
+    }
+    }
 }

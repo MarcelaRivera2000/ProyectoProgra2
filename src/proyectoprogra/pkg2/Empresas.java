@@ -6,13 +6,14 @@
 package proyectoprogra.pkg2;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mvrivera
  */
-public class Empresas {
+public class Empresas implements Serializable{
     private ArrayList<Publicidad> publicidad=new ArrayList();
     private String nombre,mision,vision,tipo,objetivos,politicas,ubicacion,correo,dirreccion;
     private  Image imagenInterna;

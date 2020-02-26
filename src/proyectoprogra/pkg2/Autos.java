@@ -5,15 +5,15 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mvrivera
  */
-public class Autos {
+public class Autos implements Serializable{
     private String marca,modelo,cilindraje,tipo,transmision;
     private int año;
-
-        private static final long SerialVersionUID = 666L;
 
     public Autos() {
     }

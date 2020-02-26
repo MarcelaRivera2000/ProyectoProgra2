@@ -26,13 +26,31 @@ public class Archivos_Texto {
         this.lista = lista;
     }
 
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
+
+    public ArrayList<Usuario> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Usuario> lista) {
+        this.lista = lista;
+    }
+    public void setCliente(Cliente c){
+        lista.add((Cliente)c);
+    }
+
     public void Escribir() throws Exception {
         FileWriter fw = new FileWriter(archivo);
         BufferedWriter bw = new BufferedWriter(fw);
         for (Usuario p : lista) {
             if (p instanceof Cliente) {
-                System.out.println(p);
-                String prueba = p.getTipo() + "," + p.getUsuario() + "," + p.getContra() + "," + p.getNombre() + "," + p.getPais() + "," + p.getCorreo() + "," + "ubicacion" + "," + p.getFecha() + ";";
+                String prueba = p.getTipo() + "," + p.getUsuario() + "," + p.getContra() + "," + p.getNombre() + "," + p.getPais() + "," + p.getCorreo() + "," + p.getUbicacion() + "," + p.getFecha() + ";\n";
                 bw.append(prueba);
             }
         }
@@ -41,7 +59,7 @@ public class Archivos_Texto {
         fw.close();
     }
 
-    public ArrayList<Usuario> Leer() {
+    public void Leer() {
         Scanner sc = null;
         lista=new ArrayList();
         if (archivo.exists()) {
@@ -52,11 +70,19 @@ public class Archivos_Texto {
             sc.useDelimiter(";");
             while (sc.hasNext()) {
                 String p = sc.next();
-                String [] tokens =p.split(",");
-                lista.add(new Cliente(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7]));
+                String [] tokens =p.split(",");                
+                llenar(tokens);
             }
         }
-       
-        return lista;
     }
+    public void llenar( String [] tokens ){
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+        Cliente o = new Cliente(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7]);
+                System.out.println(o);
+
+    }
+
+    
 }

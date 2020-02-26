@@ -5,22 +5,28 @@
  */
 package proyectoprogra.pkg2;
 
+import java.awt.Image;
+import java.io.Serializable;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 /**
  *
  * @author Mvrivera
  */
-public class Usuario {
+public class Usuario implements Serializable {
     private String tipo,usuario,contra,nombre,pais,correo,ubicacion,fecha;
-    
+       private Icon fotografia;
     
 
     public Usuario() {
-    }
-
-    public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         
+    }
+public Usuario(Icon fotografia) {
+        this.fotografia=fotografia;
+    }
+    public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         this.tipo = tipo;
         this.usuario = usuario;
         this.contra = contra;
@@ -31,6 +37,7 @@ public class Usuario {
         this.fecha = fecha;
     }
 
+    
     public String getTipo() {
         return tipo;
     }
@@ -46,6 +53,15 @@ public class Usuario {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    public Icon getFotografia() {
+        return fotografia;
+    }
+
+    public void setFotografia(Icon fotografia) {
+        this.fotografia = fotografia;
+    }
+    
 
     public String getContra() {
         return contra;

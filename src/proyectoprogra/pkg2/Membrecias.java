@@ -5,14 +5,15 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mvrivera
  */
-public class Membrecias {
+public class Membrecias implements Serializable{
     private String tipo,descripcion;
 
-        private static final long SerialVersionUID = 999L;
 
     public Membrecias() {
     }
@@ -21,9 +22,7 @@ public class Membrecias {
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
-
-   
-
+    
     public String getTipo() {
         return tipo;
     }
