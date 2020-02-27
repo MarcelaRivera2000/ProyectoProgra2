@@ -86,7 +86,6 @@ public class Ficheros_Binarios {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
             for (Ofertadores2 t : listaOfertadores) {
-                System.out.println("1. "+t);
                 bw.writeObject(t);
             }
             bw.flush();

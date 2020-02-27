@@ -34,7 +34,7 @@ public class Ofertadores2 extends Usuario{
 
     @Override
     public String toString() {
-        return "Ofertadores2{" + "membrecias=" + membrecias + '}';
+        return "Ofertadores2{" +super.toString()+ "membrecias=" + membrecias + '}';
     }
     
     
