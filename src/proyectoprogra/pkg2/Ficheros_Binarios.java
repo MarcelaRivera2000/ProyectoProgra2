@@ -22,7 +22,8 @@ import java.util.logging.Logger;
 
 public class Ficheros_Binarios {
 
-    private ArrayList<Ofertadores> listaOfertadores = new ArrayList();
+   // private ArrayList<Ofertadores> listaOfertadores = new ArrayList();
+    private ArrayList<Ofertadores2> listaOfertadores = new ArrayList();
     private File archivo = null;
 
     public Ficheros_Binarios() {
@@ -32,11 +33,11 @@ public class Ficheros_Binarios {
         archivo = new File(path);
     }
 
-    public ArrayList<Ofertadores> getListaPersonas() {
+    public ArrayList<Ofertadores2> getListaPersonas() {
         return listaOfertadores;
     }
 
-    public void setListaPersonas(ArrayList<Ofertadores> listaAlumnos) {
+    public void setListaPersonas(ArrayList<Ofertadores2> listaAlumnos) {
         this.listaOfertadores = listaAlumnos;
     }
 
@@ -48,21 +49,21 @@ public class Ficheros_Binarios {
         this.archivo = archivo;
     }
 
-    public void setAlumno(Ofertadores a) {
+    public void setAlumno(Ofertadores2 a) {
         listaOfertadores.add(a);
     }
 
     public void cargarArchivo() {
         try {
             listaOfertadores = new ArrayList();
-            Ofertadores temp;
+            Ofertadores2 temp;
             if (archivo.exists()) {
                 FileInputStream entrada
                         = new FileInputStream(archivo);
                 ObjectInputStream objeto
                         = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Ofertadores) objeto.readObject()) != null) {
+                    while ((temp = (Ofertadores2) objeto.readObject()) != null) {
                         listaOfertadores.add(temp);
                        
                        
@@ -84,7 +85,7 @@ public class Ficheros_Binarios {
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (Ofertadores t : listaOfertadores) {
+            for (Ofertadores2 t : listaOfertadores) {
                 System.out.println("1. "+t);
                 bw.writeObject(t);
             }
@@ -97,21 +98,5 @@ public class Ficheros_Binarios {
             } catch (Exception ex) {
             }
         }
-    }
-
-    public boolean acceso(String usuario,String contra){
-        int cont=0;
-        for (Ofertadores i : listaOfertadores) {
-            System.out.println(i.getUsuario()+" "+i.getContra());
-            if (usuario.equals(i.getUsuario())&&contra.equals(i.getContra())){
-                cont++;
-                break;
-            }
-        }
-    if(cont>0){
-        return true;
-    }else{
-        return false;
-    }
     }
 }

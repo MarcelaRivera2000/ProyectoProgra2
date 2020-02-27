@@ -26,21 +26,28 @@ public class Login extends javax.swing.JFrame {
     String contra;
     ArrayList<Usuario> usuarios = new ArrayList();
     String marca, modelo, Cilindraje, tipoo, trans;
-    int ano,posi;
+    int ano, posi;
     Ficheros_Binarios b = new Ficheros_Binarios("./FicherosB.bin");
     Archivos_Texto f = new Archivos_Texto("Clientes.txt", usuarios);
-     
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
         b.cargarArchivo();
-        for (Ofertadores i : b.getListaPersonas()) {
-            usuarios.add((Ofertadores)i);
+        for (Ofertadores2 i : b.getListaPersonas()) {
+            usuarios.add((Ofertadores2) i);
         }
-       f.Leer();
+        /*f.Leer();
         for (Usuario p : f.getLista()) {
-             usuarios.add((Cliente)p);
+            usuarios.add((Cliente) p);
         }
+
+        Ofertadores ff = new Ofertadores("Ofertador", "juana", "123", "Marcela Rivera", "Honduras", "marci.eunicer@gmail.com", "ubicacion", "14/1/2020");
+        Cliente fff = new Cliente("Cliente", "carlos", "123", "Marcela Rivera", "Honduras", "marci.eunicer@gmail.com", "ubicacion", "14/1/2020");
+        Administrador a = new Administrador("Administrador", "marce", "123", "Marcela Rivera", "Honduras", "marci.eunicer@gmail.com", "ubicacion", "14/1/2020");
+        usuarios.add(a);
+        usuarios.add(fff);
+        usuarios.add(ff);*/
     }
 
     public void llenarTabla() {
@@ -54,12 +61,12 @@ public class Login extends javax.swing.JFrame {
             k.removeRow(i);
         }
         //Tabla membrecias
-        for (Membrecias i : ((Ofertadores) usuarios.get(posi)).getMembrecias()) {
+       for (Membrecias i : ((Ofertadores2) usuarios.get(posi)).getMembrecias()) {
             Object[] membrecia = {i.getTipo(), i.getDescripcion()};
             k.addRow(membrecia);
         }
         //Tabla autos
-        for (Autos i : ((Ofertadores) usuarios.get(posi)).getAutos()) {
+     for (Autos i : ((Ofertadores2) usuarios.get(posi)).getAutos()) {
             Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
             m.addRow(auto);
         }
@@ -245,22 +252,29 @@ public class Login extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton31 = new javax.swing.JButton();
         admin_paiss = new javax.swing.JComboBox<>();
-        P_Pri_Administrador = new javax.swing.JFrame();
-        jLabel60 = new javax.swing.JLabel();
+        PaginaPrincipalAdministrador = new javax.swing.JFrame();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
+        jButton32 = new javax.swing.JButton();
+        jLabel82 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenu21 = new javax.swing.JMenu();
         TablaMembrecias = new javax.swing.JDialog();
         jScrollPane3 = new javax.swing.JScrollPane();
         jT_membrecias1 = new javax.swing.JTable();
@@ -276,8 +290,97 @@ public class Login extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu11 = new javax.swing.JMenu();
+        VentaDirecta = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jMenuBar5 = new javax.swing.JMenuBar();
+        jMenu9 = new javax.swing.JMenu();
+        jMenu16 = new javax.swing.JMenu();
+        CitasCarwash = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton18 = new javax.swing.JButton();
+        jMenuBar6 = new javax.swing.JMenuBar();
+        jMenu17 = new javax.swing.JMenu();
+        jMenu18 = new javax.swing.JMenu();
+        PerfilEmpresa = new javax.swing.JFrame();
+        jButton27 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        ImagenEmpresa = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        jTextArea8 = new javax.swing.JTextArea();
+        jLabel69 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        jMenuBar8 = new javax.swing.JMenuBar();
+        jMenu22 = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
+        jMenu23 = new javax.swing.JMenu();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenu24 = new javax.swing.JMenu();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenu25 = new javax.swing.JMenu();
+        jMenu26 = new javax.swing.JMenu();
+        jMenu27 = new javax.swing.JMenu();
+        PaginaPrincipalCliente = new javax.swing.JFrame();
+        jMenuBar7 = new javax.swing.JMenuBar();
+        jMenu19 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
+        jMenu20 = new javax.swing.JMenu();
+        jMenu29 = new javax.swing.JMenu();
+        jMenu28 = new javax.swing.JMenu();
+        Subasta = new javax.swing.JMenu();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenuItem40 = new javax.swing.JMenuItem();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jButton28 = new javax.swing.JButton();
+        jLabel80 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel81 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -485,6 +588,11 @@ public class Login extends javax.swing.JFrame {
         jMenu14.setText("Carwash");
 
         jMenuItem22.setText("Ver Citas");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenu14.add(jMenuItem22);
 
         jMenuBar2.add(jMenu14);
@@ -1529,7 +1637,38 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 22, Short.MAX_VALUE))
         );
 
-        jLabel60.setText("Tabla de usuarios,opciones de modificar cualquier cosa de los usuarios");
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Usuario", "Contraseña", "Pais", "Cumpleaños", "Correo", "Tipo Usuario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane13.setViewportView(jTable5);
+
+        jButton29.setText("Mostrar Usuarios Ofertadores");
+
+        jButton30.setText("Mostrar Usuarios Clientes");
+
+        jButton32.setText("Mostrar Usuarios Administradores");
+
+        jLabel82.setText("USUARIOS ");
 
         jMenu1.setText("Perfil");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1553,9 +1692,6 @@ public class Login extends javax.swing.JFrame {
         jMenuItem16.setText("Ver Perfil");
         jMenu3.add(jMenuItem16);
 
-        jMenuItem17.setText("Modificar Perfil");
-        jMenu3.add(jMenuItem17);
-
         jMenuBar1.add(jMenu3);
 
         jMenu2.setText("Administrar usuarios");
@@ -1573,13 +1709,19 @@ public class Login extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
-        jMenuItem15.setText("Modificar Administrador");
+        jMenuItem27.setText("Crear Ofertador");
+        jMenu2.add(jMenuItem27);
+
+        jMenuItem26.setText("Crear Cliente");
+        jMenu2.add(jMenuItem26);
+
+        jMenuItem15.setText("Administrar Usuarios Administradores");
         jMenu2.add(jMenuItem15);
 
-        jMenuItem2.setText("Modificar Cliente");
+        jMenuItem2.setText("Administrar Usuarios  Clientes");
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("Modificar Ofertador");
+        jMenuItem3.setText("Administrar Usuarios Ofertadores");
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -1590,23 +1732,45 @@ public class Login extends javax.swing.JFrame {
         jMenu5.setText("Reporteria");
         jMenuBar1.add(jMenu5);
 
-        P_Pri_Administrador.setJMenuBar(jMenuBar1);
+        jMenu21.setText("Reportes");
+        jMenuBar1.add(jMenu21);
 
-        javax.swing.GroupLayout P_Pri_AdministradorLayout = new javax.swing.GroupLayout(P_Pri_Administrador.getContentPane());
-        P_Pri_Administrador.getContentPane().setLayout(P_Pri_AdministradorLayout);
-        P_Pri_AdministradorLayout.setHorizontalGroup(
-            P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel60)
-                .addContainerGap(700, Short.MAX_VALUE))
+        PaginaPrincipalAdministrador.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout PaginaPrincipalAdministradorLayout = new javax.swing.GroupLayout(PaginaPrincipalAdministrador.getContentPane());
+        PaginaPrincipalAdministrador.getContentPane().setLayout(PaginaPrincipalAdministradorLayout);
+        PaginaPrincipalAdministradorLayout.setHorizontalGroup(
+            PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
+                        .addComponent(jButton32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
+                        .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel82)
+                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 1104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 245, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        P_Pri_AdministradorLayout.setVerticalGroup(
-            P_Pri_AdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Pri_AdministradorLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(jLabel60)
-                .addContainerGap(655, Short.MAX_VALUE))
+        PaginaPrincipalAdministradorLayout.setVerticalGroup(
+            PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel82)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton32)
+                    .addComponent(jButton29)
+                    .addComponent(jButton30))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
         jT_membrecias1.setModel(new javax.swing.table.DefaultTableModel(
@@ -1718,9 +1882,475 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jMenuItem19.setText("jMenuItem19");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jMenuItem23.setText("jMenuItem23");
+            },
+            new String [] {
+                "Cliente", "Auto Solicitado", "Precio", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel14.setText("Solicitudes De Venta De Carros");
+
+        jButton13.setText("Aceptar Propuesta");
+
+        jButton17.setText("Rechazar Propuesta");
+
+        jMenu9.setText("Volver");
+        jMenuBar5.add(jMenu9);
+
+        jMenu16.setText("VENTA DIRECTA CON CLIENTES");
+        jMenuBar5.add(jMenu16);
+
+        VentaDirecta.setJMenuBar(jMenuBar5);
+
+        javax.swing.GroupLayout VentaDirectaLayout = new javax.swing.GroupLayout(VentaDirecta.getContentPane());
+        VentaDirecta.getContentPane().setLayout(VentaDirectaLayout);
+        VentaDirectaLayout.setHorizontalGroup(
+            VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VentaDirectaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VentaDirectaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        VentaDirectaLayout.setVerticalGroup(
+            VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VentaDirectaLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addGroup(VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(VentaDirectaLayout.createSequentialGroup()
+                        .addComponent(jButton13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton17)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha", "Hora", "Auto", "Cliente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton18.setText("Aceptar Cita");
+
+        jMenu17.setText("Volver");
+        jMenuBar6.add(jMenu17);
+
+        jMenu18.setText("CITAS DE CLIENTES AL CARWASH");
+        jMenuBar6.add(jMenu18);
+
+        CitasCarwash.setJMenuBar(jMenuBar6);
+
+        javax.swing.GroupLayout CitasCarwashLayout = new javax.swing.GroupLayout(CitasCarwash.getContentPane());
+        CitasCarwash.getContentPane().setLayout(CitasCarwashLayout);
+        CitasCarwashLayout.setHorizontalGroup(
+            CitasCarwashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CitasCarwashLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        CitasCarwashLayout.setVerticalGroup(
+            CitasCarwashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CitasCarwashLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(CitasCarwashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CitasCarwashLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jButton18))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        PerfilEmpresa.getContentPane().setLayout(null);
+
+        jButton27.setText("Logo de cambio");
+        PerfilEmpresa.getContentPane().add(jButton27);
+        jButton27.setBounds(470, 170, 50, 40);
+
+        jLabel25.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel25.setText("AUTOBOWLEE");
+        PerfilEmpresa.getContentPane().add(jLabel25);
+        jLabel25.setBounds(20, 150, 490, 60);
+
+        ImagenEmpresa.setText("IMAGEN");
+        PerfilEmpresa.getContentPane().add(ImagenEmpresa);
+        ImagenEmpresa.setBounds(0, 0, 1500, 210);
+
+        jLabel24.setText("Mision:");
+        PerfilEmpresa.getContentPane().add(jLabel24);
+        jLabel24.setBounds(30, 220, 40, 16);
+
+        jLabel59.setText("Vision:");
+        PerfilEmpresa.getContentPane().add(jLabel59);
+        jLabel59.setBounds(30, 350, 38, 16);
+
+        jLabel60.setText("Objetivos");
+        PerfilEmpresa.getContentPane().add(jLabel60);
+        jLabel60.setBounds(30, 490, 70, 16);
+
+        jLabel62.setText("Politicas");
+        PerfilEmpresa.getContentPane().add(jLabel62);
+        jLabel62.setBounds(30, 630, 60, 16);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jScrollPane17.setViewportView(jTextArea5);
+
+        PerfilEmpresa.getContentPane().add(jScrollPane17);
+        jScrollPane17.setBounds(30, 650, 680, 90);
+
+        jTextArea6.setColumns(20);
+        jTextArea6.setRows(5);
+        jScrollPane18.setViewportView(jTextArea6);
+
+        PerfilEmpresa.getContentPane().add(jScrollPane18);
+        jScrollPane18.setBounds(30, 240, 680, 90);
+
+        jTextArea7.setColumns(20);
+        jTextArea7.setRows(5);
+        jScrollPane19.setViewportView(jTextArea7);
+
+        PerfilEmpresa.getContentPane().add(jScrollPane19);
+        jScrollPane19.setBounds(30, 370, 680, 90);
+
+        jTextArea8.setColumns(20);
+        jTextArea8.setRows(5);
+        jScrollPane20.setViewportView(jTextArea8);
+
+        PerfilEmpresa.getContentPane().add(jScrollPane20);
+        jScrollPane20.setBounds(30, 510, 680, 90);
+
+        jLabel69.setText("Ubicacion:");
+        PerfilEmpresa.getContentPane().add(jLabel69);
+        jLabel69.setBounds(1000, 240, 100, 16);
+        PerfilEmpresa.getContentPane().add(jTextField8);
+        jTextField8.setBounds(1140, 540, 290, 40);
+
+        jLabel70.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel70.setText("CONTACTANOS");
+        PerfilEmpresa.getContentPane().add(jLabel70);
+        jLabel70.setBounds(1070, 380, 150, 24);
+
+        jLabel71.setText(" (imagen tel)");
+        PerfilEmpresa.getContentPane().add(jLabel71);
+        jLabel71.setBounds(1060, 420, 70, 40);
+        PerfilEmpresa.getContentPane().add(jTextField9);
+        jTextField9.setBounds(1140, 420, 290, 40);
+        PerfilEmpresa.getContentPane().add(jTextField10);
+        jTextField10.setBounds(1140, 480, 290, 40);
+
+        jLabel72.setText("(imagen Correo)");
+        PerfilEmpresa.getContentPane().add(jLabel72);
+        jLabel72.setBounds(1030, 480, 100, 40);
+
+        jLabel73.setText("(Imagen Dirreccion)");
+        PerfilEmpresa.getContentPane().add(jLabel73);
+        jLabel73.setBounds(1010, 540, 110, 40);
+
+        jMenu22.setText("Perfil");
+        jMenu22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu22MouseClicked(evt);
+            }
+        });
+
+        jMenuItem17.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem17.setText("Ver Perfil");
+        jMenu22.add(jMenuItem17);
+
+        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem19.setText("Log Out");
+        jMenu22.add(jMenuItem19);
+
+        jMenuBar8.add(jMenu22);
+
+        jMenu23.setText("Perfil de la empresa");
+
+        jMenuItem34.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem34.setText("Guardar Cambios");
+        jMenu23.add(jMenuItem34);
+
+        jMenuItem35.setText("Ver Como Cliente");
+        jMenu23.add(jMenuItem35);
+
+        jMenuBar8.add(jMenu23);
+
+        jMenu24.setText("Administrar usuarios");
+        jMenu24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu24MouseClicked(evt);
+            }
+        });
+
+        jMenuItem28.setText("Crear Administrador");
+        jMenuItem28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem28MouseClicked(evt);
+            }
+        });
+        jMenu24.add(jMenuItem28);
+
+        jMenuItem29.setText("Crear Ofertador");
+        jMenu24.add(jMenuItem29);
+
+        jMenuItem30.setText("Crear Cliente");
+        jMenu24.add(jMenuItem30);
+
+        jMenuItem31.setText("Administrar Usuarios Administradores");
+        jMenu24.add(jMenuItem31);
+
+        jMenuItem32.setText("Administrar Usuarios  Clientes");
+        jMenu24.add(jMenuItem32);
+
+        jMenuItem33.setText("Administrar Usuarios Ofertadores");
+        jMenu24.add(jMenuItem33);
+
+        jMenuBar8.add(jMenu24);
+
+        jMenu25.setText("Subasta");
+        jMenuBar8.add(jMenu25);
+
+        jMenu26.setText("Reporteria");
+        jMenuBar8.add(jMenu26);
+
+        jMenu27.setText("Reportes");
+        jMenuBar8.add(jMenu27);
+
+        PerfilEmpresa.setJMenuBar(jMenuBar8);
+
+        jMenuItem23.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem23.setText("Ver Perfil");
+        jMenuItem23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem23MouseClicked(evt);
+            }
+        });
+        jMenu19.add(jMenuItem23);
+
+        jMenuItem36.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem36.setText("Log Out");
+        jMenuItem36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem36MousePressed(evt);
+            }
+        });
+        jMenu19.add(jMenuItem36);
+
+        jMenuBar7.add(jMenu19);
+
+        jMenu20.setText("Perfil");
+        jMenuBar7.add(jMenu20);
+
+        jMenu29.setText("Mis Facturas");
+        jMenuBar7.add(jMenu29);
+
+        jMenu28.setText("Busqueda");
+        jMenuBar7.add(jMenu28);
+
+        Subasta.setText("Navegar");
+
+        jMenuItem37.setText("Comprar AutoMovil");
+        Subasta.add(jMenuItem37);
+
+        jMenuItem38.setText("Subasta Online");
+        Subasta.add(jMenuItem38);
+
+        jMenuItem39.setText("Renta autos");
+        Subasta.add(jMenuItem39);
+
+        jMenuItem40.setText("Carwash");
+        jMenuItem40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem40ActionPerformed(evt);
+            }
+        });
+        Subasta.add(jMenuItem40);
+
+        jMenuBar7.add(Subasta);
+
+        PaginaPrincipalCliente.setJMenuBar(jMenuBar7);
+
+        javax.swing.GroupLayout PaginaPrincipalClienteLayout = new javax.swing.GroupLayout(PaginaPrincipalCliente.getContentPane());
+        PaginaPrincipalCliente.getContentPane().setLayout(PaginaPrincipalClienteLayout);
+        PaginaPrincipalClienteLayout.setHorizontalGroup(
+            PaginaPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1357, Short.MAX_VALUE)
+        );
+        PaginaPrincipalClienteLayout.setVerticalGroup(
+            PaginaPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 806, Short.MAX_VALUE)
+        );
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Imagen", "Marca", "Modelo", "Cilindraje", "Tipo", "Transmision", "Año"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane12.setViewportView(jTable3);
+
+        jLabel74.setText("Marca:");
+
+        jLabel75.setText("Modelo:");
+
+        jLabel76.setText("Cilindraje:");
+
+        jLabel77.setText("Tipo:");
+
+        jLabel78.setText("Transmision:");
+
+        jLabel79.setText("Año:");
+
+        jButton28.setText("Buscar");
+
+        jLabel80.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel80.setText("BUSQUEDA DE AUTOMOVILES");
+
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("VENTA");
+
+        jRadioButton2.setText("RENTA");
+
+        jLabel81.setText("Seleccione el tipo de servicio deseado");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 1079, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialog1Layout.createSequentialGroup()
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jDialog1Layout.createSequentialGroup()
+                                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel75)
+                                            .addComponent(jLabel76)
+                                            .addComponent(jLabel74))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(73, 73, 73)
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel77)
+                                    .addComponent(jLabel78)
+                                    .addComponent(jLabel79))
+                                .addGap(16, 16, 16)
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(146, 146, 146)
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jDialog1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jRadioButton2))
+                                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(25, 25, 25)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel81)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel74))
+                        .addGap(44, 44, 44)
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel75))
+                        .addGap(40, 40, 40)
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel76)))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel77)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel79)))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel78)))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1804,22 +2434,28 @@ public class Login extends javax.swing.JFrame {
                 posi = i;
                 cont++;
                 UsuariosName.setText(usuarios.get(posi).getNombre());
-                if (usuarios.get(i) instanceof Ofertadores) {
+                if (usuarios.get(i) instanceof Ofertadores2) {
 
                     llenarTabla();
                     this.PaginaPrincipalOfertador.pack();
                     this.PaginaPrincipalOfertador.setLocationRelativeTo(this);
                     this.PaginaPrincipalOfertador.setExtendedState(MAXIMIZED_BOTH);
+                    System.out.println(PaginaPrincipalOfertador.getWidth() + " " + PaginaPrincipalOfertador.getHeight());
                     this.setVisible(false);
                     this.PaginaPrincipalOfertador.setVisible(true);
                 } else if (usuarios.get(i) instanceof Administrador) {
-                    this.P_Pri_Administrador.pack();
-                    this.P_Pri_Administrador.setLocationRelativeTo(this);
-                    this.P_Pri_Administrador.setExtendedState(MAXIMIZED_BOTH);
+                    this.PaginaPrincipalAdministrador.pack();
+                    this.PaginaPrincipalAdministrador.setLocationRelativeTo(this);
+                    this.PaginaPrincipalAdministrador.setExtendedState(MAXIMIZED_BOTH);
                     this.setVisible(false);
-                    this.P_Pri_Administrador.setVisible(true);
+                    this.PaginaPrincipalAdministrador.setVisible(true);
                 } else if (usuarios.get(i) instanceof Cliente) {
-                    System.out.println("kpedo bro");
+                    this.PaginaPrincipalCliente.pack();
+                    this.PaginaPrincipalCliente.setLocationRelativeTo(this);
+                    this.PaginaPrincipalCliente.setExtendedState(MAXIMIZED_BOTH);
+                    this.setVisible(false);
+                    this.PaginaPrincipalCliente.setVisible(true);
+
                 }
                 break;
             }
@@ -1870,8 +2506,7 @@ public class Login extends javax.swing.JFrame {
                         f.Leer();
                         f.setCliente(e);
                         f.Escribir();
-                        
-                      
+
                     } catch (Exception ex) {
                         System.out.println("kpedo");
                     }
@@ -1887,7 +2522,6 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tipo_usuarioActionPerformed
 
-   
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         this.Restablecer.pack();
@@ -1924,25 +2558,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
-        Ofertadores p = new Ofertadores(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText());
+        Ofertadores2 p = new Ofertadores2(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText());
         usuarios.add(p);
         try {
             if (jCheckBox_Carwash.isSelected()) {
                 cont++;
-                ((Ofertadores) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
+                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
             }
             if (jCheckBox_Directo.isSelected()) {
                 cont++;
-                ((Ofertadores) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Vendedor_Directo(" ", 0, "Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
+                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Vendedor_Directo(" ", 0, "Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
             }
             if (jCheckBox_Rentador.isSelected()) {
                 cont++;
-                ((Ofertadores) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas")));
+               ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas")));
 
             }
             if (jCheckBox_Subastador.isSelected()) {
                 cont++;
-                ((Ofertadores) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
+               ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -1973,7 +2607,7 @@ public class Login extends javax.swing.JFrame {
         tipo = Ag_tipo.getText();
         trans = Ag_Tranmision.getText();
         ano = Integer.parseInt(Ag_ano.getText());
-        ((Ofertadores) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
+        ((Ofertadores2) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
         llenarTabla();
         Ag_Cilindraje.setText("");
         Ag_Tranmision.setText("");
@@ -2004,17 +2638,17 @@ public class Login extends javax.swing.JFrame {
             String op = (String) opcion;
             if (op.equals("Marca")) {
                 marca = JOptionPane.showInputDialog("Nombre de la nueva marca: ");
-                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setMarca(marca);
+                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setMarca(marca);
 
             } else if (op.equals("Modelo")) {
                 modelo = JOptionPane.showInputDialog("Nombre de el nuevo modelo: ");
-                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setModelo(modelo);
+                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setModelo(modelo);
             } else if (op.equals("Año")) {
                 ano = Integer.parseInt(JOptionPane.showInputDialog("Nombre de la nueva marca: "));
-                ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setAño(ano);
+                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setAño(ano);
             } else if (op.equals("Tipo")) {
                 int cont2 = 0;
-                for (Membrecias membrecias : (((Ofertadores) usuarios.get(posi)).getMembrecias())) {
+                for (Membrecias membrecias : (((Ofertadores2) usuarios.get(posi)).getMembrecias())) {
                     System.out.println("entraaaa");
                     if (membrecias instanceof Renta) {
                         cont2++;
@@ -2027,7 +2661,7 @@ public class Login extends javax.swing.JFrame {
                     Object kk = JOptionPane.showInputDialog(null, "Selecciona el tipo de carro al que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, tipop, tipop[0]);
                     String kkk = (String) kk;
                     System.out.println("kk");
-                    ((Ofertadores) usuarios.get(posi)).getAutos().get(o).setTipo(kkk);
+                    ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setTipo(kkk);
                     llenarTabla();
                 }
 
@@ -2047,7 +2681,7 @@ public class Login extends javax.swing.JFrame {
         DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
         if (filaEliminar >= 0) {
             tm.removeRow(filaEliminar);
-            ((Ofertadores) usuarios.get(posi)).getAutos().remove(filaEliminar);
+            ((Ofertadores2) usuarios.get(posi)).getAutos().remove(filaEliminar);
         }
 
 
@@ -2083,7 +2717,7 @@ public class Login extends javax.swing.JFrame {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         this.Perfil_U.pack();
         this.Perfil_U.setLocationRelativeTo(this);
-        this.P_Pri_Administrador.setVisible(false);
+        this.PaginaPrincipalAdministrador.setVisible(false);
         this.Perfil_U.setVisible(true);
         N_Perfil.setText(usuarios.get(posi).getNombre());
         U_Perfil.setText(usuarios.get(posi).getUsuario());
@@ -2225,6 +2859,47 @@ public class Login extends javax.swing.JFrame {
         contra_L.setText("");
     }//GEN-LAST:event_jMenuItem7MousePressed
 
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
+
+    private void jMenu22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu22MouseClicked
+
+    private void jMenuItem28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem28MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem28MouseClicked
+
+    private void jMenu24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu24MouseClicked
+
+    private void jMenuItem40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem40ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem40ActionPerformed
+
+    private void jMenuItem23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem23MouseClicked
+        this.Perfil_U.pack();
+        this.Perfil_U.setLocationRelativeTo(this);
+        this.Perfil_U.setVisible(true);
+        N_Perfil.setText(usuarios.get(posi).getNombre());
+        U_Perfil.setText(usuarios.get(posi).getUsuario());
+        P_Perfil.setText(usuarios.get(posi).getPais());
+        Co_Perfil.setText(usuarios.get(posi).getCorreo());
+        Cu_Perfil.setText(usuarios.get(posi).getFecha());
+        T_Perfil.setText(usuarios.get(posi).getTipo());
+    }//GEN-LAST:event_jMenuItem23MouseClicked
+
+    private void jMenuItem36MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem36MousePressed
+        PaginaPrincipalCliente.pack();
+        PaginaPrincipalCliente.setVisible(false);
+        this.pack();
+        this.setLocationRelativeTo(this);
+        this.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem36MousePressed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2268,19 +2943,24 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JFrame Agregar_Admins;
     private javax.swing.JFrame Agregar_Carro_OF;
     private javax.swing.JFrame Busqueda;
+    private javax.swing.JDialog CitasCarwash;
     private javax.swing.JFrame Cliente;
     private javax.swing.JLabel Co_Perfil;
     private javax.swing.JLabel Cu_Perfil;
     private javax.swing.JTextArea Des_Publicidad;
+    private javax.swing.JLabel ImagenEmpresa;
     private javax.swing.JFrame Membrecias_Ofertadores;
     private javax.swing.JLabel N_Perfil;
     private javax.swing.JLabel P_Perfil;
-    private javax.swing.JFrame P_Pri_Administrador;
+    private javax.swing.JFrame PaginaPrincipalAdministrador;
+    private javax.swing.JFrame PaginaPrincipalCliente;
     private javax.swing.JFrame PaginaPrincipalOfertador;
+    private javax.swing.JFrame PerfilEmpresa;
     private javax.swing.JFrame Perfil_U;
     private javax.swing.JFrame Publicidad;
     private javax.swing.JFrame Registro;
     private javax.swing.JFrame Restablecer;
+    private javax.swing.JMenu Subasta;
     private javax.swing.JFrame Subastador;
     private javax.swing.JLabel T_Perfil;
     private javax.swing.JDialog TablaMembrecias;
@@ -2289,12 +2969,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable UsuariosAdmin_jt;
     private javax.swing.JMenu UsuariosName;
     private javax.swing.JFrame VendedorDirecto;
+    private javax.swing.JDialog VentaDirecta;
     private javax.swing.JPasswordField admin_contra;
     private javax.swing.JTextField admin_correo;
     private datechooser.beans.DateChooserCombo admin_cumple;
     private javax.swing.JTextField admin_nombre;
     private javax.swing.JComboBox<String> admin_paiss;
     private javax.swing.JTextField admin_usuario;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
     private javax.swing.JTextField cor_R;
@@ -2303,9 +2985,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
@@ -2315,8 +3000,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2331,11 +3021,19 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_Rentador1;
     private javax.swing.JCheckBox jCheckBox_Subastador;
     private javax.swing.JCheckBox jCheckBox_Subastador1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2346,6 +3044,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -2382,17 +3082,33 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
@@ -2401,17 +3117,36 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu14;
     private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
+    private javax.swing.JMenu jMenu23;
+    private javax.swing.JMenu jMenu24;
+    private javax.swing.JMenu jMenu25;
+    private javax.swing.JMenu jMenu26;
+    private javax.swing.JMenu jMenu27;
+    private javax.swing.JMenu jMenu28;
+    private javax.swing.JMenu jMenu29;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;
+    private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenuBar jMenuBar6;
+    private javax.swing.JMenuBar jMenuBar7;
+    private javax.swing.JMenuBar jMenuBar8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -2430,16 +3165,41 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -2452,16 +3212,27 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador3;
     private javax.swing.JTable jT_Publicidad;
     private javax.swing.JTable jT_membrecias1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextArea8;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lb_foto;
     private javax.swing.JMenu menufoto;
     private javax.swing.JTextField ni_R;

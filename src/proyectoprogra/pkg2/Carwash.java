@@ -5,14 +5,15 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mvrivera
  */
-public class Carwash extends Membrecias{
-    private ArrayList<String> citas=new ArrayList();
+public class Carwash extends Membrecias  implements Serializable{
+    private ArrayList<CitasCarwash> citas=new ArrayList();
 
     public Carwash() {
     }
@@ -22,11 +23,11 @@ public class Carwash extends Membrecias{
     }
     
 
-    public ArrayList<String> getCitas() {
+    public ArrayList<CitasCarwash> getCitas() {
         return citas;
     }
 
-    public void setCitas(ArrayList<String> citas) {
+    public void setCitas(ArrayList<CitasCarwash> citas) {
         this.citas = citas;
     }
 

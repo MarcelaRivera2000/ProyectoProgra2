@@ -1,31 +1,19 @@
-
 package proyectoprogra.pkg2;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ofertadores extends Usuario implements Serializable{
+public class Ofertadores2 extends Usuario{
 
     private ArrayList<Membrecias> membrecias=new ArrayList();
-    private ArrayList<Autos> autos=new ArrayList();
-    private ArrayList<Empresas> empresa=new ArrayList();
+        private ArrayList<Autos> autos=new ArrayList();
 
-    
-    public Ofertadores() {
+    public Ofertadores2() {
     }
 
-    public Ofertadores(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
+    public Ofertadores2(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
     }
-
-    public ArrayList<Empresas> getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(ArrayList<Empresas> empresa) {
-        this.empresa = empresa;
-    }
-    
 
     public ArrayList<Membrecias> getMembrecias() {
         return membrecias;
@@ -42,12 +30,18 @@ public class Ofertadores extends Usuario implements Serializable{
     public void setAutos(ArrayList<Autos> autos) {
         this.autos = autos;
     }
+    
 
     @Override
     public String toString() {
-        return "Ofertadores{"+super.toString() + " membrecias=" + membrecias + ", autos=" + autos + ", empresa=" + empresa + '}';
+        return "Ofertadores2{" + "membrecias=" + membrecias + '}';
     }
+    
+    
 
+ 
+
+   
  
     
     

@@ -5,11 +5,13 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mvrivera
  */
-public class Publicidad {
+public class Publicidad implements Serializable{
     private String titulo,usuario,descripcion;
 
     public Publicidad() {
