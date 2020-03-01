@@ -1,0 +1,2 @@
+Cliente,gabriel,123,gabriel Vasquez,Honduras,gabru@gmail.com,hola,27/02/20;
+Cliente,lilian,123,lilan Vasquez,Honduras,lilian@gmail.com,hola,27/02/20;

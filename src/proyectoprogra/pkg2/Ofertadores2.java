@@ -30,12 +30,14 @@ public class Ofertadores2 extends Usuario{
     public void setAutos(ArrayList<Autos> autos) {
         this.autos = autos;
     }
-    
 
     @Override
     public String toString() {
-        return "Ofertadores2{" +super.toString()+ "membrecias=" + membrecias + '}';
+        return "Ofertadores2{" + "membrecias=" + membrecias + ", autos=" + autos + '}';
     }
+    
+
+    
     
     
 

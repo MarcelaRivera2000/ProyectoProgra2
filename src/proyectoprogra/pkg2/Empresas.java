@@ -15,16 +15,20 @@ import java.util.ArrayList;
  */
 public class Empresas implements Serializable{
     private ArrayList<Publicidad> publicidad=new ArrayList();
-    private String nombre,mision,vision,tipo,objetivos,politicas,ubicacion,correo,dirreccion;
+    private String nombre,mision,vision,telefono,objetivos,politicas,ubicacion,correo,dirreccion;
     private  Image imagenInterna;
 
         private static final long SerialVersionUID = 333L;
 
-    public Empresas(String nombre, String tipo,String mision, String vision, String objetivos, String politicas, String ubicacion, String correo, String dirreccion) {
+    public Empresas() {
+    }
+
+        
+    public Empresas(String nombre,String mision, String vision, String objetivos, String politicas, String ubicacion, String correo, String dirreccion,String telefono) {
         this.nombre = nombre;
         this.mision = mision;
         this.vision = vision;
-        this.tipo=tipo;
+        this.telefono=telefono;
         this.objetivos = objetivos;
         this.politicas = politicas;
         this.ubicacion = ubicacion;
@@ -36,12 +40,12 @@ public class Empresas implements Serializable{
         this.imagenInterna = imagenInterna;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
     
