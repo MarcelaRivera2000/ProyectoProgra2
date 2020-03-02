@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 
 public class Ficheros_Binarios {
 
-   // private ArrayList<Ofertadores> listaOfertadores = new ArrayList();
     private ArrayList<Ofertadores2> listaOfertadores = new ArrayList();
     private File archivo = null;
 
@@ -58,15 +57,11 @@ public class Ficheros_Binarios {
             listaOfertadores = new ArrayList();
             Ofertadores2 temp;
             if (archivo.exists()) {
-                FileInputStream entrada
-                        = new FileInputStream(archivo);
-                ObjectInputStream objeto
-                        = new ObjectInputStream(entrada);
+                FileInputStream entrada= new FileInputStream(archivo);
+                ObjectInputStream objeto= new ObjectInputStream(entrada);
                 try {
                     while ((temp = (Ofertadores2) objeto.readObject()) != null) {
                         listaOfertadores.add(temp);
-                       
-                       
                     }
                 } catch (EOFException e) {
                 }

@@ -2,6 +2,7 @@ package proyectoprogra.pkg2;
 
 import datechooser.beans.DateChooserDialog;
 import datechooser.beans.DateChooserPanel;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -25,35 +26,17 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setSize(420, 540);
         b.cargarArchivo();
         for (Ofertadores2 i : b.getListaPersonas()) {
             usuarios.add((Ofertadores2) i);
-            System.out.println("ofe " + i.getUsuario() + " " + i.getContra());
         }
         f.Leer();
         for (Usuario p : f.getLista()) {
-            System.out.println("cli " + p.getUsuario() + " " + p.getContra());
-
             usuarios.add((Cliente) p);
         }
         usuarios.add(new Administrador("Administrador", "marcel", "123", "Marcela Rivera", "Honduras", "Marci.eunicer@gmail.com", "Ubicacion", "14/1/2020"));
-        //        String prueba = p.getNombre()+ "," + p.getMision()+ "," + p.getVision()+ "," + p.getObjetivos()+ ","
-        //+ p.getPoliticas()+ "," + p.getUbicacion()+ "," + p.getCorreo() + "," + p.getDirreccion()+","+p.getTelefono()+ ";\n";
-
-         /*Empresas u=new Empresas("Vehiculos.com","Inspirar momentos de optimismo y felicidad. Crear valor y hacer la diferencia.",
-                 "Hacer excelentes productos y poner el foco en la innovación." ,"Excelencia & enfoque & desarrollo e innovación.",
-                 "La empresa cumplirá los requisitos acordados con los clientes y Brindar trato justo.",
-                 "UBICACION",
-                 "VehiculosBowlee@gmail.com",
-                 "Tu corrazon",
-                 "97049130");
-        f2.Leer();
-        f2.setEmpresa(u);*/
-        try {
-           // f2.Escribir();
-            u = f2.Leer();
-        } catch (Exception ex) {
-        }
+        u = f2.Leer();
     }
 
     public void llenarTabla() {
@@ -62,38 +45,26 @@ public class Login extends javax.swing.JFrame {
             for (int i = t.getRowCount() - 1; i >= 0; i--) {
                 t.removeRow(i);
             }
-
             for (Usuario i : usuarios) {
                 Object[] usuarios = {i.getNombre(), i.getUsuario(), i.getContra(), i.getPais(), i.getFecha(), i.getCorreo(), i.getTipo()};
                 t.addRow(usuarios);
 
             }
             TodosUsuarios.setModel(t);
-
         } else if (usuarios.get(posi) instanceof Ofertadores2) {
-            DefaultTableModel m = (DefaultTableModel) jT_C_ofertador2.getModel();
-            DefaultTableModel k = (DefaultTableModel) jT_membrecias1.getModel();
 
-            for (int i = m.getRowCount() - 1; i >= 0; i--) {
-                m.removeRow(i);
-            }
-            for (int i = k.getRowCount() - 1; i >= 0; i--) {
-                k.removeRow(i);
+            DefaultTableModel membrecias = (DefaultTableModel) jT_membrecias1.getModel();
+
+            for (int i = membrecias.getRowCount() - 1; i >= 0; i--) {
+                membrecias.removeRow(i);
             }
 
             //Tabla membrecias
             for (Membrecias i : ((Ofertadores2) usuarios.get(posi)).getMembrecias()) {
                 Object[] membrecia = {i.getTipo(), i.getDescripcion()};
-                k.addRow(membrecia);
+                membrecias.addRow(membrecia);
             }
-            //Tabla autos
-            for (Autos i : ((Ofertadores2) usuarios.get(posi)).getAutos()) {
-                Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
-                m.addRow(auto);
-            }
-            jT_C_ofertador2.setModel(m);
-            jT_C_ofertador3.setModel(m);
-            jT_membrecias1.setModel(k);
+            jT_membrecias1.setModel(membrecias);
 
         } else if (usuarios.get(posi) instanceof Cliente) {
 
@@ -130,16 +101,17 @@ public class Login extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
+        botonVendedor = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
-        jMenu13 = new javax.swing.JMenu();
+        botonSubasta = new javax.swing.JMenu();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
-        jMenu14 = new javax.swing.JMenu();
+        botonCarwash = new javax.swing.JMenu();
         jMenuItem22 = new javax.swing.JMenuItem();
-        jMenu15 = new javax.swing.JMenu();
+        botonRenta = new javax.swing.JMenu();
         jMenuItem24 = new javax.swing.JMenuItem();
         jMenuItem25 = new javax.swing.JMenuItem();
         Restablecer = new javax.swing.JFrame();
@@ -182,13 +154,6 @@ public class Login extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
         jT_C_ofertador1 = new javax.swing.JTable();
-        Subastador = new javax.swing.JFrame();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         Publicidad = new javax.swing.JFrame();
         Ti_Publicidad = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -278,13 +243,38 @@ public class Login extends javax.swing.JFrame {
         jButton31 = new javax.swing.JButton();
         admin_paiss = new javax.swing.JComboBox<>();
         PaginaPrincipalAdministrador = new javax.swing.JFrame();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
+        jLabel113 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
         TodosUsuarios = new javax.swing.JTable();
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
         jLabel82 = new javax.swing.JLabel();
+        jButton27 = new javax.swing.JButton();
+        jButton37 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
+        jScrollPane22 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jLabel132 = new javax.swing.JLabel();
+        jLabel131 = new javax.swing.JLabel();
+        jLabel125 = new javax.swing.JLabel();
+        jLabel123 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel120 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        jLabel122 = new javax.swing.JLabel();
+        jLabel124 = new javax.swing.JLabel();
+        jLabel126 = new javax.swing.JLabel();
+        jLabel127 = new javax.swing.JLabel();
+        jLabel128 = new javax.swing.JLabel();
+        jLabel129 = new javax.swing.JLabel();
+        jLabel130 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu32 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -364,6 +354,7 @@ public class Login extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem44 = new javax.swing.JMenuItem();
         jMenu35 = new javax.swing.JMenu();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem45 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenu36 = new javax.swing.JMenu();
@@ -471,6 +462,28 @@ public class Login extends javax.swing.JFrame {
         jLabel108 = new javax.swing.JLabel();
         PopMenuOfertadoresModificar = new javax.swing.JPopupMenu();
         EliminarMem = new javax.swing.JMenu();
+        AgregarSubasta = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaAutosSubasta = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel133 = new javax.swing.JLabel();
+        jLabel140 = new javax.swing.JLabel();
+        jScrollPane23 = new javax.swing.JScrollPane();
+        DescripSubasta = new javax.swing.JTextArea();
+        precioSubasta = new javax.swing.JTextField();
+        jButton10 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane24 = new javax.swing.JScrollPane();
+        tablaPendientesSubasta = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane25 = new javax.swing.JScrollPane();
+        tablaAprovadaSubasta = new javax.swing.JTable();
+        jMenuBar8 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        jLabel109 = new javax.swing.JLabel();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -478,7 +491,12 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
+        jLabel137 = new javax.swing.JLabel();
+        jLabel138 = new javax.swing.JLabel();
+        jLabel139 = new javax.swing.JLabel();
+        jLabel134 = new javax.swing.JLabel();
+        jLabel135 = new javax.swing.JLabel();
+        jLabel136 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Nombre: ");
@@ -646,7 +664,7 @@ public class Login extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu12);
 
-        jMenu8.setText("Vendedor Directo");
+        botonVendedor.setText("Vendedor Directo");
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5b2a0e73d5fe2accd65c7a0b60720754.png"))); // NOI18N
         jMenuItem4.setText("Agregar Publicidad");
@@ -655,7 +673,7 @@ public class Login extends javax.swing.JFrame {
                 jMenuItem4MousePressed(evt);
             }
         });
-        jMenu8.add(jMenuItem4);
+        botonVendedor.add(jMenuItem4);
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5e9e53330d45406d5d0f669acd41a10e.png"))); // NOI18N
         jMenuItem5.setText("Agregar Carros");
@@ -664,27 +682,46 @@ public class Login extends javax.swing.JFrame {
                 jMenuItem5MousePressed(evt);
             }
         });
-        jMenu8.add(jMenuItem5);
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        botonVendedor.add(jMenuItem5);
 
         jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/f5ff4d95816031828833330132f0080a.png"))); // NOI18N
         jMenuItem18.setText("Venta Directa");
-        jMenu8.add(jMenuItem18);
+        botonVendedor.add(jMenuItem18);
 
-        jMenuBar2.add(jMenu8);
+        jMenuBar2.add(botonVendedor);
 
-        jMenu13.setText("Subasta");
+        botonSubasta.setText("Subasta");
+        botonSubasta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonSubastaMousePressed(evt);
+            }
+        });
 
         jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5b2a0e73d5fe2accd65c7a0b60720754.png"))); // NOI18N
         jMenuItem21.setText("Agregar Publicidad");
-        jMenu13.add(jMenuItem21);
+        botonSubasta.add(jMenuItem21);
+
+        jMenuItem28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5e9e53330d45406d5d0f669acd41a10e.png"))); // NOI18N
+        jMenuItem28.setText("Agregar Carros ");
+        jMenuItem28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem28MousePressed(evt);
+            }
+        });
+        botonSubasta.add(jMenuItem28);
 
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/228d3ff7d068c048deaf6e945dd18912.png"))); // NOI18N
         jMenuItem20.setText("Subir Vehiculo");
-        jMenu13.add(jMenuItem20);
+        botonSubasta.add(jMenuItem20);
 
-        jMenuBar2.add(jMenu13);
+        jMenuBar2.add(botonSubasta);
 
-        jMenu14.setText("Carwash");
+        botonCarwash.setText("Carwash");
 
         jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9ed863633135146d2a14903160a0e10f.png"))); // NOI18N
         jMenuItem22.setText("Ver Citas");
@@ -693,21 +730,21 @@ public class Login extends javax.swing.JFrame {
                 jMenuItem22ActionPerformed(evt);
             }
         });
-        jMenu14.add(jMenuItem22);
+        botonCarwash.add(jMenuItem22);
 
-        jMenuBar2.add(jMenu14);
+        jMenuBar2.add(botonCarwash);
 
-        jMenu15.setText("Renta");
+        botonRenta.setText("Renta");
 
         jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5e9e53330d45406d5d0f669acd41a10e.png"))); // NOI18N
         jMenuItem24.setText("Agregar Vehiculos");
-        jMenu15.add(jMenuItem24);
+        botonRenta.add(jMenuItem24);
 
         jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ecac78f6ba2764062060dd4797ea18ce.png"))); // NOI18N
         jMenuItem25.setText("Reservas");
-        jMenu15.add(jMenuItem25);
+        botonRenta.add(jMenuItem25);
 
-        jMenuBar2.add(jMenu15);
+        jMenuBar2.add(botonRenta);
 
         PaginaPrincipalOfertador.setJMenuBar(jMenuBar2);
 
@@ -996,65 +1033,6 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(23, 23, 23))
-        );
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane5.setViewportView(jTable4);
-
-        jLabel28.setText("subastador");
-
-        jLabel29.setText("Carros");
-
-        jButton5.setText("Subastar");
-
-        jButton10.setText("Agregar publicidad");
-
-        javax.swing.GroupLayout SubastadorLayout = new javax.swing.GroupLayout(Subastador.getContentPane());
-        Subastador.getContentPane().setLayout(SubastadorLayout);
-        SubastadorLayout.setHorizontalGroup(
-            SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SubastadorLayout.createSequentialGroup()
-                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SubastadorLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel28))
-                    .addGroup(SubastadorLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel29)
-                            .addGroup(SubastadorLayout.createSequentialGroup()
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))))))
-                .addContainerGap())
-        );
-        SubastadorLayout.setVerticalGroup(
-            SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubastadorLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(SubastadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(SubastadorLayout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton10)))
-                .addGap(40, 40, 40))
         );
 
         Ti_Publicidad.addActionListener(new java.awt.event.ActionListener() {
@@ -1482,6 +1460,11 @@ public class Login extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jT_C_ofertador2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jT_C_ofertador2MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jT_C_ofertador2);
 
         jButton19.setText("Agregar");
@@ -1519,26 +1502,24 @@ public class Login extends javax.swing.JFrame {
             .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
+                    .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel52)
                         .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel52)
-                                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel50)
-                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addComponent(jButton22))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Ag_Cilindraje, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ag_Tranmision, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ag_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ag_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ag_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ag_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton19))
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jButton22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Ag_Cilindraje, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(Ag_Tranmision, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(Ag_tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(Ag_marca, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(Ag_modelo, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(Ag_ano, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(Agregar_Carro_OFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
@@ -1584,8 +1565,8 @@ public class Login extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jLabel52)))
                 .addGap(26, 26, 26)
-                .addComponent(jButton19)
-                .addGap(290, 290, 290)
+                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(282, 282, 282)
                 .addComponent(jButton22)
                 .addGap(14, 14, 14))
             .addGroup(Agregar_Carro_OFLayout.createSequentialGroup()
@@ -1735,6 +1716,25 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 22, Short.MAX_VALUE))
         );
 
+        PaginaPrincipalAdministrador.getContentPane().setLayout(null);
+
+        jLabel115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6b71c00f79df13d1844ab9ef9eee83ed.png"))); // NOI18N
+        jLabel115.setToolTipText("");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel115);
+        jLabel115.setBounds(1270, 110, 40, 40);
+
+        jLabel114.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel114.setFont(new java.awt.Font("Bookman Old Style", 1, 45)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel114.setText("VEHICULOS.COM");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel114);
+        jLabel114.setBounds(760, 20, 410, 40);
+
+        jLabel113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franjaGris.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel113);
+        jLabel113.setBounds(0, 0, 1920, 60);
+
+        TodosUsuarios.setForeground(new java.awt.Color(102, 102, 102));
         TodosUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1760,35 +1760,173 @@ public class Login extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(TodosUsuarios);
 
+        PaginaPrincipalAdministrador.getContentPane().add(jScrollPane13);
+        jScrollPane13.setBounds(170, 140, 990, 270);
+
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/67f6f2a394be3b4aadc02526610c71f4.png"))); // NOI18N
         jButton29.setText("Ofertadores");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
             }
         });
+        PaginaPrincipalAdministrador.getContentPane().add(jButton29);
+        jButton29.setBounds(10, 210, 149, 59);
 
+        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/605bd5097ea3d01231968e534da41df1.png"))); // NOI18N
         jButton30.setText("Clientes");
         jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton30ActionPerformed(evt);
             }
         });
+        PaginaPrincipalAdministrador.getContentPane().add(jButton30);
+        jButton30.setBounds(10, 280, 149, 59);
 
+        jButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/b6e39168db988b74ac477669d89c87aa.png"))); // NOI18N
         jButton32.setText("Administradores");
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton32ActionPerformed(evt);
             }
         });
+        PaginaPrincipalAdministrador.getContentPane().add(jButton32);
+        jButton32.setBounds(10, 140, 149, 59);
 
-        jLabel82.setText("USUARIOS ");
+        jLabel82.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel82.setText("SOLICITUDES DE SUBASTA");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel82);
+        jLabel82.setBounds(1320, 120, 260, 20);
 
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/100a56994eff619c52cafe8907699880.png"))); // NOI18N
+        jButton27.setText("Aprobar Solicitud");
+        PaginaPrincipalAdministrador.getContentPane().add(jButton27);
+        jButton27.setBounds(1260, 820, 180, 60);
+
+        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/43e6e6c55c64b5d8863167a6bff26810.png"))); // NOI18N
+        jButton37.setText("Denegar Solicitud");
+        PaginaPrincipalAdministrador.getContentPane().add(jButton37);
+        jButton37.setBounds(1450, 820, 190, 60);
+
+        jButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4f34d96185ac6ec90d3746cf2a60a15b.png"))); // NOI18N
         jButton33.setText("Todos");
         jButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton33ActionPerformed(evt);
             }
         });
+        PaginaPrincipalAdministrador.getContentPane().add(jButton33);
+        jButton33.setBounds(10, 350, 149, 59);
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Ofertador", "Auto", "Descripcion", "Precio Inicial"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane22.setViewportView(jTable5);
+
+        PaginaPrincipalAdministrador.getContentPane().add(jScrollPane22);
+        jScrollPane22.setBounds(1260, 150, 570, 660);
+
+        jLabel132.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel132.setText("USUARIOS ACTIVOS");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel132);
+        jLabel132.setBounds(230, 110, 190, 20);
+
+        jLabel131.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6b71c00f79df13d1844ab9ef9eee83ed.png"))); // NOI18N
+        jLabel131.setToolTipText("");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel131);
+        jLabel131.setBounds(180, 100, 40, 40);
+
+        jLabel125.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranjaamarilloso.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel125);
+        jLabel125.setBounds(1520, 100, 350, 70);
+
+        jLabel123.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rojo.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel123);
+        jLabel123.setBounds(1210, 100, 440, 190);
+
+        jLabel116.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azuloscuro.jpg"))); // NOI18N
+        jLabel116.setText("jLabel116");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel116);
+        jLabel116.setBounds(50, 120, 500, 100);
+
+        jLabel119.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranjaamarilloso.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel119);
+        jLabel119.setBounds(340, 450, 500, 70);
+
+        jLabel118.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/amarilloclaro.jpg"))); // NOI18N
+        jLabel118.setText("jLabel118");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel118);
+        jLabel118.setBounds(1210, 280, 440, 450);
+
+        jLabel117.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azulclaro.jpg"))); // NOI18N
+        jLabel117.setText("jLabel117");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel117);
+        jLabel117.setBounds(1210, 550, 490, 390);
+
+        jLabel120.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranja.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel120);
+        jLabel120.setBounds(1590, 170, 280, 430);
+
+        jLabel121.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rojo.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel121);
+        jLabel121.setBounds(820, 210, 370, 310);
+
+        jLabel122.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azuloscuro.jpg"))); // NOI18N
+        jLabel122.setText("jLabel116");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel122);
+        jLabel122.setBounds(10, 100, 55, 420);
+
+        jLabel124.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranjaamarilloso.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel124);
+        jLabel124.setBounds(340, 450, 500, 70);
+
+        jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranja.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel126);
+        jLabel126.setBounds(970, 100, 220, 110);
+
+        jLabel127.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/amarilloclaro.jpg"))); // NOI18N
+        jLabel127.setText("jLabel118");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel127);
+        jLabel127.setBounds(500, 100, 470, 350);
+
+        jLabel128.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azuloscuro.jpg"))); // NOI18N
+        jLabel128.setText("jLabel116");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel128);
+        jLabel128.setBounds(60, 120, 480, 100);
+
+        jLabel129.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azuloscuro.jpg"))); // NOI18N
+        jLabel129.setText("jLabel116");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel129);
+        jLabel129.setBounds(1390, 600, 480, 340);
+
+        jLabel130.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azulclaro.jpg"))); // NOI18N
+        jLabel130.setText("jLabel117");
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel130);
+        jLabel130.setBounds(60, 100, 490, 420);
+
+        jLabel112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/franjaGris_2.jpg"))); // NOI18N
+        PaginaPrincipalAdministrador.getContentPane().add(jLabel112);
+        jLabel112.setBounds(0, 30, 1930, 1030);
 
         jMenu32.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu32);
@@ -1846,9 +1984,6 @@ public class Login extends javax.swing.JFrame {
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/b6e39168db988b74ac477669d89c87aa.png"))); // NOI18N
         jMenuItem1.setText("Crear Administrador");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
             }
@@ -1902,43 +2037,6 @@ public class Login extends javax.swing.JFrame {
         jMenuBar1.add(jMenu21);
 
         PaginaPrincipalAdministrador.setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout PaginaPrincipalAdministradorLayout = new javax.swing.GroupLayout(PaginaPrincipalAdministrador.getContentPane());
-        PaginaPrincipalAdministrador.getContentPane().setLayout(PaginaPrincipalAdministradorLayout);
-        PaginaPrincipalAdministradorLayout.setHorizontalGroup(
-            PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel82)
-                    .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
-                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-        PaginaPrincipalAdministradorLayout.setVerticalGroup(
-            PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel82)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PaginaPrincipalAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PaginaPrincipalAdministradorLayout.createSequentialGroup()
-                        .addComponent(jButton32)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton29)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton30)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton33)))
-                .addContainerGap(310, Short.MAX_VALUE))
-        );
 
         jT_membrecias1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2293,9 +2391,9 @@ public class Login extends javax.swing.JFrame {
         jMenuItem44.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6fb9dc3457f68037b47b34c93eee1887.png"))); // NOI18N
         jMenuItem44.setText("Log Out");
-        jMenuItem44.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem44ActionPerformed(evt);
+        jMenuItem44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem44MousePressed(evt);
             }
         });
         jMenu34.add(jMenuItem44);
@@ -2303,6 +2401,16 @@ public class Login extends javax.swing.JFrame {
         jMenuBar10.add(jMenu34);
 
         jMenu35.setText("Perfil de la empresa");
+
+        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/54a4796fdb685e1075fa6808aa5e397d.png"))); // NOI18N
+        jMenuItem19.setText("Volver A La Pagina Principal");
+        jMenuItem19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem19MousePressed(evt);
+            }
+        });
+        jMenu35.add(jMenuItem19);
 
         jMenuItem45.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/54e1030f30532a37ebeaa25e56fd7983.png"))); // NOI18N
@@ -2325,9 +2433,6 @@ public class Login extends javax.swing.JFrame {
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/b6e39168db988b74ac477669d89c87aa.png"))); // NOI18N
         jMenuItem3.setText("Crear Administrador");
         jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem3MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem3MousePressed(evt);
             }
@@ -3035,11 +3140,209 @@ public class Login extends javax.swing.JFrame {
         });
         PopMenuOfertadoresModificar.add(EliminarMem);
 
+        tablaAutosSubasta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmicion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tablaAutosSubasta);
+
+        jButton5.setText("Agregar Carro");
+
+        jLabel28.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel28.setText("SUBASTA");
+
+        jLabel29.setText("Carro:");
+
+        jLabel133.setText("Descripcion: ");
+
+        jLabel140.setText("Precio Inicial:");
+
+        DescripSubasta.setColumns(20);
+        DescripSubasta.setRows(5);
+        jScrollPane23.setViewportView(DescripSubasta);
+
+        jButton10.setText("Mandar Solicitud De Subasta");
+
+        tablaPendientesSubasta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Auto", "Descripcion", "Precio inicial"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane24.setViewportView(tablaPendientesSubasta);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Solicitudes Pendientes", jPanel1);
+
+        tablaAprovadaSubasta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Auto", "Descripcion", "Precio inicial"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane25.setViewportView(tablaAprovadaSubasta);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Solicitudes Aprovadas", jPanel2);
+
+        jMenu8.setText("Volver");
+        jMenuBar8.add(jMenu8);
+
+        AgregarSubasta.setJMenuBar(jMenuBar8);
+
+        javax.swing.GroupLayout AgregarSubastaLayout = new javax.swing.GroupLayout(AgregarSubasta.getContentPane());
+        AgregarSubasta.getContentPane().setLayout(AgregarSubastaLayout);
+        AgregarSubastaLayout.setHorizontalGroup(
+            AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel133)
+                                            .addComponent(jLabel29))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                                        .addComponent(jLabel140)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(precioSubasta))))))))
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+        AgregarSubastaLayout.setVerticalGroup(
+            AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addGap(18, 18, 18)
+                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
+                            .addComponent(jLabel29))
+                        .addGap(18, 18, 18)
+                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel133)
+                            .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(precioSubasta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel140))
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton10)))
+                .addGap(38, 38, 38)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
+        jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2a6535b5c1f4117db4872e2459ad1525.png"))); // NOI18N
+        getContentPane().add(jLabel109);
+        jLabel109.setBounds(90, 40, 200, 210);
+        getContentPane().add(contra_L);
+        contra_L.setBounds(70, 350, 278, 34);
+        getContentPane().add(usuario_L);
+        usuario_L.setBounds(70, 270, 278, 32);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("USUARIO: ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 240, 110, 20);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(70, 320, 130, 20);
 
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -3047,6 +3350,8 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(70, 410, 278, 32);
 
         jButton2.setText("Registrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -3054,8 +3359,10 @@ public class Login extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(6, 6, 83, 32);
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 0, 0));
         jLabel13.setText("Restablecer Contraseña/Usuario");
         jLabel13.setAlignmentX(0.5F);
@@ -3064,55 +3371,35 @@ public class Login extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(100, 450, 220, 30);
 
-        jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dsa.png"))); // NOI18N
+        jLabel137.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranja.jpg"))); // NOI18N
+        getContentPane().add(jLabel137);
+        jLabel137.setBounds(360, 350, 60, 180);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel109))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(usuario_L, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(contra_L)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel13)))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel109)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(usuario_L, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(contra_L, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addGap(26, 26, 26))
-        );
+        jLabel138.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rojo.jpg"))); // NOI18N
+        getContentPane().add(jLabel138);
+        jLabel138.setBounds(190, -20, 230, 150);
+
+        jLabel139.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/naranjaamarilloso.jpg"))); // NOI18N
+        getContentPane().add(jLabel139);
+        jLabel139.setBounds(-130, 410, 500, 120);
+
+        jLabel134.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azuloscuro.jpg"))); // NOI18N
+        jLabel134.setText("jLabel116");
+        getContentPane().add(jLabel134);
+        jLabel134.setBounds(0, -110, 70, 420);
+
+        jLabel135.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/azulclaro.jpg"))); // NOI18N
+        jLabel135.setText("jLabel117");
+        getContentPane().add(jLabel135);
+        jLabel135.setBounds(0, 0, 360, 420);
+
+        jLabel136.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/amarilloclaro.jpg"))); // NOI18N
+        jLabel136.setText("jLabel118");
+        getContentPane().add(jLabel136);
+        jLabel136.setBounds(200, 0, 220, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3127,13 +3414,40 @@ public class Login extends javax.swing.JFrame {
                 cont++;
                 UsuariosName.setText(usuarios.get(posi).getNombre());
                 if (usuarios.get(i) instanceof Ofertadores2) {
-
                     llenarTabla();
                     this.PaginaPrincipalOfertador.pack();
                     this.PaginaPrincipalOfertador.setLocationRelativeTo(this);
                     this.PaginaPrincipalOfertador.setExtendedState(MAXIMIZED_BOTH);
                     this.PaginaPrincipalOfertador.setVisible(true);
                     UsuariosName.setText(usuarios.get(posi).getNombre());
+                    int m1 = 0, m2 = 0, m3 = 0, m4 = 0;
+                    for (Membrecias u : ((Ofertadores2) usuarios.get(i)).getMembrecias()) {
+                        if (u.getTipo().equals("Carwash")) {
+                            m1++;
+                        }
+                        if (u.getTipo().equals("Vendedor directo")) {
+                            m2++;
+                        }
+                        if (u.getTipo().equals("Rentador")) {
+                            m3++;
+                        }
+                        if (u.getTipo().equals("Subastador")) {
+                            m4++;
+                        }
+                    }
+                    if (m1 == 0) {
+                        botonCarwash.setEnabled(false);
+                    }
+                    if (m2 == 0) {
+                        botonVendedor.setEnabled(false);
+                    }
+                    if (m3 == 0) {
+                        botonRenta.setEnabled(false);
+                    }
+                    if (m4 == 0) {
+                        botonSubasta.setEnabled(false);
+                    }
+
                 } else if (usuarios.get(i) instanceof Administrador) {
                     this.PaginaPrincipalAdministrador.pack();
                     this.PaginaPrincipalAdministrador.setLocationRelativeTo(this);
@@ -3141,7 +3455,7 @@ public class Login extends javax.swing.JFrame {
                     this.PaginaPrincipalAdministrador.setVisible(true);
                     llenarTabla();
                     jMenu32.setText(usuarios.get(posi).getNombre());
-
+                    jMenu33.setText(usuarios.get(posi).getNombre());
                 } else if (usuarios.get(i) instanceof Cliente) {
                     this.PaginaPrincipalCliente.pack();
                     this.PaginaPrincipalCliente.setLocationRelativeTo(this);
@@ -3214,7 +3528,6 @@ public class Login extends javax.swing.JFrame {
     private void tipo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_usuarioActionPerformed
 
     }//GEN-LAST:event_tipo_usuarioActionPerformed
-
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         this.Restablecer.pack();
@@ -3294,14 +3607,42 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
         marca = Ag_marca.getText();
         modelo = Ag_modelo.getText();
         Cilindraje = Ag_Cilindraje.getText();
         tipo = Ag_tipo.getText();
         trans = Ag_Tranmision.getText();
         ano = Integer.parseInt(Ag_ano.getText());
-        ((Ofertadores2) usuarios.get(posi)).getAutos().add(new Autos(marca, modelo, Cilindraje, tipo, trans, ano));
-        llenarTabla();
+        Autos auto = new Autos(marca, modelo, Cilindraje, tipo, trans, ano);
+
+        if (globalventacarros == 1) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                    y = i;
+                    break;
+                }
+            }
+            ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().add(auto);
+            tablaautossubasta();
+        } else if (globalventacarros == 2) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Vendedor_Directo) {
+                    y = i;
+                    break;
+                }
+            }
+            ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().add(auto);
+            tablaautosDirecta();
+        }
+
         Ag_Cilindraje.setText("");
         Ag_Tranmision.setText("");
         Ag_ano.setText("");
@@ -3318,65 +3659,128 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        int o = jT_C_ofertador2.getSelectedRow();
-        DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
-        if (o >= 0) {
-            Object[] Modi = {" ------------------------------------------------- ", "Marca", "Modelo", "Año", "Tipo", "Transmision", "Cilindraje"};
-            Object opcion = null;
-            try {
-                opcion = JOptionPane.showInputDialog(null, "Selecciona lo que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, Modi, Modi[0]);
-            } catch (Exception e) {
-
-            }
-            String op = (String) opcion;
-            if (op.equals("Marca")) {
-                marca = JOptionPane.showInputDialog("Nombre de la nueva marca: ");
-                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setMarca(marca);
-
-            } else if (op.equals("Modelo")) {
-                modelo = JOptionPane.showInputDialog("Nombre de el nuevo modelo: ");
-                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setModelo(modelo);
-            } else if (op.equals("Año")) {
-                ano = Integer.parseInt(JOptionPane.showInputDialog("Nombre de la nueva marca: "));
-                ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setAño(ano);
-            } else if (op.equals("Tipo")) {
-                int cont2 = 0;
-                for (Membrecias membrecias : (((Ofertadores2) usuarios.get(posi)).getMembrecias())) {
-                    System.out.println("entraaaa");
-                    if (membrecias instanceof Renta) {
-                        cont2++;
-                        System.out.println("entra");
-                    }
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
+        if (globalventacarros == 1) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                    y = i;
+                    break;
                 }
-
-                if (cont2 > 0) {
-                    Object[] tipop = {"Busito", "Uber", "Mudanza", "Carro"};
-                    Object kk = JOptionPane.showInputDialog(null, "Selecciona el tipo de carro al que desea modificar", "Elegir", JOptionPane.QUESTION_MESSAGE, null, tipop, tipop[0]);
-                    String kkk = (String) kk;
-                    System.out.println("kk");
-                    ((Ofertadores2) usuarios.get(posi)).getAutos().get(o).setTipo(kkk);
-                    llenarTabla();
-                }
-
-            } else if (op.equals("Transmision")) {
-
-            } else if (op.equals("Cilindraje")) {
-
             }
-            llenarTabla();
+            if (Ag_marca.getText() != (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getMarca())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setMarca(Ag_marca.getText());
+                Ag_marca.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getMarca());
+            }
+            if (Ag_modelo.getText() != (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getModelo())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setModelo(Ag_modelo.getText());
+                Ag_modelo.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getModelo());
+            }
+            if (Ag_ano.getText() != "" + (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getAño())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setAño(Integer.parseInt(Ag_ano.getText()));
+                Ag_ano.setText("" + ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getAño());
+            }
+            if (Ag_tipo.getText() != (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTipo())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setTipo(Ag_tipo.getText());
+                Ag_tipo.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTipo());
+            }
+            if (Ag_Tranmision.getText() != (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTransmision())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setTransmision(Ag_Tranmision.getText());
+                Ag_Tranmision.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTransmision());
+            }
+            if (Ag_Cilindraje.getText() != (((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getCilindraje())) {
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setCilindraje(Ag_Cilindraje.getText());
+                Ag_Cilindraje.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getCilindraje());
+            }
+            tablaautossubasta();
+        } else if (globalventacarros == 2) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Vendedor_Directo) {
+                    y = i;
+                    break;
+                }
+            }
+            if (Ag_marca.getText() != (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getMarca())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setMarca(Ag_marca.getText());
+                Ag_marca.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getMarca());
+            }
+            if (Ag_modelo.getText() != (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getModelo())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setModelo(Ag_modelo.getText());
+                Ag_modelo.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getModelo());
+            }
+            if (Ag_ano.getText() != "" + (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getAño())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setAño(Integer.parseInt(Ag_ano.getText()));
+                Ag_ano.setText("" + ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getAño());
+            }
+            if (Ag_tipo.getText() != (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTipo())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setTipo(Ag_tipo.getText());
+                Ag_tipo.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTipo());
+            }
+            if (Ag_Tranmision.getText() != (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTransmision())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setTransmision(Ag_Tranmision.getText());
+                Ag_Tranmision.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getTransmision());
+            }
+            if (Ag_Cilindraje.getText() != (((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getCilindraje())) {
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).setCilindraje(Ag_Cilindraje.getText());
+                Ag_Cilindraje.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(filaaux).getCilindraje());
+            }
+            tablaautosDirecta();
         }
-
-
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
         int filaEliminar = jT_C_ofertador2.getSelectedRow();
         DefaultTableModel tm = (DefaultTableModel) jT_C_ofertador2.getModel();
         if (filaEliminar >= 0) {
-            tm.removeRow(filaEliminar);
-            ((Ofertadores2) usuarios.get(posi)).getAutos().remove(filaEliminar);
-        }
 
+            if (globalventacarros == 1) {
+                int y = 0;
+                for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                    if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                        y = i;
+                        break;
+                    }
+                }
+                ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().remove(filaEliminar);
+
+            }
+            if (globalventacarros == 2) {
+                int y = 0;
+                for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                    if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Vendedor_Directo) {
+                        y = i;
+                        break;
+                    }
+                }
+                ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().remove(filaEliminar);
+
+            }
+            tm.removeRow(filaEliminar);
+        }
+        Ag_Cilindraje.setText("");
+        Ag_Tranmision.setText("");
+        Ag_ano.setText("");
+        Ag_marca.setText("");
+        Ag_modelo.setText("");
+        Ag_tipo.setText("");
 
     }//GEN-LAST:event_jButton20ActionPerformed
 
@@ -3410,9 +3814,6 @@ public class Login extends javax.swing.JFrame {
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-    }//GEN-LAST:event_jMenuItem1MouseClicked
-
     private void jMenuItem6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MouseClicked
         this.Perfil_U.pack();
         this.Perfil_U.setLocationRelativeTo(this);
@@ -3426,7 +3827,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6MouseClicked
 
     private void jMenuItem5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MousePressed
-        llenarTabla();
+
+        globalventacarros = 2;
+        tablaautosDirecta();
         this.Agregar_Carro_OF.pack();
         this.Agregar_Carro_OF.setLocationRelativeTo(this);
         this.Agregar_Carro_OF.setVisible(true);
@@ -3847,31 +4250,39 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem36ActionPerformed
 
     private void jMenuItem15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem15MousePressed
-        // TODO add your handling code here:
+        this.Perfil_U.pack();
+        this.Perfil_U.setLocationRelativeTo(this);
+        this.Perfil_U.setVisible(true);
+        N_Perfil.setText(usuarios.get(posi).getNombre());
+        U_Perfil.setText(usuarios.get(posi).getUsuario());
+        P_Perfil.setText(usuarios.get(posi).getPais());
+        Co_Perfil.setText(usuarios.get(posi).getCorreo());
+        Cu_Perfil.setText(usuarios.get(posi).getFecha());
+        T_Perfil.setText(usuarios.get(posi).getTipo());
     }//GEN-LAST:event_jMenuItem15MousePressed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
-    private void jMenuItem44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem44ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem44ActionPerformed
-
-    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3MouseClicked
-
     private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
-        // TODO add your handling code here:
+        CrearAdmin.pack();
+        CrearAdmin.setVisible(true);
+        CrearAdmin.setLocationRelativeTo(this);
     }//GEN-LAST:event_jMenuItem3MousePressed
 
     private void jMenuItem48MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem48MousePressed
-        // TODO add your handling code here:
+        ModificarAdmin.pack();
+        ModificarAdmin.setVisible(true);
+        ModificarAdmin.setLocationRelativeTo(this);
+        tablaadmins();
     }//GEN-LAST:event_jMenuItem48MousePressed
 
     private void jMenuItem49MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem49MousePressed
-        // TODO add your handling code here:
+        ModificarOfertador.pack();
+        ModificarOfertador.setVisible(true);
+        ModificarOfertador.setLocationRelativeTo(this);
+        tablaOfertador();
     }//GEN-LAST:event_jMenuItem49MousePressed
 
     private void jMenu36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu36MouseClicked
@@ -3892,6 +4303,133 @@ public class Login extends javax.swing.JFrame {
         gmail.setText(u.getCorreo());
         dirrecciom.setText(u.getDirreccion());
     }//GEN-LAST:event_jMenuItem16MousePressed
+
+    private void jMenuItem44MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem44MousePressed
+        this.pack();
+        this.setLocationRelativeTo(this);
+        this.setVisible(true);
+        PaginaPrincipalAdministrador.pack();
+        PaginaPrincipalAdministrador.setVisible(false);
+    }//GEN-LAST:event_jMenuItem44MousePressed
+
+    private void jMenuItem19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MousePressed
+        PaginaPrincipalAdministrador.pack();
+        PaginaPrincipalAdministrador.setLocationRelativeTo(this);
+        PaginaPrincipalAdministrador.setExtendedState(MAXIMIZED_BOTH);
+        PerfilEmpresa.setVisible(false);
+        PaginaPrincipalAdministrador.setVisible(true);
+    }//GEN-LAST:event_jMenuItem19MousePressed
+
+    private void botonSubastaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSubastaMousePressed
+        int y = 0;
+        for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+            if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                y = i;
+                break;
+            }
+        }
+        DefaultTableModel autosSubasta = (DefaultTableModel) tablaAutosSubasta.getModel();
+        for (int i = autosSubasta.getRowCount() - 1; i >= 0; i--) {
+            autosSubasta.removeRow(i);
+        }
+
+        for (Autos i : ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos()) {
+            Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
+            autosSubasta.addRow(auto);
+        }
+
+        tablaAutosSubasta.setModel(autosSubasta);
+
+
+    }//GEN-LAST:event_botonSubastaMousePressed
+    int globalventacarros;
+    private void jMenuItem28MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem28MousePressed
+
+        globalventacarros = 1;
+
+        tablaautossubasta();
+        Agregar_Carro_OF.pack();
+        Agregar_Carro_OF.setLocationRelativeTo(this);
+        Agregar_Carro_OF.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem28MousePressed
+    int filaaux;
+    private void jT_C_ofertador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jT_C_ofertador2MouseClicked
+        int fila = jT_C_ofertador2.getSelectedRow();
+        filaaux = fila;
+        if (globalventacarros == 1) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                    y = i;
+                    break;
+                }
+            }
+            Ag_marca.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getMarca());
+            Ag_modelo.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getModelo());
+            Ag_ano.setText("" + ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getAño());
+            Ag_tipo.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getTipo());
+            Ag_Tranmision.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getTransmision());
+            Ag_Cilindraje.setText(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getCilindraje());
+        } else if (globalventacarros == 2) {
+            int y = 0;
+            for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+                if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Vendedor_Directo) {
+                    y = i;
+                    break;
+                }
+            }
+            Ag_marca.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getMarca());
+            Ag_modelo.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getModelo());
+            Ag_ano.setText("" + ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getAño());
+            Ag_tipo.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getTipo());
+            Ag_Tranmision.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getTransmision());
+            Ag_Cilindraje.setText(((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(fila).getCilindraje());
+        }
+    }//GEN-LAST:event_jT_C_ofertador2MouseClicked
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    public void tablaautosDirecta() {
+        int y = 0;
+        for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+            if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Vendedor_Directo) {
+                y = i;
+                break;
+            }
+        }
+        DefaultTableModel ofertadores = (DefaultTableModel) jT_C_ofertador2.getModel();
+        for (int i = ofertadores.getRowCount() - 1; i >= 0; i--) {
+            ofertadores.removeRow(i);
+        }
+        //Tabla autos
+        for (Autos i : ((Vendedor_Directo) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos()) {
+            Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
+            ofertadores.addRow(auto);
+        }
+        jT_C_ofertador2.setModel(ofertadores);
+    }
+
+    public void tablaautossubasta() {
+        int y = 0;
+        for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+            if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                y = i;
+                break;
+            }
+        }
+        DefaultTableModel autosSubasta = (DefaultTableModel) jT_C_ofertador2.getModel();
+        for (int i = autosSubasta.getRowCount() - 1; i >= 0; i--) {
+            autosSubasta.removeRow(i);
+        }
+
+        for (Autos i : ((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos()) {
+            Object[] auto = {i.getMarca(), i.getModelo(), i.getAño(), i.getCilindraje(), i.getTipo(), i.getTransmision()};
+            autosSubasta.addRow(auto);
+        }
+        jT_C_ofertador2.setModel(autosSubasta);
+    }
 
     public void tablaadmins() {
         DefaultTableModel t = (DefaultTableModel) TodosUsuarios.getModel();
@@ -3949,6 +4487,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField Ag_marca;
     private javax.swing.JTextField Ag_modelo;
     private javax.swing.JTextField Ag_tipo;
+    private javax.swing.JDialog AgregarSubasta;
     private javax.swing.JFrame Agregar_Admins;
     private javax.swing.JFrame Agregar_Carro_OF;
     private javax.swing.JFrame Busqueda;
@@ -3959,6 +4498,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JDialog CrearAdmin;
     private javax.swing.JLabel Cu_Perfil;
     private javax.swing.JTextArea Des_Publicidad;
+    private javax.swing.JTextArea DescripSubasta;
     private javax.swing.JMenu EliminarMem;
     private javax.swing.JList<String> ListaMembrecias;
     private javax.swing.JFrame Membrecias_Ofertadores;
@@ -3976,7 +4516,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JFrame Registro;
     private javax.swing.JFrame Restablecer;
     private javax.swing.JMenu Subasta;
-    private javax.swing.JFrame Subastador;
     private javax.swing.JLabel T_Perfil;
     private javax.swing.JDialog TablaMembrecias;
     private javax.swing.JTextField Ti_Publicidad;
@@ -4001,6 +4540,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField admin_nombre;
     private javax.swing.JComboBox<String> admin_paiss;
     private javax.swing.JTextField admin_usuario;
+    private javax.swing.JMenu botonCarwash;
+    private javax.swing.JMenu botonRenta;
+    private javax.swing.JMenu botonSubasta;
+    private javax.swing.JMenu botonVendedor;
     private javax.swing.JPasswordField co_R;
     private javax.swing.JPasswordField contra_L;
     private javax.swing.JTextField cor_R;
@@ -4026,6 +4569,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
@@ -4036,6 +4580,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -4071,9 +4616,38 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
+    private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel127;
+    private javax.swing.JLabel jLabel128;
+    private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel130;
+    private javax.swing.JLabel jLabel131;
+    private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel134;
+    private javax.swing.JLabel jLabel135;
+    private javax.swing.JLabel jLabel136;
+    private javax.swing.JLabel jLabel137;
+    private javax.swing.JLabel jLabel138;
+    private javax.swing.JLabel jLabel139;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel140;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -4171,9 +4745,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu14;
-    private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu16;
     private javax.swing.JMenu jMenu17;
     private javax.swing.JMenu jMenu18;
@@ -4209,6 +4780,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar5;
     private javax.swing.JMenuBar jMenuBar6;
     private javax.swing.JMenuBar jMenuBar7;
+    private javax.swing.JMenuBar jMenuBar8;
     private javax.swing.JMenuBar jMenuBar9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -4220,6 +4792,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
@@ -4229,6 +4802,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem36;
     private javax.swing.JMenuItem jMenuItem37;
@@ -4251,6 +4825,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -4267,6 +4843,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane24;
+    private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4279,10 +4859,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador3;
     private javax.swing.JTable jT_Publicidad;
     private javax.swing.JTable jT_membrecias1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTextField jTextField1;
@@ -4312,6 +4893,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextArea objetivos;
     private javax.swing.JComboBox<String> pa_R;
     private javax.swing.JTextArea politica;
+    private javax.swing.JTextField precioSubasta;
+    private javax.swing.JTable tablaAprovadaSubasta;
+    private javax.swing.JTable tablaAutosSubasta;
+    private javax.swing.JTable tablaPendientesSubasta;
     private javax.swing.JTextField telefono;
     private javax.swing.JComboBox<String> tipo_usuario;
     private javax.swing.JTextField usuario_L;
@@ -4328,4 +4913,16 @@ public class Login extends javax.swing.JFrame {
     ArchivoTexto2 f2 = new ArchivoTexto2("Empresa.txt");
     Empresas u;
 }
+//        String prueba = p.getNombre()+ "," + p.getMision()+ "," + p.getVision()+ "," + p.getObjetivos()+ ","
+//+ p.getPoliticas()+ "," + p.getUbicacion()+ "," + p.getCorreo() + "," + p.getDirreccion()+","+p.getTelefono()+ ";\n";
 
+/*Empresas u=new Empresas("Vehiculos.com","Inspirar momentos de optimismo y felicidad. Crear valor y hacer la diferencia.",
+                 "Hacer excelentes productos y poner el foco en la innovación." ,"Excelencia & enfoque & desarrollo e innovación.",
+                 "La empresa cumplirá los requisitos acordados con los clientes y Brindar trato justo.",
+                 "UBICACION",
+                 "VehiculosBowlee@gmail.com",
+                 "Tu corrazon",
+                 "97049130");
+        f2.Leer();
+        f2.setEmpresa(u);
+  // f2.Escribir();*/

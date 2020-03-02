@@ -5,12 +5,15 @@
  */
 package proyectoprogra.pkg2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Mvrivera
  */
 public class Administrador extends Usuario {
-
+    private ArrayList<Subasta> solicitudes=new ArrayList();
+    
     public Administrador() {
         
     }
@@ -18,6 +21,23 @@ public class Administrador extends Usuario {
     public Administrador(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
     }
+    public ArrayList<Subasta> getSolicitudes() {
+        return solicitudes;
+    }
+
+    public void setSolicitudes(ArrayList<Subasta> solicitudes) {
+        this.solicitudes = solicitudes;
+    }
+    public void nuevaSolicitud(Subasta s) {
+        solicitudes.add(s);
+    }
+
+    @Override
+    public String toString() {
+        return "Administrador{" + "solicitudes=" + solicitudes + '}';
+    }
+
+    
     
     
     

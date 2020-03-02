@@ -69,7 +69,6 @@ public class Archivos_Texto {
             }
             sc.useDelimiter(";");
             while (sc.hasNext()) {
-                System.out.println(sc.hasNext());
                 String p = sc.next();
                 String [] tokens =p.split(",");
                 if (tokens.length >=8) {
