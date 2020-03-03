@@ -19,40 +19,33 @@ import javax.swing.JOptionPane;
  */
 public class conexion {
     private Connection ccn = null;
-private Statement st = null;
-private String ruta;
+    private Statement st = null;
+    private String ruta;
 
     public conexion() {
     }
 
-    
-
-    public conexion(String ruta ){
-        try 
-            {
-                String Url = "jdbc:ucanaccess://" + ruta;
-                ccn = DriverManager.getConnection(Url);
-                st = ccn.createStatement();
-            } catch (SQLException e) 
-                {
-                    JOptionPane.showMessageDialog(null, "CONEXION ERRONEA " + e);  
-                }
+    public conexion(String ruta) {
+        try {
+            String Url = "jdbc:ucanaccess://" + ruta;
+            ccn = DriverManager.getConnection(Url);
+            st = ccn.createStatement();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "CONEXION ERRONEA " + e);
+        }
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return ccn;
     }
-    
-    public void Desconexion(){
-        try 
-            {
-                ccn.close();            
-                System.exit(0);
-            } catch (SQLException ex) 
-                {
-                    Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
+    public void Desconexion() {
+        try {
+            ccn.close();
+            System.exit(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
 
 }
