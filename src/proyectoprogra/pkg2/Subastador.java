@@ -5,13 +5,14 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mvrivera
  */
-public class Subastador extends Membrecias{
+public class Subastador extends Membrecias  implements Serializable{
     private ArrayList<Autos> autos=new ArrayList();
     private ArrayList<String> publicidad=new ArrayList();
 

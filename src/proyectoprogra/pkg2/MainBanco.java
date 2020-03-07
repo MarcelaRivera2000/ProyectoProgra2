@@ -5,14 +5,18 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.IOException;
+
 /**
  *
  * @author Mvrivera
  */
-public class Busito  extends Autos{
-
-    public Busito() {
-        super();
+public class MainBanco {
+     public static void main(String[] args) throws IOException{
+        Banco serv = new Banco();
+        System.out.println("Iniciando servidor\n");
+        serv.startServer(); 
+         
+         
     }
-    
 }

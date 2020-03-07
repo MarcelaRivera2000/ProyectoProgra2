@@ -5,13 +5,14 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mvrivera
  */
-public class Administrador extends Usuario {
+public class Administrador extends Usuario  implements Serializable{
     private ArrayList<Subasta> solicitudes=new ArrayList();
     
     public Administrador() {

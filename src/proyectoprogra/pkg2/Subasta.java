@@ -5,11 +5,13 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mvrivera
  */
-public class Subasta {
+public class Subasta  implements Serializable{
    private Autos auto;
    private Ofertadores2 ofertador;
    private String Descripcion;

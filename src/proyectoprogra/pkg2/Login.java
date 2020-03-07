@@ -1,25 +1,18 @@
 package proyectoprogra.pkg2;
 
-import datechooser.beans.DateChooserDialog;
-import datechooser.beans.DateChooserPanel;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -36,6 +29,7 @@ public class Login extends javax.swing.JFrame {
         b.cargarArchivo();
         for (Ofertadores2 i : b.getListaPersonas()) {
             usuarios.add((Ofertadores2) i);
+            System.out.println(i.getDinero());
         }
         f.Leer();
         for (Usuario p : f.getLista()) {
@@ -43,6 +37,14 @@ public class Login extends javax.swing.JFrame {
         }
         BaseDatosAdministradores();
         u = f2.Leer();
+        /* try {
+            MainUsuarioSockets sk = new MainUsuarioSockets();
+            sk.nuevousuario("juan", 43, "Ofertador", 4332, 3321);
+            MainUsuarioSockets.main(null);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }*/
+
     }
 
     public void llenarTabla() {
@@ -240,7 +242,7 @@ public class Login extends javax.swing.JFrame {
         jButton37 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
         jScrollPane22 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tablaPeticiones = new javax.swing.JTable();
         jLabel132 = new javax.swing.JLabel();
         jLabel131 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
@@ -458,13 +460,6 @@ public class Login extends javax.swing.JFrame {
         DescripSubasta = new javax.swing.JTextArea();
         precioSubasta = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane24 = new javax.swing.JScrollPane();
-        tablaPendientesSubasta = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane25 = new javax.swing.JScrollPane();
-        tablaAprovadaSubasta = new javax.swing.JTable();
         jMenuBar8 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         jLabel109 = new javax.swing.JLabel();
@@ -701,6 +696,11 @@ public class Login extends javax.swing.JFrame {
 
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/228d3ff7d068c048deaf6e945dd18912.png"))); // NOI18N
         jMenuItem20.setText("Subir Vehiculo");
+        jMenuItem20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem20MousePressed(evt);
+            }
+        });
         botonSubasta.add(jMenuItem20);
 
         jMenuBar2.add(botonSubasta);
@@ -756,7 +756,7 @@ public class Login extends javax.swing.JFrame {
         RestablecerLayout.setHorizontalGroup(
             RestablecerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RestablecerLayout.createSequentialGroup()
-                .addGap(0, 189, Short.MAX_VALUE)
+                .addContainerGap(189, Short.MAX_VALUE)
                 .addGroup(RestablecerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel15)
@@ -768,7 +768,7 @@ public class Login extends javax.swing.JFrame {
         RestablecerLayout.setVerticalGroup(
             RestablecerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RestablecerLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(62, 62, 62)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
@@ -776,7 +776,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
@@ -1705,7 +1705,7 @@ public class Login extends javax.swing.JFrame {
         PaginaPrincipalAdministrador.getContentPane().add(jButton33);
         jButton33.setBounds(10, 350, 149, 59);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPeticiones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1728,7 +1728,7 @@ public class Login extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane22.setViewportView(jTable5);
+        jScrollPane22.setViewportView(tablaPeticiones);
 
         PaginaPrincipalAdministrador.getContentPane().add(jScrollPane22);
         jScrollPane22.setBounds(1260, 150, 570, 660);
@@ -3053,6 +3053,11 @@ public class Login extends javax.swing.JFrame {
         jScrollPane5.setViewportView(tablaAutosSubasta);
 
         jButton5.setText("Agregar Carro");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel28.setText("SUBASTA");
@@ -3068,82 +3073,11 @@ public class Login extends javax.swing.JFrame {
         jScrollPane23.setViewportView(DescripSubasta);
 
         jButton10.setText("Mandar Solicitud De Subasta");
-
-        tablaPendientesSubasta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Auto", "Descripcion", "Precio inicial"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
-        jScrollPane24.setViewportView(tablaPendientesSubasta);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Solicitudes Pendientes", jPanel1);
-
-        tablaAprovadaSubasta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Auto", "Descripcion", "Precio inicial"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane25.setViewportView(tablaAprovadaSubasta);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Solicitudes Aprovadas", jPanel2);
 
         jMenu8.setText("Volver");
         jMenuBar8.add(jMenu8);
@@ -3156,39 +3090,36 @@ public class Login extends javax.swing.JFrame {
             AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgregarSubastaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AgregarSubastaLayout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(AgregarSubastaLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(AgregarSubastaLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
+                                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel133)
+                                    .addComponent(jLabel29))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
-                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel133)
-                                            .addComponent(jLabel29))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(AgregarSubastaLayout.createSequentialGroup()
-                                        .addComponent(jLabel140)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(precioSubasta))))))))
+                                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(AgregarSubastaLayout.createSequentialGroup()
+                                .addComponent(jLabel140)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(precioSubasta))))))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         AgregarSubastaLayout.setVerticalGroup(
             AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgregarSubastaLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(AgregarSubastaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AgregarSubastaLayout.createSequentialGroup()
                         .addComponent(jLabel28)
                         .addGap(18, 18, 18)
@@ -3205,9 +3136,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel140))
                         .addGap(54, 54, 54)
                         .addComponent(jButton10)))
-                .addGap(38, 38, 38)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3334,7 +3263,6 @@ public class Login extends javax.swing.JFrame {
                     if (m4 == 0) {
                         botonSubasta.setEnabled(false);
                     }
-
                 } else if (usuarios.get(i) instanceof Administrador) {
                     this.PaginaPrincipalAdministrador.pack();
                     this.PaginaPrincipalAdministrador.setLocationRelativeTo(this);
@@ -3343,6 +3271,8 @@ public class Login extends javax.swing.JFrame {
                     llenarTabla();
                     jMenu32.setText(usuarios.get(posi).getNombre());
                     jMenu33.setText(usuarios.get(posi).getNombre());
+                    Peticiones();
+
                 } else if (usuarios.get(i) instanceof Cliente) {
                     this.PaginaPrincipalCliente.pack();
                     this.PaginaPrincipalCliente.setLocationRelativeTo(this);
@@ -3361,7 +3291,20 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    int n_empresa;
+    public void Peticiones() {
+        DefaultTableModel t = (DefaultTableModel) tablaPeticiones.getModel();
+        for (int j = t.getRowCount() - 1; j >= 0; j--) {
+            t.removeRow(j);
+        }
+        for (Subasta oi : ((Administrador) usuarios.get(posi)).getSolicitudes()) {
+            Object[] usuarios = {oi.getOfertador().getNombre(), oi.getAuto().getMarca(), oi.getDescripcion(), oi.getCostoinicial()};
+            t.addRow(usuarios);
+        }
+
+        tablaPeticiones.setModel(t);
+    }
+
+   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.Registro.pack();
         this.Registro.setLocationRelativeTo(this);
@@ -3398,11 +3341,9 @@ public class Login extends javax.swing.JFrame {
                         f.Leer();
                         f.setCliente(e);
                         f.Escribir();
-
                     } catch (Exception ex) {
                         System.out.println("kpedo");
                     }
-
                 }
 
             } else {
@@ -3445,7 +3386,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
-        Ofertadores2 p = new Ofertadores2(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText());
+        Random r = new Random();
+        int u = 100 + r.nextInt(17654);
+        Ofertadores2 p = new Ofertadores2(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText(), u);
         usuarios.add(p);
         try {
             if (jCheckBox_Carwash.isSelected()) {
@@ -3454,12 +3397,11 @@ public class Login extends javax.swing.JFrame {
             }
             if (jCheckBox_Directo.isSelected()) {
                 cont++;
-                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Vendedor_Directo(" ", 0, "Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
+                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Vendedor_Directo("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
             }
             if (jCheckBox_Rentador.isSelected()) {
                 cont++;
                 ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas")));
-
             }
             if (jCheckBox_Subastador.isSelected()) {
                 cont++;
@@ -3479,29 +3421,23 @@ public class Login extends javax.swing.JFrame {
             no_R.setText("");
             cor_R.setText("");
             fe_R.setText("");
-
+            jCheckBox_Carwash.setSelected(false);
+            jCheckBox_Directo.setSelected(false);
+            jCheckBox_Rentador.setSelected(false);
+            jCheckBox_Subastador.setSelected(false);
             this.setLocationRelativeTo(this);
             this.Membrecias_Ofertadores.setVisible(false);
             this.setVisible(true);
         }
-
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        Ag_Cilindraje.setText("");
-        Ag_Tranmision.setText("");
-        Ag_ano.setText("");
-        Ag_marca.setText("");
-        Ag_modelo.setText("");
-        Ag_tipo.setText("");
         marca = Ag_marca.getText();
         modelo = Ag_modelo.getText();
         Cilindraje = Ag_Cilindraje.getText();
         tipo = Ag_tipo.getText();
         trans = Ag_Tranmision.getText();
-        ano = Integer.parseInt(Ag_ano.getText());
-        Autos auto = new Autos(marca, modelo, Cilindraje, tipo, trans, ano);
-
+        Autos auto = new Autos(marca, modelo, Cilindraje, tipo, trans, Integer.parseInt(Ag_ano.getText()));
         if (globalventacarros == 1) {
             int y = 0;
             for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
@@ -4118,8 +4054,10 @@ public class Login extends javax.swing.JFrame {
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         this.pack();
         this.setLocationRelativeTo(this);
+        this.setSize(420, 540);
+
         this.setVisible(true);
-        PaginaPrincipalAdministrador.pack();
+
         PaginaPrincipalAdministrador.setVisible(false);
 
     }//GEN-LAST:event_jMenuItem8ActionPerformed
@@ -4248,7 +4186,7 @@ public class Login extends javax.swing.JFrame {
         Agregar_Carro_OF.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem28MousePressed
-    int filaaux;
+   
     private void jT_C_ofertador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jT_C_ofertador2MouseClicked
         int fila = jT_C_ofertador2.getSelectedRow();
         filaaux = fila;
@@ -4291,6 +4229,40 @@ public class Login extends javax.swing.JFrame {
         this.Agregar_Carro_OF.pack();
         this.Agregar_Carro_OF.setVisible(false);
     }//GEN-LAST:event_jMenu13MouseClicked
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        int y = 0;
+        for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
+            if (((Ofertadores2) usuarios.get(posi)).getMembrecias().get(i) instanceof Subastador) {
+                y = i;
+                break;
+            }
+        }
+        Subasta s = new Subasta(((Subastador) ((Ofertadores2) usuarios.get(posi)).getMembrecias().get(y)).getAutos().get(autosubasta), (Ofertadores2) usuarios.get(posi), DescripSubasta.getText(), Double.parseDouble(precioSubasta.getText()), 0);
+        int o = 0;
+        for (Usuario adm : usuarios) {
+            if (adm instanceof Administrador) {
+                ((Administrador) usuarios.get(o)).getSolicitudes().add(s);
+            }
+            o++;
+        }
+
+    }//GEN-LAST:event_jButton10ActionPerformed
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int fila = tablaAutosSubasta.getSelectedRow();
+        if (fila >= 0) {
+            autosubasta = fila;
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jMenuItem20MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem20MousePressed
+        tablaautossubasta();
+        AgregarSubasta.pack();
+        AgregarSubasta.setLocationRelativeTo(this);
+        AgregarSubasta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem20MousePressed
+
     public void tablaautosDirecta() {
         int y = 0;
         for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
@@ -4329,6 +4301,7 @@ public class Login extends javax.swing.JFrame {
             autosSubasta.addRow(auto);
         }
         jT_C_ofertador2.setModel(autosSubasta);
+        tablaAutosSubasta.setModel(autosSubasta);
     }
 
     public void tablaadmins() {
@@ -4346,8 +4319,8 @@ public class Login extends javax.swing.JFrame {
         }
         TodosUsuarios1.setModel(t);
     }
-    
-     private void BaseDatosAdministradores(){
+
+    private void BaseDatosAdministradores() {
         try {
             conexion conect = new conexion(".//Administradores.accdb");
             Connection con1 = conect.getConnection();
@@ -4364,10 +4337,10 @@ public class Login extends javax.swing.JFrame {
                 dts[5] = rs.getString("Correo");
                 dts[6] = rs.getString("Ubicacion");
                 dts[7] = rs.getString("Cumpleaños");
-                usuarios.add(new Administrador(dts[1],dts[0],dts[2],dts[3],dts[4],dts[5],dts[6],dts[7]));
+                usuarios.add(new Administrador(dts[1], dts[0], dts[2], dts[3], dts[4], dts[5], dts[6], dts[7]));
             }
         } catch (Exception ex) {
-        } 
+        }
     }
 
     public static void main(String args[]) {
@@ -4741,8 +4714,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -4761,8 +4732,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
-    private javax.swing.JScrollPane jScrollPane24;
-    private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4774,11 +4743,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTable jT_C_ofertador3;
     private javax.swing.JTable jT_Publicidad;
     private javax.swing.JTable jT_membrecias1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lb_foto;
@@ -4802,9 +4769,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> pa_R;
     private javax.swing.JTextArea politica;
     private javax.swing.JTextField precioSubasta;
-    private javax.swing.JTable tablaAprovadaSubasta;
     private javax.swing.JTable tablaAutosSubasta;
-    private javax.swing.JTable tablaPendientesSubasta;
+    private javax.swing.JTable tablaPeticiones;
     private javax.swing.JTextField telefono;
     private javax.swing.JComboBox<String> tipo_usuario;
     private javax.swing.JTextField usuario_L;
@@ -4820,6 +4786,7 @@ public class Login extends javax.swing.JFrame {
     Archivos_Texto f = new Archivos_Texto("Clientes.txt", usuarios);
     ArchivoTexto2 f2 = new ArchivoTexto2("Empresa.txt");
     Empresas u;
+     int n_empresa, filaaux, autosubasta;
 }
 //        String prueba = p.getNombre()+ "," + p.getMision()+ "," + p.getVision()+ "," + p.getObjetivos()+ ","
 //+ p.getPoliticas()+ "," + p.getUbicacion()+ "," + p.getCorreo() + "," + p.getDirreccion()+","+p.getTelefono()+ ";\n";

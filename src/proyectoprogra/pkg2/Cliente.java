@@ -5,11 +5,13 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mvrivera
  */
-public class Cliente extends Usuario {
+public class Cliente extends Usuario  implements Serializable {
     private String membrecia;
     public Cliente() {
     }

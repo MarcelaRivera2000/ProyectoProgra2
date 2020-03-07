@@ -13,17 +13,15 @@ import java.util.ArrayList;
  */
 public class Vendedor_Directo  extends Membrecias {
     private ArrayList<Autos> autos=new ArrayList();
-    private String publicidad;
+    private ArrayList<Publicidad>  publicidad;
     private int negociaciones;
 
     public Vendedor_Directo() {
         super();
     }
 
-    public Vendedor_Directo(String publicidad, int negociaciones, String tipo, String descripcion) {
+    public Vendedor_Directo( String tipo, String descripcion) {
         super(tipo, descripcion);
-        this.publicidad = publicidad;
-        this.negociaciones = negociaciones;
     }
     
 
@@ -35,11 +33,11 @@ public class Vendedor_Directo  extends Membrecias {
         this.autos = autos;
     }
 
-    public String getPublicidad() {
+    public ArrayList<Publicidad> getPublicidad() {
         return publicidad;
     }
 
-    public void setPublicidad(String publicidad) {
+    public void setPublicidad(ArrayList<Publicidad> publicidad) {
         this.publicidad = publicidad;
     }
 

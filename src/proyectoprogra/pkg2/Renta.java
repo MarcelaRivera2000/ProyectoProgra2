@@ -5,6 +5,7 @@
  */
 package proyectoprogra.pkg2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Mvrivera
  */
-public class Renta extends Membrecias {
+public class Renta extends Membrecias  implements Serializable {
 
     Scanner leer = new Scanner(System.in);
     private ArrayList<Autos> autos = new ArrayList();
@@ -36,37 +37,6 @@ public class Renta extends Membrecias {
     @Override
     public String toString() {
         return "Renta{" + "autos=" + autos + '}';
-    }
-
-    public void reserva() {
-        String tipo = "";
-        System.out.println("Ingrese el tipo de vehiculo que desea reservar\n1.Uber\n2.Busito\n3.Mudanza ");
-        int op = leer.nextInt();
-        switch (op) {
-            case 1:
-                tipo = "uber";
-                break;
-            case 2:
-                tipo = "busito";
-                break;
-            case 3:
-                tipo = "mudanza";
-                break;
-        }
-        for (int i = 0; i < autos.size(); i++) {
-            if (autos.get(i) instanceof Busito) {
-                System.out.println(i+" "+autos.get(i));
-            }
-            if (autos.get(i) instanceof Uber) {
-                System.out.println(i+" "+autos.get(i));
-            }
-            if (autos.get(i) instanceof Camion_Mudanza) {
-                 System.out.println(i+" "+autos.get(i));
-            }
-        }
-        System.out.println("Ingrese la posicion del "+tipo+" que desea rentar: ");
-        int opp=leer.nextInt();
-        
     }
 
 }
