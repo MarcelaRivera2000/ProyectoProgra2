@@ -15,7 +15,7 @@ public class UsuarioSockets extends ConexionSockets {
         super("cliente");
     }
 
-    public void startClient(String Usuario, int NumCuenta, String tipo, double dineroAcutal, double dineroGastado) {
+    public void startClient(String Usuario, String NumCuenta, String tipo, double dineroAcutal, double dineroGastado) {
         String datos = Usuario + "," + NumCuenta + "," + tipo + "," + dineroAcutal + "," + dineroGastado;
         System.out.println(datos);
         try {

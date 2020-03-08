@@ -19,12 +19,12 @@ public class MainUsuarioSockets {
         System.out.println("Iniciando cliente\n");
         cli.startClient(Usuario, NumCuenta, tipo, dineroAcutal, dineroGastado);
     }
-    static int NumCuenta;
+    static String NumCuenta;
     static String Usuario;
     static String tipo;
     static double dineroAcutal, dineroGastado;
 
-    public static void nuevousuario( String u,int n, String t, double da, double dg) {
+    public static void nuevousuario( String u,String n, String t, double da, double dg) {
         NumCuenta = n;
         Usuario = u;
         tipo = t;

@@ -28,22 +28,15 @@ public class Login extends javax.swing.JFrame {
         this.setSize(420, 540);
         b.cargarArchivo();
         for (Ofertadores2 i : b.getListaPersonas()) {
-            System.out.println(i);
             usuarios.add((Ofertadores2) i);
         }
         f.Leer();
         for (Usuario p : f.getLista()) {
             usuarios.add((Cliente) p);
         }
-       // BaseDatosAdministradores();
-        //u = f2.Leer();
-        /* try {
-            MainUsuarioSockets sk = new MainUsuarioSockets();
-            sk.nuevousuario("juan", 43, "Ofertador", 4332, 3321);
-            MainUsuarioSockets.main(null);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }*/
+        BaseDatosAdministradores();
+       u = f2.Leer();
+         
 
     }
 
@@ -462,6 +455,13 @@ public class Login extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jMenuBar8 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
+        SOCKETS = new javax.swing.JDialog();
+        NumeroCuenta = new javax.swing.JFormattedTextField();
+        jButton15 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        APAGAR = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         jLabel109 = new javax.swing.JLabel();
         contra_L = new javax.swing.JPasswordField();
         usuario_L = new javax.swing.JTextField();
@@ -3139,6 +3139,69 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
+        try {
+            NumeroCuenta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        NumeroCuenta.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        jButton15.setText("Agregar al Carrito");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setText("Numero de cuenta:");
+
+        APAGAR.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        APAGAR.setText("PRECIO");
+
+        jLabel35.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel35.setText("$$$:");
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel36.setText("jLabel36");
+
+        javax.swing.GroupLayout SOCKETSLayout = new javax.swing.GroupLayout(SOCKETS.getContentPane());
+        SOCKETS.getContentPane().setLayout(SOCKETSLayout);
+        SOCKETSLayout.setHorizontalGroup(
+            SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SOCKETSLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel36)
+                    .addGroup(SOCKETSLayout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(APAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton15)
+                        .addGroup(SOCKETSLayout.createSequentialGroup()
+                            .addComponent(jLabel34)
+                            .addGap(41, 41, 41)
+                            .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+        SOCKETSLayout.setVerticalGroup(
+            SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SOCKETSLayout.createSequentialGroup()
+                .addContainerGap(209, Short.MAX_VALUE)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(APAGAR))
+                .addGap(37, 37, 37)
+                .addGroup(SOCKETSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(jButton15)
+                .addGap(34, 34, 34))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
@@ -3383,8 +3446,9 @@ public class Login extends javax.swing.JFrame {
         Ti_Publicidad.setText("");
         Des_Publicidad.setText("");
     }//GEN-LAST:event_jButton11ActionPerformed
-
+double gastos=0;
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        gastos=0;
         int cont = 0;
         Random r = new Random();
         int u = 100 + r.nextInt(40000);
@@ -3394,18 +3458,22 @@ public class Login extends javax.swing.JFrame {
             if (jCheckBox_Carwash.isSelected()) {
                 cont++;
                 p.getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
+                gastos+=9.99;
             }
             if (jCheckBox_Directo.isSelected()) {
                 cont++;
                 p.getMembrecias().add((new Vendedor_Directo("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
+                 gastos+=9.99;
             }
             if (jCheckBox_Rentador.isSelected()) {
                 cont++;
                 p.getMembrecias().add(new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
+                 gastos+=9.99;
             }
             if (jCheckBox_Subastador.isSelected()) {
                 cont++;
                 p.getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
+                 gastos+=9.99;
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -3413,6 +3481,8 @@ public class Login extends javax.swing.JFrame {
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Porfavor seleccione alguna membrecia");
         } else {
+            jLabel36.setText(""+ni_R.getText());
+            APAGAR.setText(""+gastos);
             b.cargarArchivo();
             b.setAlumno(p);
             b.escribirArchivo();
@@ -3425,9 +3495,10 @@ public class Login extends javax.swing.JFrame {
             jCheckBox_Directo.setSelected(false);
             jCheckBox_Rentador.setSelected(false);
             jCheckBox_Subastador.setSelected(false);
-            this.setLocationRelativeTo(this);
+            SOCKETS.pack();
+            SOCKETS.setLocationRelativeTo(this);
             this.Membrecias_Ofertadores.setVisible(false);
-            this.setVisible(true);
+            SOCKETS.setVisible(true);
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -4263,6 +4334,16 @@ public class Login extends javax.swing.JFrame {
         AgregarSubasta.setVisible(true);
     }//GEN-LAST:event_jMenuItem20MousePressed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+          try {
+            MainUsuarioSockets sk = new MainUsuarioSockets();
+            sk.nuevousuario(usuarios.get(usuarios.size()-1).getUsuario(), NumeroCuenta.getText(), "Ofertador", ((Ofertadores2)usuarios.get(usuarios.size()-1)).getDinero(), gastos);
+            MainUsuarioSockets.main(null);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
     public void tablaautosDirecta() {
         int y = 0;
         for (int i = 0; i < ((Ofertadores2) usuarios.get(posi)).getMembrecias().size(); i++) {
@@ -4376,6 +4457,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel APAGAR;
     private javax.swing.JButton AQUI;
     private javax.swing.JTextField Ag_Cilindraje;
     private javax.swing.JTextField Ag_Tranmision;
@@ -4400,6 +4482,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JDialog ModificarAdmin;
     private javax.swing.JDialog ModificarOfertador;
     private javax.swing.JLabel N_Perfil;
+    private javax.swing.JFormattedTextField NumeroCuenta;
     private javax.swing.JLabel P_Perfil;
     private javax.swing.JFrame PaginaPrincipalAdministrador;
     private javax.swing.JFrame PaginaPrincipalCliente;
@@ -4410,6 +4493,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JFrame Publicidad;
     private javax.swing.JFrame Registro;
     private javax.swing.JFrame Restablecer;
+    private javax.swing.JDialog SOCKETS;
     private javax.swing.JMenu Subasta;
     private javax.swing.JLabel T_Perfil;
     private javax.swing.JDialog TablaMembrecias;
@@ -4451,6 +4535,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -4562,6 +4647,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
