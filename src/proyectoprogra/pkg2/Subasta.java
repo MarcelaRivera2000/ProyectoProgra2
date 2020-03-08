@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Mvrivera
  */
-public class Subasta  implements Serializable{
+public class Subasta implements Serializable{
    private Autos auto;
    private Ofertadores2 ofertador;
    private String Descripcion;
@@ -39,7 +39,6 @@ public class Subasta  implements Serializable{
         this.estado = estado;
     }
     
-
     public Autos getAuto() {
         return auto;
     }

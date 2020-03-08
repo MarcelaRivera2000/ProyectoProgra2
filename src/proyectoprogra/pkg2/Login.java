@@ -28,15 +28,15 @@ public class Login extends javax.swing.JFrame {
         this.setSize(420, 540);
         b.cargarArchivo();
         for (Ofertadores2 i : b.getListaPersonas()) {
+            System.out.println(i);
             usuarios.add((Ofertadores2) i);
-            System.out.println(i.getDinero());
         }
         f.Leer();
         for (Usuario p : f.getLista()) {
             usuarios.add((Cliente) p);
         }
-        BaseDatosAdministradores();
-        u = f2.Leer();
+       // BaseDatosAdministradores();
+        //u = f2.Leer();
         /* try {
             MainUsuarioSockets sk = new MainUsuarioSockets();
             sk.nuevousuario("juan", 43, "Ofertador", 4332, 3321);
@@ -3387,25 +3387,25 @@ public class Login extends javax.swing.JFrame {
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         int cont = 0;
         Random r = new Random();
-        int u = 100 + r.nextInt(17654);
-        Ofertadores2 p = new Ofertadores2(tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText(), u);
+        int u = 100 + r.nextInt(40000);
+        Ofertadores2 p = new Ofertadores2(u,tipo, ni_R.getText(), co_R.getText(), no_R.getText(), (String) pa_R.getSelectedItem(), cor_R.getText(), " ", Cu_Perfil.getText());
         usuarios.add(p);
         try {
             if (jCheckBox_Carwash.isSelected()) {
                 cont++;
-                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
+                p.getMembrecias().add((new Carwash("Carwash", "Calendario con las citas y facturación correspondiente")));
             }
             if (jCheckBox_Directo.isSelected()) {
                 cont++;
-                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Vendedor_Directo("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
+                p.getMembrecias().add((new Vendedor_Directo("Vendedor directo", "Administrar sus vehículos,publicidad,negociaciones y venta directa")));
             }
             if (jCheckBox_Rentador.isSelected()) {
                 cont++;
-                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas")));
+                p.getMembrecias().add(new Renta("Rentador", "Administra sus servicios de renta incluyéndo programación y reservas"));
             }
             if (jCheckBox_Subastador.isSelected()) {
                 cont++;
-                ((Ofertadores2) usuarios.get(usuarios.size() - 1)).getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
+                p.getMembrecias().add((new Subastador("Subastador", "Sube sus vehículos a vender y su publicidad")));
             }
         } catch (Exception e) {
             System.out.println(e);

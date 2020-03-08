@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Mvrivera
  */
-public class Subastador extends Membrecias  implements Serializable{
+public class Subastador extends Membrecias{
     private ArrayList<Autos> autos=new ArrayList();
     private ArrayList<String> publicidad=new ArrayList();
 

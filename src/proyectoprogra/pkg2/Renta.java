@@ -13,18 +13,12 @@ import java.util.Scanner;
  *
  * @author Mvrivera
  */
-public class Renta extends Membrecias  implements Serializable {
-
-    Scanner leer = new Scanner(System.in);
-    private ArrayList<Autos> autos = new ArrayList();
-
-    public Renta() {
-    }
+public class Renta extends Membrecias    {
+ArrayList<Autos> autos=new ArrayList();
 
     public Renta(String tipo, String descripcion) {
         super(tipo, descripcion);
     }
-    
 
     public ArrayList<Autos> getAutos() {
         return autos;
@@ -38,5 +32,4 @@ public class Renta extends Membrecias  implements Serializable {
     public String toString() {
         return "Renta{" + "autos=" + autos + '}';
     }
-
 }

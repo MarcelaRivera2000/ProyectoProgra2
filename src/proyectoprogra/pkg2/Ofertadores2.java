@@ -6,24 +6,25 @@ import java.util.Random;
 
 public class Ofertadores2 extends Usuario {
 
-    private ArrayList<Membrecias> membrecias=new ArrayList();
-    private int Dinero;
-    
+    private ArrayList<Membrecias> membrecias = new ArrayList();
+    private int dinero;
+
     public Ofertadores2() {
     }
-    
-    public Ofertadores2(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha,int dinero) {
+
+    public Ofertadores2(int dinero, String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         super(tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha);
-        this.Dinero=dinero;
+        this.dinero = dinero;
     }
 
     public int getDinero() {
-        return Dinero;
+        return dinero;
     }
 
-    public void setDinero(int Dinero) {
-        this.Dinero = Dinero;
+    public void setDinero(int dinero) {
+        this.dinero = dinero;
     }
+    
     
     public ArrayList<Membrecias> getMembrecias() {
         return membrecias;
@@ -35,6 +36,8 @@ public class Ofertadores2 extends Usuario {
 
     @Override
     public String toString() {
-        return "Ofertadores2{" + "membrecias=" + membrecias + ", Dinero=" + Dinero + '}';
+        return "Ofertadores2{" + "membrecias=" + membrecias + ", dinero=" + dinero + '}';
     }
+
+   
 }

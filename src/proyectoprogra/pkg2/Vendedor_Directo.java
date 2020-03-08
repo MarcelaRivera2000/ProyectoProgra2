@@ -13,11 +13,10 @@ import java.util.ArrayList;
  */
 public class Vendedor_Directo  extends Membrecias {
     private ArrayList<Autos> autos=new ArrayList();
-    private ArrayList<Publicidad>  publicidad;
+    private ArrayList<Publicidad>  publicidad=new ArrayList();
     private int negociaciones;
 
     public Vendedor_Directo() {
-        super();
     }
 
     public Vendedor_Directo( String tipo, String descripcion) {

@@ -11,8 +11,9 @@ import java.io.Serializable;
  *
  * @author Mvrivera
  */
-public class Cliente extends Usuario  implements Serializable {
+public class Cliente extends Usuario {
     private String membrecia;
+    
     public Cliente() {
     }
 
@@ -31,8 +32,10 @@ public class Cliente extends Usuario  implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" +super.toString()+ "membrecia=" + membrecia + '}';
+        return "Cliente{" + "membrecia=" + membrecia + '}';
     }
+
+   
 
     
   

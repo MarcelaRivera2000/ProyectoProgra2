@@ -11,9 +11,9 @@ import java.io.Serializable;
  *
  * @author Mvrivera
  */
-public class Membrecias implements Serializable{
-    private String tipo,descripcion;
+public class Membrecias implements Serializable {
 
+    private String tipo, descripcion;
 
     public Membrecias() {
     }
@@ -22,7 +22,7 @@ public class Membrecias implements Serializable{
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
-    
+
     public String getTipo() {
         return tipo;
     }
@@ -38,15 +38,10 @@ public class Membrecias implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
 
     @Override
     public String toString() {
         return "Membrecias{" + "tipo=" + tipo + ", descripcion=" + descripcion + '}';
     }
 
-
-    
-    
-    
 }

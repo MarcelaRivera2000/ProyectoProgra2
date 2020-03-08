@@ -60,8 +60,13 @@ public class Ficheros_Binarios {
                 FileInputStream entrada= new FileInputStream(archivo);
                 ObjectInputStream objeto= new ObjectInputStream(entrada);
                 try {
+                    int cont=0;
+                    System.out.println("************************");
                     while ((temp = (Ofertadores2) objeto.readObject()) != null) {
+                        
+                        System.out.println(cont+" "+temp.getUsuario()+" "+temp.getMembrecias().get(0));
                         listaOfertadores.add(temp);
+                    cont++;
                     }
                 } catch (EOFException e) {
                 }

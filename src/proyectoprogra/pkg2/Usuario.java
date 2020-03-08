@@ -16,16 +16,18 @@ import javax.swing.Icon;
  * @author Mvrivera
  */
 public class Usuario implements Serializable {
-    private String tipo,usuario,contra,nombre,pais,correo,ubicacion,fecha;
-       private Icon fotografia;
-    
+
+    private String tipo, usuario, contra, nombre, pais, correo, ubicacion, fecha;
+    private Icon fotografia;
 
     public Usuario() {
-        
+
     }
-public Usuario(Icon fotografia) {
-        this.fotografia=fotografia;
+
+    public Usuario(Icon fotografia) {
+        this.fotografia = fotografia;
     }
+
     public Usuario(String tipo, String usuario, String contra, String nombre, String pais, String correo, String ubicacion, String fecha) {
         this.tipo = tipo;
         this.usuario = usuario;
@@ -37,7 +39,6 @@ public Usuario(Icon fotografia) {
         this.fecha = fecha;
     }
 
-    
     public String getTipo() {
         return tipo;
     }
@@ -61,7 +62,6 @@ public Usuario(Icon fotografia) {
     public void setFotografia(Icon fotografia) {
         this.fotografia = fotografia;
     }
-    
 
     public String getContra() {
         return contra;
@@ -113,13 +113,9 @@ public Usuario(Icon fotografia) {
 
     @Override
     public String toString() {
-        return "Usuario{" + "tipo=" + tipo + ", usuario=" + usuario + ", contra=" + 
-                contra + ", nombre=" + nombre + ", pais=" + pais + ", correo=" + correo 
+        return "Usuario{" + "tipo=" + tipo + ", usuario=" + usuario + ", contra="
+                + contra + ", nombre=" + nombre + ", pais=" + pais + ", correo=" + correo
                 + ", ubicacion=" + ubicacion + ", fecha=" + fecha + '}';
     }
-    
 
-    
-    
-    
 }
